@@ -1,6 +1,5 @@
 'use client'; // Required for client-side features
 
-import JobCard from './JobCard';
 
 // Mock job data (replace with actual data or API)
 
