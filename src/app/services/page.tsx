@@ -1,6 +1,6 @@
-
-export default function Services() {
+import Services from '../../components/Services';
+export default function ServicePage() {
   return <>
-<h1 >Services</h1>
+<Services/>
   </>
 }

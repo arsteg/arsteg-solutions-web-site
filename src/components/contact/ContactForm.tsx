@@ -1,215 +1,210 @@
-// components/ContactForm.tsx
-'use client';
+"use client";
 
 import { useState } from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
-import axios from 'axios';
+import { MapPin, Mail, Phone, Send } from 'lucide-react';
 
-const containerStyle = {
-  width: '100%',
-  height: '400px',
-  borderRadius: '8px',
-  border: '2px solid #e5e7eb', // Light gray border for a clean look
-  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)', // Subtle shadow
-};
-
-const center = {
-  lat: 28.4157267,
-  lng: 76.9630135,
-};
-
-export default function ContactForm() {
+const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: '',
+    company: '',
+    budget: '',
+    description: '',
   });
-  const [file, setFile] = useState<File | null>(null);
-  const [status, setStatus] = useState('');
-  const [loading, setLoading] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setFile(e.target.files[0]);
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.description) {
+      alert("Please fill in all required fields.");
+      return;
     }
-  };
 
-  const fileToBase64 = (file: File): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result as string);
-      reader.onerror = (error) => reject(error);
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    // Success message
+    alert("Thank you for your inquiry. We'll get back to you within 24 hours.");
+
+    // Reset form
+    setFormData({
+      name: '',
+      email: '',
+      company: '',
+      budget: '',
+      description: '',
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setStatus('');
-
-    try {
-      let fileData = null;
-      if (file) {
-        const base64File = await fileToBase64(file);
-        fileData = {
-          data: base64File.split(',')[1],
-          name: file.name,
-          type: file.type,
-        };
-      }
-
-      await axios.post('/api/send-email', {
-        name: formData.name,
-        email: formData.email,
-        message: formData.message,
-        file: fileData,
-      });
-
-      setStatus('Message sent successfully!');
-      setFormData({ name: '', email: '', message: '' });
-      setFile(null);
-    } catch (error) {
-      setStatus('Failed to send message. Please try again.');
-      console.error('Error sending email:', error);
-    } finally {
-      setLoading(false);
-    }
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
+  const contactInfo = [
+    {
+      icon: MapPin,
+      title: 'Address',
+      detail: 'Gurugram, Haryana, India',
+    },
+    {
+      icon: Mail,
+      title: 'Email',
+      detail: 'info@arsteg.com',
+    },
+    {
+      icon: Phone,
+      title: 'Phone',
+      detail: '+91-XXX-XXX-XXXX',
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <h1 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-8 sm:mb-12">
-          Contact Us
-        </h1>
+    <section id="contact" className="py-20 gradient-hero">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black">
+            Let us Build Something <span className="text-accent">Great</span>
+          </h2>
+          <p className="text-xl text-black/80 max-w-3xl mx-auto">
+            Ready to transform your ideas into reality? Contact our team to discuss your project or get a free quote.
+          </p>
+        </div>
 
-        {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-          {/* Contact Information */}
-          <div className="bg-white p-6 sm:p-8 rounded-lg shadow-lg">
-            <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4">Our Address</h2>
-            <p className="text-gray-600 mb-6 text-sm sm:text-base">
-              LG-048, Elan Miracle, Northern Peripheral Rd,<br />
-              Sector 84, Gurugram, Haryana 122012
-            </p>
-            <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4">Get in Touch</h2>
-            <p className="text-gray-600 text-sm sm:text-base">
-              Email:{' '}
-              <a href="mailto:info@arsteg.com" className="text-blue-600 hover:underline">
-                info@arsteg.com
-              </a>
-              <br />
-              Phone:{' '}
-              <a href="tel:+918447470101" className="text-blue-600 hover:underline">
-                +91 844 747 0101
-              </a>
-            </p>
-          </div>
-
+        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
-          <div className="bg-white p-6 sm:p-8 rounded-lg shadow-lg">
-            <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4">Send Us a Message</h2>
-            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+          <div className="bg-white rounded-2xl p-8 shadow-2xl animate-slide-up">
+            <h3 className="text-2xl font-bold mb-6 text-foreground">Send Us a Message</h3>
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                  Name
+                <label htmlFor="name" className="block text-sm font-medium mb-2 text-foreground">
+                  Name *
                 </label>
                 <input
-                  type="text"
                   id="name"
                   name="name"
                   value={formData.name}
-                  onChange={handleInputChange}
+                  onChange={handleChange}
+                  placeholder="Your full name"
                   required
-                  className="mt-1 p-3 w-full border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
-                  placeholder="Your Name"
+                  className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                 />
               </div>
+
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                  Email
+                <label htmlFor="email" className="block text-sm font-medium mb-2 text-foreground">
+                  Email *
                 </label>
                 <input
-                  type="email"
                   id="email"
                   name="email"
+                  type="email"
                   value={formData.email}
-                  onChange={handleInputChange}
+                  onChange={handleChange}
+                  placeholder="your.email@example.com"
                   required
-                  className="mt-1 p-3 w-full border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
-                  placeholder="Your Email"
+                  className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                 />
               </div>
+
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  required
-                  rows={5}
-                  className="mt-1 p-3 w-full border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
-                  placeholder="Your Message"
-                ></textarea>
-              </div>
-              <div>
-                <label htmlFor="file" className="block text-sm font-medium text-gray-700">
-                  Attachment
+                <label htmlFor="company" className="block text-sm font-medium mb-2 text-foreground">
+                  Company
                 </label>
                 <input
-                  type="file"
-                  id="file"
-                  name="file"
-                  onChange={handleFileChange}
-                  className="mt-1 p-3 w-full border border-gray-300 rounded-md text-sm sm:text-base"
+                  id="company"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  placeholder="Your company name"
+                  className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                 />
               </div>
+
+              <div>
+                <label htmlFor="budget" className="block text-sm font-medium mb-2 text-foreground">
+                  Budget Range
+                </label>
+                <input
+                  id="budget"
+                  name="budget"
+                  value={formData.budget}
+                  onChange={handleChange}
+                  placeholder="Enter budget range (e.g., $5,000 - $10,000)"
+                  className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="description" className="block text-sm font-medium mb-2 text-foreground">
+                  Project Description *
+                </label>
+                <textarea
+                  id="description"
+                  name="description"
+                  value={formData.description}
+                  onChange={handleChange}
+                  placeholder="Tell us about your project..."
+                  rows={5}
+                  required
+                  className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                />
+              </div>
+
               <button
                 type="submit"
-                disabled={loading}
-                className={`w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition-colors text-sm sm:text-base font-medium ${
-                  loading ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
+                className="w-full px-4 py-2 bg-accent text-black rounded-md hover:bg-accent/90 transition-colors flex items-center justify-center"
               >
-                {loading ? 'Sending...' : 'Send Message'}
+                Submit Your Inquiry
+                <Send className="ml-2 h-5 w-5" />
               </button>
-              {status && (
-                <p
-                  className={`text-sm text-center ${
-                    status.includes('successfully') ? 'text-green-600' : 'text-red-600'
-                  }`}
-                >
-                  {status}
-                </p>
-              )}
             </form>
           </div>
-        </div>
 
-        {/* Google Map */}
-        <div className="mt-8 sm:mt-12">
-          <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 text-center">
-            Find Us on the Map
-          </h2>
-          <div className="w-full">
-            <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''}>
-              <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={15}>
-                <Marker position={center} title="ARSTEG Solutions Pvt Ltd - Gurugram Office" />
-              </GoogleMap>
-            </LoadScript>
+          {/* Contact Info & Map */}
+          <div className="space-y-8 animate-fade-in">
+            {/* Contact Details */}
+            <div className="space-y-6">
+              {contactInfo.map((info, index) => (
+                <div
+                  key={index}
+                  className="bg-black/10 backdrop-blur-md rounded-xl p-6 border border-black/20 hover:bg-black/15 transition-all duration-300"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="bg-accent/20 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <info.icon className="h-6 w-6 text-accent" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-black mb-1">{info.title}</h4>
+                      <p className="text-black/80">{info.detail}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Map Placeholder */}
+            <div className="bg-black/10 backdrop-blur-md rounded-xl p-4 border border-black/20 h-64">
+              <div className="w-full h-full bg-muted/50 rounded-lg flex items-center justify-center">
+                <div className="text-center text-black/60">
+                  <MapPin className="h-12 w-12 mx-auto mb-2 text-accent" />
+                  <p className="font-medium">Gurugram, Haryana, India</p>
+                  <p className="text-sm">Interactive map integration</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
-}
+};
+
+export default Contact;
