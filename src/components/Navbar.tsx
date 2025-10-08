@@ -26,7 +26,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-dark-section/80 backdrop-blur-lg border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg border-b border-border bg-gradient-to-r from-gray-400 via-gray-300 to-gray-100">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -38,8 +38,8 @@ const Navbar = () => {
                 <Image
             src="/images/logo.png" // Ensure this path is correct
             alt="Site Logo"
-            width={100}
-            height={30}
+            width={150}
+            height={50}
             className="mr-3"
           />
             </Link>
