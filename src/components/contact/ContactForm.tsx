@@ -67,21 +67,24 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 gradient-hero">
+    <section id="contact" className="py-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black">
-            Let us Build Something <span className="text-accent">Great</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Let us Build Something <span className="gradient-text">Great</span>
           </h2>
-          <p className="text-xl text-black/80 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Ready to transform your ideas into reality? Contact our team to discuss your project or get a free quote.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
-          <div className="bg-white rounded-2xl p-8 shadow-2xl animate-slide-up">
-            <h3 className="text-2xl font-bold mb-6 text-foreground">Send Us a Message</h3>
+          <div
+            className="bg-card rounded-xl p-8 shadow-card hover:shadow-card-hover transition-all duration-300 animate-scale-in border border-border"
+            style={{ animationDelay: '0s' }}
+          >
+            <h3 className="text-xl font-bold mb-6 text-foreground">Send Us a Message</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2 text-foreground">
@@ -94,7 +97,7 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder="Your full name"
                   required
-                  className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="w-full px-3 py-2 border border-border rounded-[var(--radius)] bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                 />
               </div>
 
@@ -110,7 +113,7 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder="your.email@example.com"
                   required
-                  className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="w-full px-3 py-2 border border-border rounded-[var(--radius)] bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                 />
               </div>
 
@@ -124,7 +127,7 @@ const Contact = () => {
                   value={formData.company}
                   onChange={handleChange}
                   placeholder="Your company name"
-                  className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="w-full px-3 py-2 border border-border rounded-[var(--radius)] bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                 />
               </div>
 
@@ -138,7 +141,7 @@ const Contact = () => {
                   value={formData.budget}
                   onChange={handleChange}
                   placeholder="Enter budget range (e.g., $5,000 - $10,000)"
-                  className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="w-full px-3 py-2 border border-border rounded-[var(--radius)] bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                 />
               </div>
 
@@ -154,13 +157,13 @@ const Contact = () => {
                   placeholder="Tell us about your project..."
                   rows={5}
                   required
-                  className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="w-full px-3 py-2 border border-border rounded-[var(--radius)] bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full px-4 py-2 bg-accent text-black rounded-md hover:bg-accent/90 transition-colors flex items-center justify-center"
+                className="w-full px-4 py-2 text-lg font-semibold text-white gradient-hero rounded-[var(--radius)] hover:opacity-90 transition-[var(--transition-smooth)] flex items-center justify-center"
               >
                 Submit Your Inquiry
                 <Send className="ml-2 h-5 w-5" />
@@ -169,21 +172,22 @@ const Contact = () => {
           </div>
 
           {/* Contact Info & Map */}
-          <div className="space-y-8 animate-fade-in">
+          <div className="space-y-8">
             {/* Contact Details */}
             <div className="space-y-6">
               {contactInfo.map((info, index) => (
                 <div
                   key={index}
-                  className="bg-black/10 backdrop-blur-md rounded-xl p-6 border border-black/20 hover:bg-black/15 transition-all duration-300"
+                  className="bg-card rounded-xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 animate-scale-in border border-border group"
+                  style={{ animationDelay: `${(index + 1) * 0.1}s` }}
                 >
                   <div className="flex items-start gap-4">
-                    <div className="bg-accent/20 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <info.icon className="h-6 w-6 text-accent" />
+                    <div className="bg-primary/10 w-14 h-14 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors duration-300">
+                      <info.icon className="h-7 w-7 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-black mb-1">{info.title}</h4>
-                      <p className="text-black/80">{info.detail}</p>
+                      <h4 className="font-semibold text-foreground mb-1">{info.title}</h4>
+                      <p className="text-muted-foreground">{info.detail}</p>
                     </div>
                   </div>
                 </div>
@@ -191,11 +195,11 @@ const Contact = () => {
             </div>
 
             {/* Map Placeholder */}
-            <div className="bg-black/10 backdrop-blur-md rounded-xl p-4 border border-black/20 h-64">
-              <div className="w-full h-full bg-muted/50 rounded-lg flex items-center justify-center">
-                <div className="text-center text-black/60">
-                  <MapPin className="h-12 w-12 mx-auto mb-2 text-accent" />
-                  <p className="font-medium">Gurugram, Haryana, India</p>
+            <div className="relative rounded-2xl overflow-hidden shadow-card animate-slide-up">
+              <div className="w-full h-64 bg-card rounded-2xl flex items-center justify-center border border-border">
+                <div className="text-center text-muted-foreground">
+                  <MapPin className="h-12 w-12 mx-auto mb-2 text-primary" />
+                  <p className="font-medium text-foreground">Gurugram, Haryana, India</p>
                   <p className="text-sm">Interactive map integration</p>
                 </div>
               </div>

@@ -15,7 +15,7 @@ export default function Home() {
       <PortfolioPage />  
       <BlogPage />
       <ContactForm />
-      <Careers />
+     
     </div>
   );
 }

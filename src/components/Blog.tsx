@@ -6,8 +6,7 @@ import { Calendar, User, ArrowRight } from "lucide-react";
 const Blog = () => {
   const posts = [
     {
-      title:
-        "How AI-Powered Food Scanning is Revolutionizing Nutrition Planning",
+      title: "How AI-Powered Food Scanning is Revolutionizing Nutrition Planning",
       excerpt:
         "Discover how OpenAI integration enables users to snap a photo and instantly get detailed nutritional information, transforming the way we track our diet.",
       author: "ARSTEG Tech Team",
@@ -31,19 +30,19 @@ const Blog = () => {
       author: "Development Team",
       date: "Jan 5, 2025",
       category: "Software Development",
-      image:'/images/business.jpg',
+      image: "/images/business.jpg",
     },
   ];
 
   return (
-    <section id="blog" className="py-20 section-dark">
+    <section id="blog" className="py-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black">
-            Insights & <span className="text-accent">Trends</span>
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Insights & <span className="gradient-text">Trends</span>
           </h2>
-          <p className="text-xl text-black/80 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Stay updated with the latest in software development and health-tech
             innovations. Our blog covers industry trends, case studies, and tips
             to help your business thrive.
@@ -55,11 +54,11 @@ const Blog = () => {
           {posts.map((post, index) => (
             <article
               key={index}
-              className="bg-black/5 backdrop-blur-sm rounded-xl overflow-hidden border border-black/10 hover:bg-black/10 hover:border-black/20 transition-all duration-300 hover:scale-105 group"
+              className="bg-card rounded-xl shadow-card hover:shadow-card-hover transition-all duration-300 hover:scale-105 animate-scale-in border border-border group"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Image */}
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-48 overflow-hidden rounded-t-xl">
                 <Image
                   src={post.image}
                   alt={post.title}
@@ -67,8 +66,9 @@ const Blog = () => {
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover group-hover:scale-110 transition-transform duration-300"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent" />
                 <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 bg-accent text-accent-foreground rounded-full text-xs font-semibold">
+                  <span className="px-2 py-1 bg-muted rounded-md text-xs font-medium text-muted-foreground">
                     {post.category}
                   </span>
                 </div>
@@ -76,7 +76,7 @@ const Blog = () => {
 
               {/* Post Content */}
               <div className="p-6">
-                <div className="flex items-center gap-4 mb-4 text-sm text-black/60">
+                <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
                   <div className="flex items-center gap-1">
                     <Calendar className="h-4 w-4" />
                     <span>{post.date}</span>
@@ -87,14 +87,14 @@ const Blog = () => {
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold mb-3 text-black group-hover:text-accent transition-colors duration-300">
+                <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors duration-300">
                   {post.title}
                 </h3>
-                <p className="text-black/80 mb-4 leading-relaxed">
+                <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
                   {post.excerpt}
                 </p>
 
-                <div className="text-accent font-semibold flex items-center gap-2 group-hover:gap-3 transition-all duration-300 cursor-pointer">
+                <div className="text-primary font-semibold flex items-center gap-2 group-hover:gap-3 transition-all duration-300 cursor-pointer">
                   Read More
                   <ArrowRight className="h-4 w-4" />
                 </div>
@@ -103,11 +103,13 @@ const Blog = () => {
           ))}
         </div>
 
-        {/* Replaced Button */}
+        {/* Button */}
         <div className="text-center">
-          <p className="text-black/70 italic">
-            More insights coming soon...
-          </p>
+          <button
+            className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold text-white gradient-hero rounded-[var(--radius)] hover:opacity-90 transition-[var(--transition-smooth)]"
+          >
+            See More Posts
+          </button>
         </div>
       </div>
     </section>
