@@ -38,7 +38,7 @@ const Navbar = () => {
                 <Image
             src="/images/logo.png" // Ensure this path is correct
             alt="Site Logo"
-            width={150}
+            width={120}
             height={50}
             className="mr-3"
           />
