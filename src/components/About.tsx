@@ -9,19 +9,19 @@ const About = () => {
       icon: Users,
       title: "Expert Team",
       description:
-        "Our developers, with an average of 10+ years of experience, stay ahead of trends in .NET, Vue.js, React.js, and more to build robust, scalable solutions.",
+        "Our developers, with an average of 10+ years of experience, stay ahead of trends in .NET, Java, Angular, Vue.js, React.js, and more to deliver high-quality solutions.",
     },
     {
       icon: Lightbulb,
       title: "Industry Knowledge",
       description:
-        "We provide tailored IT consulting, collaborating closely with clients to create efficient, industry-specific applications.",
+        "We provide tailored IT consulting, collaborating closely with clients to craft industry-specific solutions that drive efficiency.",
     },
     {
       icon: Globe,
       title: "Global Impact",
       description:
-        "With 200+ projects delivered across 20+ countries, we empower businesses to achieve their goals through technology.",
+        "With 150+ projects delivered across 20+ countries, we empower businesses to achieve measurable results.",
     },
   ];
 
@@ -33,7 +33,7 @@ const About = () => {
             Who We <span className="gradient-text">Are</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Founded in 2015, ARSTEG Solutions Pvt. Ltd. is a trusted partner for businesses seeking innovative software solutions. Based in Gurugram, Haryana, our team of over 50 skilled engineers combines deep industry expertise with a passion for technology to deliver exceptional results.
+            Founded in 2015, ARSTEG Solutions Pvt. Ltd. is a trusted technology partner for businesses seeking innovative software solutions. Our team of 50+ skilled engineers combines deep industry expertise with a passion for building robust, scalable applications.
           </p>
         </div>
 

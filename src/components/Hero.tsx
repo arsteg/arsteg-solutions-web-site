@@ -19,10 +19,10 @@ const Hero = () => {
  };
 
  const stats = [
- { icon: Briefcase, value: "200+", label: "Projects Delivered" },
- { icon: Users, value: "50+", label: "Expert Engineers" },
+ { icon: Briefcase, value: "150+", label: "Projects Delivered" },
+ { icon: Users, value: "20+", label: "Expert Engineers" },
  { icon: Award, value: "10+", label: "Years Experience" },
- { icon: Globe, value: "20+", label: "Countries Served" },
+ { icon: Globe, value: "10+", label: "Countries Served" },
  ];
 
  return (

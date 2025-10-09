@@ -52,7 +52,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: 'Address',
-      detail: 'Gurugram, Haryana, India',
+      detail: 'LG-048, Elan Miracle, Hayatpur, Sector 84, Near Sector 83, Gurgaon, Haryana 122004, India',
     },
     {
       icon: Mail,
@@ -62,7 +62,7 @@ const Contact = () => {
     {
       icon: Phone,
       title: 'Phone',
-      detail: '+91-XXX-XXX-XXXX',
+      detail: '+91-844-747-0101',
     },
   ];
 
