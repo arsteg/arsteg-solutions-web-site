@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { MapPin, Mail, Phone, Send } from 'lucide-react';
+import GoogleEmbedMap from './GoogleEmbedMap';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -66,6 +67,7 @@ const Contact = () => {
     },
   ];
 
+  
   return (
     <section id="contact" className="py-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -196,14 +198,10 @@ const Contact = () => {
 
             {/* Map Placeholder */}
             <div className="relative rounded-2xl overflow-hidden shadow-card animate-slide-up">
-              <div className="w-full h-64 bg-card rounded-2xl flex items-center justify-center border border-border">
-                <div className="text-center text-muted-foreground">
-                  <MapPin className="h-12 w-12 mx-auto mb-2 text-primary" />
-                  <p className="font-medium text-foreground">Gurugram, Haryana, India</p>
-                  <p className="text-sm">Interactive map integration</p>
-                </div>
-              </div>
-            </div>
+  <div className="w-full h-96 bg-card rounded-2xl flex items-center justify-center border border-border">
+    <GoogleEmbedMap />
+  </div>
+</div>
           </div>
         </div>
       </div>
