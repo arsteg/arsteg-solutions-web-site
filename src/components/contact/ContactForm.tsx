@@ -12,37 +12,61 @@ const Contact = () => {
     budget: '',
     description: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setError(null);
+    setSuccess(null);
 
-    // Basic validation
+    // Client-side validation
     if (!formData.name || !formData.email || !formData.description) {
-      alert("Please fill in all required fields.");
+      setError('Please fill in all required fields.');
+      setIsSubmitting(false);
       return;
     }
 
-    // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
-      alert("Please enter a valid email address.");
+      setError('Please enter a valid email address.');
+      setIsSubmitting(false);
       return;
     }
 
-    // Success message
-    alert("Thank you for your inquiry. We'll get back to you within 24 hours.");
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      company: '',
-      budget: '',
-      description: '',
-    });
+      const result = await response.json();
+
+      if (response.ok) {
+        setSuccess('Thank you for your inquiry. We’ll get back to you within 24 hours.');
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          budget: '',
+          description: '',
+        });
+      } else {
+        setError(result.error || 'Failed to send email.');
+      }
+    } catch (err) {
+      setError('An unexpected error occurred.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -67,7 +91,6 @@ const Contact = () => {
     },
   ];
 
-  
   return (
     <section id="contact" className="py-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -87,6 +110,8 @@ const Contact = () => {
             style={{ animationDelay: '0s' }}
           >
             <h3 className="text-xl font-bold mb-6 text-foreground">Send Us a Message</h3>
+            {error && <p className="text-red-500 mb-4">{error}</p>}
+            {success && <p className="text-green-500 mb-4">{success}</p>}
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2 text-foreground">
@@ -165,9 +190,12 @@ const Contact = () => {
 
               <button
                 type="submit"
-                className="w-full px-4 py-2 text-lg font-semibold text-white gradient-hero rounded-[var(--radius)] hover:opacity-90 transition-[var(--transition-smooth)] flex items-center justify-center"
+                disabled={isSubmitting}
+                className={`w-full px-4 py-2 text-lg font-semibold text-white gradient-hero rounded-[var(--radius)] hover:opacity-90 transition-[var(--transition-smooth)] flex items-center justify-center ${
+                  isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
               >
-                Submit Your Inquiry
+                {isSubmitting ? 'Sending...' : 'Submit Your Inquiry'}
                 <Send className="ml-2 h-5 w-5" />
               </button>
             </form>
@@ -175,7 +203,6 @@ const Contact = () => {
 
           {/* Contact Info & Map */}
           <div className="space-y-8">
-            {/* Contact Details */}
             <div className="space-y-6">
               {contactInfo.map((info, index) => (
                 <div
@@ -196,12 +223,11 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* Map Placeholder */}
             <div className="relative rounded-2xl overflow-hidden shadow-card animate-slide-up">
-  <div className="w-full h-96 bg-card rounded-2xl flex items-center justify-center border border-border">
-    <GoogleEmbedMap />
-  </div>
-</div>
+              <div className="w-full h-96 bg-card rounded-2xl flex items-center justify-center border border-border">
+                <GoogleEmbedMap />
+              </div>
+            </div>
           </div>
         </div>
       </div>
