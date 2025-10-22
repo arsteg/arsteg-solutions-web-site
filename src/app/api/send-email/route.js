@@ -1,44 +1,47 @@
-import { Resend } from 'resend';
+import sgMail from "@sendgrid/mail";
 
-const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_MAIL_API_KEY);
+sgMail.setApiKey(process.env.NEXT_PUBLIC_SENDGRID_API_KEY); // Add this in .env.local
 
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
-
-  const { name, email, company, budget, description } = req.body;
-
-  // Server-side validation
-  if (!name || !email || !description) {
-    return res.status(400).json({ error: 'Name, email, and description are required' });
-  }
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    return res.status(400).json({ error: 'Invalid email address' });
-  }
-
+export async function POST(req) {
   try {
-    const data = await resend.emails.send({
-      from: 'Contact Form <info@arsteg.com>', // Must be a verified sender in Resend
-      to: 'info@arsteg.com', // Recipient email (your business email)
-      subject: 'New Contact Form Submission',
-      html: `
-        <div style="font-family: Arial, sans-serif; padding: 20px;">
-          <h2>New Contact Form Submission</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Company:</strong> ${company || 'N/A'}</p>
-          <p><strong>Budget:</strong> ${budget || 'N/A'}</p>
-          <p><strong>Description:</strong> ${description}</p>
-        </div>
-      `,
-    });
+    const { name, email, company, budget, description } = await req.json();
 
-    return res.status(200).json({ message: 'Email sent successfully', data });
+    if (!name || !email || !description) {
+      return new Response(
+        JSON.stringify({ error: "Missing required fields." }),
+        { status: 400 }
+      );
+    }
+
+    // Construct the email content
+    const msg = {
+      to: "info@arsteg.com", // Your company email
+      from: "no-reply@arsteg.com", // Must be a verified sender in SendGrid
+      subject: `New Inquiry from ${name}`,
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Company:</strong> ${company || "N/A"}</p>
+        <p><strong>Budget:</strong> ${budget || "N/A"}</p>
+        <p><strong>Message:</strong></p>
+        <p>${description}</p>
+      `,
+    };
+
+    await sgMail.send(msg);
+
+    return new Response(
+      JSON.stringify({ message: "Email sent successfully" }),
+      { status: 200 }
+    );
   } catch (error) {
-    console.error('Error sending email:', error);
-    return res.status(500).json({ error: 'Failed to send email' });
+    console.error("SendGrid Error:", error);
+    return new Response(
+      JSON.stringify({
+        error: error.response?.body?.errors?.[0]?.message || "Failed to send email",
+      }),
+      { status: 500 }
+    );
   }
 }
