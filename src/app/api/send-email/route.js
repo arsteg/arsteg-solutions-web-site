@@ -6,15 +6,13 @@ export async function POST(req) {
   const { name, email, company, budget, description } = await req.json();
 
   if (!name || !email || !description) {
-    return new Response(JSON.stringify({ error: "Name, email, and message are required." }), {
-      status: 400,
-    });
+    return new Response(JSON.stringify({ error: "Name, email, and message are required." }), { status: 400 });
   }
 
   try {
     await client.sendEmail({
-      From: process.env.NEXT_PUBLIC_POSTMARK_SENDER_EMAIL,   // e.g., hr@arsteg.com
-      To: process.env.NEXT_PUBLIC_POSTMARK_RECEIVER_EMAIL,   // e.g., hr@arsteg.com
+      From: process.env.NEXT_PUBLIC_POSTMARK_SENDER_EMAIL,
+      To: process.env.NEXT_PUBLIC_POSTMARK_RECEIVER_EMAIL,
       Subject: `New Inquiry from ${name}`,
       HtmlBody: `
         <h2>New Contact Form Submission</h2>
