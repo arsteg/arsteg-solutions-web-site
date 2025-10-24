@@ -14,18 +14,20 @@ export async function POST(req) {
 
     // Create SMTP transporter
     const transporter = nodemailer.createTransport({
-      host: process.env.HOSTINGER_SMTP_HOST,
-      port: Number(process.env.HOSTINGER_SMTP_PORT),
+      host: process.env.NEXT_PUBLIC_HOSTINGER_SMTP_HOST,
+      port: Number(process.env.NEXT_PUBLIC_HOSTINGER_SMTP_PORT),
       secure: false, // true for port 465, false for 587
       auth: {
-        user: process.env.HOSTINGER_EMAIL,
-        pass: process.env.HOSTINGER_PASSWORD,
+        user: process.env.NEXT_PUBLIC_HOSTINGER_EMAIL,
+        pass: process.env.NEXT_PUBLIC_HOSTINGER_PASSWORD,
       },
     });
 
+
+    
     // Email options
     const mailOptions = {
-      from: `"${name}" <${process.env.HOSTINGER_EMAIL}>`, // sender address
+      from: `"${name}" <${process.env.NEXT_PUBLIC_HOSTINGER_EMAIL}>`, // sender address
       to: "info@arsteg.com", // recipient (can be yourself)
       subject: `New Inquiry from ${name}`,
       html: `
