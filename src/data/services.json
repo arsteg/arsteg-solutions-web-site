@@ -1,0 +1,120 @@
+[
+  {
+    "id": "custom-software",
+    "icon": "Code2",
+    "title": "Custom Software Development",
+    "description": "We build tailor-made applications that meet your business goals using the latest technologies across web, mobile, and cloud platforms.",
+    "approach": [
+      "Understand business goals and challenges",
+      "Design scalable architecture and choose the right tech stack",
+      "Agile development with continuous feedback",
+      "Testing, deployment, and post-launch support"
+    ],
+    "details": [
+      "Frontend: React.js, Angular, Vue.js, Svelte, Flutter Web, Blazor",
+      "Backend: .NET Core, ASP.NET MVC, Node.js, Express.js, Django, Spring Boot",
+      "Mobile: Flutter, React Native, MAUI, Swift, Kotlin",
+      "Databases: SQL Server, PostgreSQL, MySQL, MongoDB, Firebase, Redis",
+      "Cloud & DevOps: Azure, AWS, Google Cloud, Docker, Kubernetes, CI/CD pipelines",
+      "AI & Data: OpenAI, TensorFlow, PyTorch, Power BI, Apache Kafka, Elasticsearch",
+      "Emerging Tech: Blockchain, AR/VR, IoT, Chatbots, Voice Assistants"
+    ],
+    "benefits": [
+      "Accelerate time-to-market with modern frameworks",
+      "Scalable, high-performance applications",
+      "Smart integration with AI, IoT, and cloud services"
+    ]
+  },
+  {
+    "id": "software-maintenance",
+    "icon": "Wrench",
+    "title": "Software Maintenance",
+    "description": "Keep your systems running smoothly while upgrading legacy applications to modern, secure, and high-performance platforms.",
+    "approach": [
+      "Assess current application performance",
+      "Implement performance & security enhancements",
+      "Migrate legacy systems to modern tech stack",
+      "Continuous support and monitoring"
+    ],
+    "details": [
+      "Support for Classic ASP, VB6, WinForms, WPF",
+      "Migration to .NET Core, MAUI, Angular, React, Blazor",
+      "Application performance optimization and security enhancements",
+      "Cloud migration and multi-platform deployment"
+    ],
+    "benefits": [
+      "Reduced downtime and extended application lifespan",
+      "Enhanced performance and security"
+    ]
+  },
+  {
+    "id": "API-Integrations",
+    "icon": "PlugZap",
+    "title": "API Integrations",
+    "description": "Seamlessly connect your platform with third-party services and automate workflows across industries.",
+    "approach": [
+      "Assess current application performance",
+      "Implement performance & security enhancements",
+      "Migrate legacy systems to modern tech stack",
+      "Continuous support and monitoring"
+    ],
+    "details": [
+      "Health & Fitness: iHealth, Garmin, Fitbit, Google Fit, Withings, Dexcom, Biosense",
+      "Finance & Accounting: QuickBooks, Stripe, PayPal, Moneris",
+      "Messaging & Communication: Twilio, Firebase Cloud Messaging, SendGrid",
+      "AI & ML: OpenAI, Google AI",
+      "Custom Integrations: IoT devices, blockchain networks, AR/VR platforms"
+    ],
+    "benefits": [
+      "Unified platforms and real-time insights",
+      "Automated, efficient workflows"
+    ]
+  },
+  {
+    "id": "HireExpertDevelopers",
+    "icon": "UsersRound",
+    "title": "Hire Expert Developers",
+    "description": "Access our team of full-stack engineers, AI specialists, mobile developers, and DevOps professionals on an hourly or project basis.",
+    "approach": [
+      "Flexible engagement models",
+      "Deep expertise across 50+ technologies",
+      "Migrate legacy systems to modern tech stack",
+      "Continuous support and monitoring"
+    ],
+    "details": [
+      "Health & Fitness: iHealth, Garmin, Fitbit, Google Fit, Withings, Dexcom, Biosense",
+      "Finance & Accounting: QuickBooks, Stripe, PayPal, Moneris",
+      "Proven track record with 150+ projects in 10+ countries"
+    ],
+    "benefits": [
+      "Reliable and scalable engineering talent",
+      "Transparent communication and delivery"
+    ]
+  },
+  {
+    "id": "email-marketing",
+    "icon": "Send",
+    "title": "Email Marketing & Automation",
+    "description": "Turn emails into a revenue engine. We create data-backed, beautifully crafted email campaigns that build trust, drive engagement, and convert subscribers into loyal customers.",
+    "approach": [
+      "Research-driven audience segmentation and targeting",
+      "Create compelling copy, visuals, and A/B test variations",
+      "Automate lifecycle journeys: onboarding, retention, upsell & win-back",
+      "Monitor deliverability and inbox placement performance",
+      "Analyze behavior insights and continuously optimize for conversions"
+    ],
+    "details": [
+      "Platforms: Mailchimp, Klaviyo, HubSpot, ActiveCampaign, ConvertKit, Zoho Campaigns",
+      "Automation: Welcome series, cart recovery, lead nurturing, re-engagement flows",
+      "Audience: Smart segmentation using user behavior, demographics, and purchase triggers",
+      "Creatives: Persuasive subject lines, copywriting, graphics & CTA optimization",
+      "Tracking & Reporting: A/B testing, heatmaps, engagement scoring, ROI dashboards"
+    ],
+    "benefits": [
+      "Higher open rates, click-throughs, and conversions",
+      "Stronger brand trust and long-term customer relationships",
+      "Data-driven revenue growth using marketing automation",
+      "Better targeting with minimal cost vs other marketing channels"
+    ]
+  }
+]
