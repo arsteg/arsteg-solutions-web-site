@@ -1,11 +1,10 @@
-import sgMail from "@sendgrid/mail";
-
-sgMail.setApiKey(process.env.NEXT_PUBLIC_SENDGRID_API_KEY); // Add this in .env.local
+import nodemailer from "nodemailer";
 
 export async function POST(req) {
   try {
     const { name, email, company, budget, description } = await req.json();
 
+    // Validate required fields
     if (!name || !email || !description) {
       return new Response(
         JSON.stringify({ error: "Missing required fields." }),
@@ -13,10 +12,21 @@ export async function POST(req) {
       );
     }
 
-    // Construct the email content
-    const msg = {
-      to: "info@arsteg.com", // Your company email
-      from: "no-reply@arsteg.com", // Must be a verified sender in SendGrid
+    // Create SMTP transporter
+    const transporter = nodemailer.createTransport({
+      host: process.env.HOSTINGER_SMTP_HOST,
+      port: Number(process.env.HOSTINGER_SMTP_PORT),
+      secure: false, // true for port 465, false for 587
+      auth: {
+        user: process.env.HOSTINGER_EMAIL,
+        pass: process.env.HOSTINGER_PASSWORD,
+      },
+    });
+
+    // Email options
+    const mailOptions = {
+      from: `"${name}" <${process.env.HOSTINGER_EMAIL}>`, // sender address
+      to: "info@arsteg.com", // recipient (can be yourself)
       subject: `New Inquiry from ${name}`,
       html: `
         <h2>New Contact Form Submission</h2>
@@ -29,18 +39,16 @@ export async function POST(req) {
       `,
     };
 
-    await sgMail.send(msg);
+    // Send email
+    await transporter.sendMail(mailOptions);
 
-    return new Response(
-      JSON.stringify({ message: "Email sent successfully" }),
-      { status: 200 }
-    );
+    return new Response(JSON.stringify({ message: "Email sent successfully" }), {
+      status: 200,
+    });
   } catch (error) {
-    console.error("SendGrid Error:", error);
+    console.error("Nodemailer Error:", error);
     return new Response(
-      JSON.stringify({
-        error: error.response?.body?.errors?.[0]?.message || "Failed to send email",
-      }),
+      JSON.stringify({ error: error.message || "Failed to send email" }),
       { status: 500 }
     );
   }

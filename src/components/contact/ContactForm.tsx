@@ -56,6 +56,10 @@ const Contact = () => {
           budget: '',
           description: '',
         });
+         // Clear success message after 10 seconds
+        setTimeout(() => {
+          setSuccess(null);
+        }, 10000);
       } else {
         setError(result.error || 'Failed to send email.');
       }
