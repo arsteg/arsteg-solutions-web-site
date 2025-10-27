@@ -1,5 +1,6 @@
 import  Button  from "@/components/ui/Button";
 import { ArrowRight, Mail, Zap, TrendingUp } from "lucide-react";
+import Link from "next/link";
 
 export const EmailHero = () => {
   return (
@@ -30,13 +31,17 @@ export const EmailHero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-            <Button className="group shadow-lg hover:shadow-xl transition-all">
-              Get Started
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button className="border-2">
-              View Our Services
-            </Button>
+            <Link href="/contact">
+    <Button className="group shadow-lg hover:shadow-xl transition-all">
+      Get Started
+      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+    </Button>
+  </Link>
+              <Link href="/services">
+    <Button className="border-2">
+      View Our Services
+    </Button>
+  </Link>
           </div>
 
           {/* Stats */}

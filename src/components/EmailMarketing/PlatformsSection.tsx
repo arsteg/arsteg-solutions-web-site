@@ -1,23 +1,28 @@
 import  Card  from "@/components/ui/Card";
+import Image from "next/image";
 
 const platforms = [
   {
     name: "Mailchimp",
+    image: "/logos/mailchimp.png",
     description: "Perfect for small to medium businesses, offering intuitive automation and detailed analytics.",
     color: "from-yellow-500/20 to-yellow-600/20"
   },
   {
     name: "Klaviyo",
+    image: "/logos/klaviyo.png",
     description: "E-commerce powerhouse with advanced segmentation and personalization capabilities.",
     color: "from-purple-500/20 to-purple-600/20"
   },
   {
     name: "HubSpot",
+    image: "/logos/hubspot.png",
     description: "All-in-one CRM and email marketing solution for seamless customer relationship management.",
     color: "from-orange-500/20 to-orange-600/20"
   },
   {
     name: "ActiveCampaign",
+    image: "/logos/activecampaign.png",
     description: "Sophisticated automation platform ideal for complex customer journeys and workflows.",
     color: "from-blue-500/20 to-blue-600/20"
   }
@@ -45,12 +50,16 @@ export const PlatformsSection = () => {
               <div className={`absolute inset-0 bg-gradient-to-br ${platform.color} opacity-0 group-hover:opacity-100 transition-opacity`} />
               <div className="relative z-10">
                 <div className="text-center mb-4">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <span className="text-2xl font-bold text-primary">{platform.name[0]}</span>
-                  </div>
-                  <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
-                    {platform.name}
-                  </h3>
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+  <Image 
+    src={platform.image} 
+    alt={platform.name} 
+    width={150} 
+    height={150} 
+    className="object-contain"
+  />
+</div>
+                
                 </div>
                 <p className="text-muted-foreground text-sm text-center leading-relaxed">
                   {platform.description}
