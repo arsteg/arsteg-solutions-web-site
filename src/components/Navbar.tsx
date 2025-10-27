@@ -20,6 +20,7 @@ const Navbar = () => {
     { label: "Home", id: "home" },
     { label: "About", id: "about" },
     { label: "Services", id: "services" },
+    { label: "Email Marketing", id: "EmailMarketing" },
     { label: "Portfolio", id: "portfolio" },
     { label: "Blog", id: "blog" },
     { label: "Contact", id: "contact" },

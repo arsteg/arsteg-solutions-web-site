@@ -5,6 +5,7 @@ import ContactForm from '../components/contact/ContactForm';
 import Careers from '../components/Careers';
 import ServicesPage from './services/page';
 import BlogPage from './blog/page';
+import EmailMarketingPage from './EmailMarketing/page';
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Hero />
       <About />
       <ServicesPage />
+      <EmailMarketingPage />
       <PortfolioPage />  
       <BlogPage />
       <ContactForm />
