@@ -32,7 +32,7 @@ export const PlatformsSection = () => {
             Powered by Industry-Leading Platforms
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            We're certified experts in the most powerful email marketing tools, ensuring you get the best results
+            We are certified experts in the most powerful email marketing tools, ensuring you get the best results
           </p>
         </div>
 

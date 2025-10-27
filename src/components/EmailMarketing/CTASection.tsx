@@ -27,7 +27,7 @@ export const CTASection = () => {
 
           {/* Description */}
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Let's discuss how our email marketing services can help you achieve your business goals. Get a free consultation and strategy session today.
+            Let us discuss how our email marketing services can help you achieve your business goals. Get a free consultation and strategy session today.
           </p>
 
           {/* CTA Buttons */}
