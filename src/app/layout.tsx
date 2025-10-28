@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 // src/app/layout.tsx  (unchanged)
 import './globals.css';   // Tailwind + your original globals
-import './app.css';       // <-- add this line
+import './App.css';       // <-- add this line
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import TrackVisit from '@/components/TrackVisit';

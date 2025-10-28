@@ -31,7 +31,7 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
 
-          {/* Logo */}
+          {/* Logo – Vertically Centered */}
           <Link
             href="/#home"
             onClick={() => scrollTo("home")}
@@ -41,10 +41,10 @@ export default function Navbar() {
             <Image
               src="/images/logo.png"
               alt="Arsteg Logo"
-              width={130}
-              height={52}
-              className="h-10 w-auto"
+              width={120}
+              height={20}
               priority
+              className="h-full w-auto object-contain"
             />
           </Link>
 
