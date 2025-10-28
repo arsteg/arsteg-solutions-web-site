@@ -8,19 +8,16 @@ export default function TrackVisit() {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Send pathname to server action via FormData trick
-    const send = async () => {
-      const form = new FormData();
-      // Server actions can read form data; we just need to trigger
-      // We'll use a tiny trick: call via fetch + POST
-      await fetch('/__track', {
-        method: 'POST',
-        body: JSON.stringify({ pathname }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-    };
-    send();
+    console.log('[TrackVisit] useEffect fired for pathname:', pathname); // ← ADD THIS
+
+    logVisit(pathname).then(() => {
+      console.log('[TrackVisit] logVisit succeeded for:', pathname); // ← ADD THIS
+    }).catch((err) => {
+      console.error('[TrackVisit] logVisit failed:', err); // ← ADD THIS
+    });
   }, [pathname]);
+
+  console.log('[TrackVisit] Component rendered with pathname:', pathname); // ← ADD THIS (runs on render)
 
   return null;
 }
