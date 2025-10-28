@@ -148,3 +148,61 @@ html {
     transform: scale(1);
   }
 }
+
+/* ─────────────────────────────────────────────────────
+   1. Logo animation – keep the original behaviour
+   ───────────────────────────────────────────────────── */
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop‑shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop‑shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+/* ─────────────────────────────────────────────────────
+   2. Optional – smooth page scroll
+   ───────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ─────────────────────────────────────────────────────
+   3. Optional – dark‑mode tweaks (Tailwind handles most)
+   ───────────────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  .read-the-docs { color: #aaa; }
+}
+
+/* ─────────────────────────────────────────────────────
+   4. Utility classes you can use in components
+   ───────────────────────────────────────────────────── */
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+.card {
+  @apply p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md;
+}
+
+/* src/app/globals.css – add at bottom */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fadeUp 0.6s ease-out forwards; }
+

@@ -1,5 +1,8 @@
+// src/app/layout.tsx
 import type { Metadata } from 'next';
-import    './globals.css';
+// src/app/layout.tsx  (unchanged)
+import './globals.css';   // Tailwind + your original globals
+import './app.css';       // <-- add this line
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import TrackVisit from '@/components/TrackVisit';
@@ -17,9 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex flex-col min-h-screen">
-           <TrackVisit />
+        <TrackVisit />
         <Navbar />
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow container">{children}</main>
         <Footer />
       </body>
     </html>

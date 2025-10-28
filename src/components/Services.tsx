@@ -4,106 +4,201 @@ import { useState, useEffect } from "react";
 import * as Icons from "lucide-react";
 import { useRouter } from "next/navigation";
 
+interface Service {
+  id: string;
+  icon: string;
+  title: string;
+  description: string;
+  approach?: string[];
+  details?: string[];
+  benefits?: string[];
+}
+
 const Services = () => {
-  const [services, setServices] = useState([]);
+  const [services, setServices] = useState<Service[]>([]);
   const router = useRouter();
 
   useEffect(() => {
-    // Load services from JSON
     import("../data/services.json")
       .then((data) => setServices(data.default))
       .catch((err) => console.error("Failed to load services:", err));
   }, []);
 
   return (
-    <section id="services" className="py-20 bg-background">
+    <section
+      id="services"
+      className="relative overflow-hidden bg-gradient-to-b from-white via-blue-50/30 to-white py-20 lg:py-28"
+    >
+      {/* Background Blobs */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute left-1/4 top-32 h-80 w-80 rounded-full bg-blue-100/40 blur-3xl" />
+        <div className="absolute right-1/4 bottom-32 h-96 w-96 rounded-full bg-indigo-100/40 blur-3xl" />
+      </div>
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            End-to-End <span className="gradient-text">Technology Solutions</span>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+            End-to-End{" "}
+            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              Technology Solutions
+            </span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            At <strong>ARSTEG Solutions</strong>, we deliver enterprise-ready software,
-            AI-driven solutions, and cloud-powered applications that empower businesses
-            globally. Explore our services below.
+          <p className="mx-auto mt-6 max-w-3xl text-lg text-gray-600 lg:text-xl">
+            At <strong>ARSTEG Solutions</strong>, we deliver enterprise-ready
+            software, AI-driven solutions, and cloud-powered applications that
+            empower businesses globally. Explore our services below.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto mb-16">
           {services.map((service, index) => {
-            const IconComponent = Icons[service.icon] || Icons.Code;
+            const IconComponent = Icons[service.icon as keyof typeof Icons] || Icons.Code;
+
             return (
               <div
                 key={service.id}
-                className="bg-card rounded-xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 hover:scale-105 border border-border group"
+                className="group relative overflow-hidden rounded-3xl bg-white/70 p-8 shadow-lg backdrop-blur-sm ring-1 ring-gray-200/50 transition-all hover:scale-105 hover:shadow-2xl"
+                
               >
-                {/* Icon + Title */}
-                <div className="flex items-center gap-4 mb-4">
+                {/* Hover Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100 rounded-3xl" />
+
+                <div className="relative z-10">
+                  {/* Icon */}
+                  <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-100/70 to-indigo-100/70 text-blue-600 transition-all group-hover:scale-110 group-hover:from-blue-600 group-hover:to-indigo-600 group-hover:text-white">
+                    
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="mb-3 text-xl font-bold text-gray-900 transition-colors group-hover:text-blue-600">
+                    {service.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="mb-5 text-sm leading-relaxed text-gray-600 line-clamp-3">
+                    {service.description}
+                  </p>
+
+                  {/* Approach */}
+                  {service.approach && service.approach.length > 0 && (
+                    <div className="mb-4">
+                      <h4 className="text-sm font-semibold text-gray-800 mb-2">
+                        Our Approach
+                      </h4>
+                      <ul className="space-y-1 text-xs text-gray-600">
+                        {service.approach.map((step, i) => (
+                          <li key={i} className="flex items-start">
+                            <span className="mr-2">•</span>
+                            <span>{step}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Details */}
+                  {service.details && service.details.length > 0 && (
+                    <div className="mb-4">
+                      <h4 className="text-sm font-semibold text-gray-800 mb-2">
+                        Details
+                      </h4>
+                      <ul className="space-y-1 text-xs text-gray-600">
+                        {service.details.map((item, i) => (
+                          <li key={i} className="flex items-start">
+                            <span className="mr-2">•</span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Benefits */}
+                  {service.benefits && service.benefits.length > 0 && (
+                    <div>
+                      <h4 className="text-sm font-semibold text-gray-800 mb-2">
+                        Benefits
+                      </h4>
+                      <ul className="space-y-1 text-xs text-gray-600">
+                        {service.benefits.map((benefit, i) => (
+                          <li key={i} className="flex items-start">
+                            <span className="mr-2">•</span>
+                            <span>{benefit}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Contact Button */}
                   <button
                     onClick={() => router.push("/contact")}
-                    className="bg-primary/10 w-14 h-14 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300"
+                    className="mt-6 inline-flex items-center text-sm font-medium text-blue-600 hover:text-indigo-600 transition-colors"
                     aria-label={`Contact us about ${service.title}`}
                   >
-                    <IconComponent className="h-7 w-7 text-primary" />
+                    Learn More
+                    <svg
+                      className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
                   </button>
-                  <h3 className="text-xl font-bold text-foreground">{service.title}</h3>
                 </div>
-
-                {/* Description */}
-                <p className="text-muted-foreground mb-4 leading-relaxed">{service.description}</p>
-
-                {/* Approach */}
-                {service.approach?.length > 0 && (
-                  <div className="mb-3">
-                    <h4 className="font-semibold text-foreground mb-1">Our Approach:</h4>
-                    <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
-                      {service.approach.map((step, i) => (
-                        <li key={i}>{step}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {/* Details */}
-                {service.details?.length > 0 && (
-                  <div className="mb-3">
-                    <h4 className="font-semibold text-foreground mb-1">Details:</h4>
-                    <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
-                      {service.details.map((item, i) => (
-                        <li key={i}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {/* Benefits */}
-                {service.benefits?.length > 0 && (
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-1">Benefits:</h4>
-                    <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
-                      {service.benefits.map((benefit, i) => (
-                        <li key={i}>{benefit}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
               </div>
             );
           })}
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-12">
+        {/* CTA */}
+        <div className="text-center">
           <button
-            className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold text-white gradient-hero rounded-[var(--radius)] hover:opacity-90 transition-[var(--transition-smooth)]"
             onClick={() => router.push("/contact")}
+            className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:scale-105 hover:shadow-2xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/50"
           >
             Contact Us for Your Project
+            <svg
+              className="h-5 w-5 transition-transform group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
           </button>
         </div>
       </div>
+
+      {/* Fade-up Animation */}
+      <style jsx>{`
+        @keyframes fadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        [style] {
+          animation: fadeUp 0.6s ease-out forwards;
+        }
+      `}</style>
     </section>
   );
 };

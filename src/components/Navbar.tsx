@@ -3,108 +3,116 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import Image from 'next/image';
+import Image from "next/image";
 
-const Navbar = () => {
+const navLinks = [
+  { label: "Home", id: "home" },
+  { label: "About", id: "about" },
+  { label: "Services", id: "services" },
+  { label: "Email Marketing", id: "emailmarketing" },
+  { label: "Portfolio", id: "portfolio" },
+  { label: "Blog", id: "blog" },
+  { label: "Contact", id: "contact" },
+] as const;
+
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
       setIsOpen(false);
     }
   };
 
-  const navLinks = [
-    { label: "Home", id: "home" },
-    { label: "About", id: "about" },
-    { label: "Services", id: "services" },
-    { label: "Email Marketing", id: "EmailMarketing" },
-    { label: "Portfolio", id: "portfolio" },
-    { label: "Blog", id: "blog" },
-    { label: "Contact", id: "contact" },
-  ];
-
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg border-b border-border bg-gradient-to-r from-blue-400 via-white-400 to-white-100">
+    <nav className="fixed inset-x-0 top-0 z-50 border-b border-gray-200/70 bg-white/80 backdrop-blur-xl transition-all duration-200">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <Link
-              href="/#home"
-              onClick={() => scrollToSection("home")}
-              className="text-xl font-bold gradient-text"
-            >
-                <Image
-            src="/images/logo.png" // Ensure this path is correct
-            alt="Site Logo"
-            width={120}
-            height={50}
-            className="mr-3"
-          />
-            </Link>
-          </div>
+          {/* Logo */}
+          <Link
+            href="/#home"
+            onClick={() => scrollTo("home")}
+            className="flex items-center"
+            aria-label="Arsteg – Home"
+          >
+            <Image
+              src="/images/logo.png"
+              alt="Arsteg Logo"
+              width={130}
+              height={52}
+              className="h-10 w-auto"
+              priority
+            />
+          </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop Links */}
+          <div className="hidden md:flex md:items-center md:space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.id}
                 href={`/#${link.id}`}
-                onClick={() => scrollToSection(link.id)}
-                className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollTo(link.id);
+                }}
+                className="text-sm font-medium text-gray-700 hover:text-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded-md px-2 py-1 transition-colors"
               >
                 {link.label}
               </Link>
             ))}
+
             <button
-              className="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md text-sm"
-              onClick={() => scrollToSection("contact")}
+              onClick={() => scrollTo("contact")}
+              className="rounded-md bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 transition-colors"
             >
               Get Quote
             </button>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              className="p-2 text-foreground hover:bg-muted rounded-md"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
-            >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
+          {/* Mobile Toggle */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden rounded-lg p-2 text-gray-700 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+            aria-label="Toggle menu"
+            aria-expanded={isOpen}
+          >
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
-      {isOpen && (
-        <div className="md:hidden bg-background border-t border-border">
-          <div className="px-4 pt-2 pb-4 space-y-2">
-            {navLinks.map((link) => (
-              <Link
-                key={link.id}
-                href={`/#${link.id}`}
-                onClick={() => scrollToSection(link.id)}
-                className="block w-full text-left px-4 py-2 text-foreground hover:bg-muted rounded-md transition-colors duration-200"
-              >
-                {link.label}
-              </Link>
-            ))}
-            <button
-              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md mt-2"
-              onClick={() => scrollToSection("contact")}
+      {/* Mobile Menu */}
+      <div
+        className={`absolute inset-x-0 top-full overflow-hidden bg-white shadow-lg transition-all duration-300 ease-out md:hidden ${
+          isOpen ? "max-h-96 border-t border-gray-200" : "max-h-0"
+        }`}
+      >
+        <div className="space-y-1 px-4 pb-4 pt-2">
+          {navLinks.map((link) => (
+            <Link
+              key={link.id}
+              href={`/#${link.id}`}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo(link.id);
+              }}
+              className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors"
             >
-              Get Quote
-            </button>
-          </div>
+              {link.label}
+            </Link>
+          ))}
+
+          <button
+            onClick={() => scrollTo("contact")}
+            className="w-full rounded-md bg-blue-600 px-4 py-2 text-base font-medium text-white hover:bg-blue-700 transition-colors"
+          >
+            Get Quote
+          </button>
         </div>
-      )}
+      </div>
     </nav>
   );
-};
-
-export default Navbar;
+}

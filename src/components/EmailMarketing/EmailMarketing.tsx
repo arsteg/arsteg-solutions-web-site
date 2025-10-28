@@ -8,7 +8,7 @@ import { StatsSection } from "./StatsSection";
 
 const EmailMarketing = () => {
   return (
-    <div id="EmailMarketing" className="min-h-screen">
+    <div id="emailmarketing" className="min-h-screen">
       <EmailHero />
       <ServicesGrid />
       <PlatformsSection />

@@ -1,4 +1,6 @@
-import Card  from "@/components/ui/Card";
+"use client"; // Add only if imported in a Server Component
+
+import Card from "@/components/ui/Card";
 import { 
   Layout, 
   Target, 
@@ -51,40 +53,72 @@ const services = [
     title: "Campaign Scheduling",
     description: "Strategic timing and frequency optimization to maximize open rates and engagement."
   }
-];
+] as const;
 
 export const ServicesGrid = () => {
   return (
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-4">
+    <section className="relative overflow-hidden bg-gradient-to-b from-white via-blue-50/20 to-white py-20 lg:py-28">
+      {/* Subtle Background Blobs */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute left-1/4 top-32 h-80 w-80 rounded-full bg-blue-100/30 blur-3xl" />
+        <div className="absolute right-1/4 bottom-32 h-96 w-96 rounded-full bg-indigo-100/30 blur-3xl" />
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Heading */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Comprehensive Email Marketing Services
+          <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+            Comprehensive{" "}
+            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              Email Marketing Services
+            </span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            From strategy to execution, we handle every aspect of your email marketing campaigns
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-600 lg:text-xl">
+            From strategy to execution, we handle every aspect of your email marketing campaigns.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {services.map((service, index) => (
-            <Card 
-              key={index} 
-              className="p-6 hover:shadow-lg transition-all duration-300 border-2 hover:border-primary/50 group cursor-pointer"
+            <Card
+              key={index}
+              className="group relative overflow-hidden rounded-3xl bg-white/70 p-8 shadow-lg backdrop-blur-sm ring-1 ring-gray-200/50 transition-all hover:scale-105 hover:shadow-2xl"
+              
             >
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 mb-4 group-hover:scale-110 transition-transform">
-                <service.icon className="w-6 h-6 text-primary" />
+              {/* Gradient Overlay on Hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+              {/* Content */}
+              <div className="relative z-10">
+                {/* Icon */}
+                <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-100/70 to-indigo-100/70 text-blue-600 transition-all group-hover:scale-110 group-hover:from-blue-600 group-hover:to-indigo-600 group-hover:text-white">
+                  <service.icon className="h-8 w-8" />
+                </div>
+
+                {/* Title */}
+                <h3 className="mb-3 text-xl font-bold text-gray-900 transition-colors group-hover:text-blue-600">
+                  {service.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-sm leading-relaxed text-gray-600">
+                  {service.description}
+                </p>
               </div>
-              <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-                {service.title}
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                {service.description}
-              </p>
             </Card>
           ))}
         </div>
       </div>
+
+      {/* Optional: Staggered fade-up */}
+      <style jsx>{`
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        [style] { animation: fadeUp 0.6s ease-out forwards; }
+      `}</style>
     </section>
   );
 };

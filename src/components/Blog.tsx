@@ -35,83 +35,110 @@ const Blog = () => {
   ];
 
   return (
-    <section id="blog" className="py-20 bg-background">
+    <section id="blog" className="relative overflow-hidden bg-gradient-to-b from-white via-blue-50/30 to-white py-20 lg:py-28">
+      {/* Subtle Background Blobs */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute left-1/4 top-32 h-80 w-80 rounded-full bg-blue-100/40 blur-3xl" />
+        <div className="absolute right-1/4 bottom-32 h-96 w-96 rounded-full bg-indigo-100/40 blur-3xl" />
+      </div>
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Insights & <span className="gradient-text">Trends</span>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+            Insights &{" "}
+            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              Trends
+            </span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Stay updated with the latest in software development and health-tech
-            innovations. Our blog covers industry trends, case studies, and tips
-            to help your business thrive.
+          <p className="mx-auto mt-6 max-w-3xl text-lg text-gray-600 lg:text-xl">
+            Stay updated with the latest in software development and health-tech innovations. Our blog covers industry trends, case studies, and tips to help your business thrive.
           </p>
         </div>
 
         {/* Blog Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className="grid gap-8 md:grid-cols-3 max-w-7xl mx-auto mb-16">
           {posts.map((post, index) => (
             <article
               key={index}
-              className="bg-card rounded-xl shadow-card hover:shadow-card-hover transition-all duration-300 hover:scale-105 animate-scale-in border border-border group"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="group relative overflow-hidden rounded-3xl bg-white/70 shadow-lg backdrop-blur-sm ring-1 ring-gray-200/50 transition-all hover:scale-105 hover:shadow-2xl"
+              
             >
               {/* Image */}
-              <div className="relative h-48 overflow-hidden rounded-t-xl">
+              <div className="relative h-56 overflow-hidden">
                 <Image
                   src={post.image}
                   alt={post.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover group-hover:scale-110 transition-transform duration-300"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent" />
-                <div className="absolute top-4 left-4">
-                  <span className="px-2 py-1 bg-muted rounded-md text-xs font-medium text-muted-foreground">
-                    {post.category}
-                  </span>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                {/* Category Badge */}
+                <div className="absolute top-4 left-4 rounded-full bg-white/90 px-3 py-1.5 shadow-md ring-1 ring-gray-200/50 backdrop-blur-sm">
+                  <span className="text-xs font-semibold text-gray-800">{post.category}</span>
                 </div>
               </div>
 
               {/* Post Content */}
-              <div className="p-6">
-                <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
+              <div className="p-8">
+                {/* Meta */}
+                <div className="mb-4 flex items-center gap-4 text-sm text-gray-600">
                   <div className="flex items-center gap-1">
-                    <Calendar className="h-4 w-4" />
+                    <Calendar className="h-4 w-4 text-blue-600" />
                     <span>{post.date}</span>
                   </div>
                   <div className="flex items-center gap-1">
-                    <User className="h-4 w-4" />
+                    <User className="h-4 w-4 text-blue-600" />
                     <span>{post.author}</span>
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors duration-300">
+                {/* Title */}
+                <h3 className="mb-3 text-xl font-bold text-gray-900 transition-colors group-hover:text-blue-600">
                   {post.title}
                 </h3>
-                <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
+
+                {/* Excerpt */}
+                <p className="mb-5 text-sm leading-relaxed text-gray-600 line-clamp-3">
                   {post.excerpt}
                 </p>
 
-                <div className="text-primary font-semibold flex items-center gap-2 group-hover:gap-3 transition-all duration-300 cursor-pointer">
+                {/* Read More */}
+                <div className="flex items-center gap-2 text-blue-600 font-semibold text-sm transition-all group-hover:gap-3 cursor-pointer">
                   Read More
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </div>
               </div>
             </article>
           ))}
         </div>
 
-        {/* Button */}
+        {/* CTA Button */}
         <div className="text-center">
-          <button
-            className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold text-white gradient-hero rounded-[var(--radius)] hover:opacity-90 transition-[var(--transition-smooth)]"
-          >
+          <button className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:scale-105 hover:shadow-2xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/50">
             See More Posts
+            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
           </button>
         </div>
       </div>
+
+      {/* Staggered fade-up animation */}
+      <style jsx>{`
+        @keyframes fadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        [style] {
+          animation: fadeUp 0.6s ease-out forwards;
+        }
+      `}</style>
     </section>
   );
 };
