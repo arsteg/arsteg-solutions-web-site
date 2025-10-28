@@ -1,14 +1,11 @@
 import { logVisit } from '@/app/actions';
-import { NextRequest } from 'next/server';
-import { headers } from 'next/headers';
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
-  const { pathname } = await req.json();
+  // JSON body is guaranteed to be { pathname: string }
+  const body = (await req.json()) as { pathname: string };
 
-  // Inject pathname into headers so action can read it
-  const h = headers();
-  (h as any).set('x-nextjs-pathname', pathname);
+  await logVisit(body.pathname);
 
-  await logVisit();
-  return new Response(null, { status: 204 });
+  return new NextResponse(null, { status: 204 });
 }
