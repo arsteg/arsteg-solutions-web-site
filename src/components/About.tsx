@@ -121,20 +121,7 @@ export default function About() {
 
         {/* CTA */}
         <div className="mt-16 text-center">
-          <button
-            onClick={() => (window.location.href = "/team")}
-            className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:scale-105 hover:shadow-2xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/50"
-          >
-            Meet Our Team
-            <svg
-              className="h-5 w-5 transition-transform group-hover:translate-x-1"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
+         
         </div>
       </div>
 

@@ -1,7 +1,34 @@
+'use client';
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react";
+import { useState } from "react";
+import { supabase } from "@/lib/supabase";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+   const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    setMessage("");
+
+    if (!email.trim()) {
+      setMessage("Please enter a valid email.");
+      return;
+    }
+
+    const { error } = await supabase
+      .from("subscriptions")
+      .insert([{ email }]);
+
+    if (error) {
+      setMessage("Subscription failed. Maybe already subscribed?");
+    } else {
+      setMessage("✅ Subscription successful!");
+      setEmail(""); // Clear field
+    }
+  };
+
 
   return (
     <footer className="relative overflow-hidden bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-gray-100">
@@ -65,42 +92,50 @@ export default function Footer() {
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-blue-400" />
                 <a href="mailto:hello@arsteg.com" className="hover:text-blue-400 transition-colors">
-                  hello@arsteg.com
+                  info@arsteg.com
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-blue-400" />
                 <a href="tel:+911234567890" className="hover:text-blue-400 transition-colors">
-                  +91 123 456 7890
+                  +91-844-747-0101
                 </a>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 text-blue-400 mt-0.5" />
-                <span>Gurgaon, Haryana, India</span>
+                <span>LG-048, Elan Miracle, Hayatpur, Sector 84, Near Sector 83, Gurgaon, Haryana 122004, India</span>
               </li>
             </ul>
           </div>
 
           {/* Newsletter */}
-          <div>
-            <h4 className="text-lg font-semibold text-white mb-4">Stay Updated</h4>
-            <p className="text-sm text-gray-400 mb-4">
-              Subscribe to get the latest insights and updates.
-            </p>
-            <form className="flex flex-col sm:flex-row gap-2">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="flex-1 rounded-lg bg-gray-700/50 px-4 py-2.5 text-sm text-gray-100 placeholder-gray-500 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <button
-                type="submit"
-                className="rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2.5 text-sm font-medium text-white shadow-md transition-all hover:scale-105 hover:shadow-lg"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
+            <div>
+      <h4 className="text-lg font-semibold text-white mb-4">Stay Updated</h4>
+      <p className="text-sm text-gray-400 mb-4">
+        Subscribe to get the latest insights and updates.
+      </p>
+      <form className="flex flex-col sm:flex-row gap-2" onSubmit={handleSubscribe}>
+        <input
+          type="email"
+          placeholder="Your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="flex-1 rounded-lg bg-gray-700/50 px-4 py-2.5 text-sm text-gray-100 placeholder-gray-500 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <button
+          type="submit"
+          className="rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2.5 text-sm font-medium text-white shadow-md transition-all hover:scale-105 hover:shadow-lg"
+        >
+          Subscribe
+        </button>
+      </form>
+
+      {message && (
+        <p className="text-sm mt-2 text-green-400">
+          {message}
+        </p>
+      )}
+    </div>
         </div>
 
         {/* Divider */}
