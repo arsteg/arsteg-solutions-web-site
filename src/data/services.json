@@ -11,7 +11,7 @@
       "Testing, deployment, and post-launch support"
     ],
     "details": [
-      "Frontend: React.js, Angular, Vue.js, Svelte, Flutter Web, Blazor",
+      "Frontend: React.js, Next.js, Angular, Vue.js, Svelte, Flutter Web, Blazor",
       "Backend: .NET Core, ASP.NET MVC, Node.js, Express.js, Django, Spring Boot",
       "Mobile: Flutter, React Native, MAUI, Swift, Kotlin",
       "Databases: SQL Server, PostgreSQL, MySQL, MongoDB, Firebase, Redis",
