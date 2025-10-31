@@ -1,0 +1,91 @@
+# ARSTEG.COM Website Overhaul Plan (Full Lead-Gen Strategy)
+
+## Website Review Summary
+
+Your site is a solid start for a mid-sized IT services firm in Gurugram — professional, modern, and focused on credible niches like **health-tech integrations** (Fitbit, Dexcom APIs) and **email marketing automation** (Mailchimp, Klaviyo).
+
+**Key Strengths**:
+- Impressive stats: 150+ projects/clients, 50+ engineers, 10+ years, 20+ countries
+- Active blog (3 fresh Jan 2025 posts)
+- Portfolio with real demos (Vue.js dashboards, OpenAI planner)
+- Contact form + phone/email
+
+**Weaknesses**:
+- Overly niche; broader IT services buried
+- No client names/logos
+- Weak lead capture (no chat, popups, freebies)
+- No Clutch profile, video testimonials, careers page
+
+---
+
+## Competitor Benchmark (Simform, TatvaSoft, OpenXcell, Appinventiv)
+
+They generate **30-50% more leads** via:
+- Client logos + video testimonials
+- Detailed case studies with ROI
+- Free consults, ebooks, webinars
+- 4.8+ Clutch ratings
+- Dedicated team + fixed-price models
+
+---
+
+## 10 Prioritized Changes to 5x Business
+
+Implement in **1-3 months** (WordPress/Webflow). Cost: ₹50k-2L.
+
+### Quick Wins (1 Week, 50% Lead Boost)
+1. **Hero Overhaul**:
+   - "Scale Your Business with Gurugram's Top Dev Team: 50% Cost Savings, 150+ Global Wins"
+   - CTA: **[Book Free 30-min Audit]** + Calendly
+2. **Live Chat**: Tawk.to or Intercom (free)
+3. **Exit-Intent Popup**: "Get Free Quote in 24h"
+4. **Client Wall**: Logos + testimonials slider
+
+### Medium-Term (1 Month, SEO + Leads)
+5. **Case Studies Page**: 5 PDFs with ROI (e.g., "40% engagement boost") — gate behind email
+6. **Lead Magnets**:
+   | Freebie              | Tool  | Leads/Mo |
+   |----------------------|-------|----------|
+   | Health-Tech API Guide| PDF   | 50+      |
+   | Dev Cost Calculator  | Embed | 30+      |
+   | Webinar: "AI in 2026"| Zoom  | 100+     |
+7. **Services Hub**: Subpages (/mobile-dev) + **Pricing Tiers**:
+   | Tier       | Price (₹/Mo) | Features                  |
+   |------------|--------------|---------------------------|
+   | Starter    | 1L           | MVP Web App               |
+   | Pro        | 3L           | Full Stack + AI           |
+   | Enterprise | Custom       | Dedicated Team            |
+8. **Careers Page**: 10 openings — shows scale to clients
+
+### Long-Term (3 Months, Passive Revenue)
+9. **SEO + Directories**:
+   | Platform        | Action               | ROI             |
+   |-----------------|----------------------|-----------------|
+   | Clutch.co       | Claim + 5 Reviews    | 100+ Leads/Yr   |
+   | Google My Business | Optimize          | Local Searches  |
+   | Upwork          | Profile + Bids       | Quick Wins      |
+10. **Analytics + Ads**:
+    | Tool       | Setup                          |
+    |------------|--------------------------------|
+    | GA4/Hotjar | Track forms/heatmaps           |
+    | Google Ads | ₹10k/mo on "India dev"         |
+    | LinkedIn   | Target US/EU CTOs              |
+
+---
+
+## Projected ROI
+
+| Change           | Cost (₹) | Leads/Mo | Revenue (₹50L Proj/Mo) |
+|------------------|----------|----------|------------------------|
+| Chat + Popups    | 0        | +50      | +5L                    |
+| Clutch + Cases   | 20k      | +100     | +10L                   |
+| **Total 3 Mo**   | **50k**  | **+300** | **+25L**               |
+
+---
+
+## Next Steps (Start Today!)
+1. **Claim Clutch.co profile** (free) → Email 10 clients for reviews
+2. **Hero + Chat**: 2-day dev task
+3. **Install GA4** → Share traffic in 1 week for tweaks
+
+This turns your site from **brochure** to **lead machine**. Let’s iterate! 🚀

@@ -45,12 +45,7 @@ export const EmailHero = () => {
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
-
-            <Link href="/services">
-              <Button className="rounded-xl border-2 border-blue-600 bg-transparent px-8 py-4 text-lg font-semibold text-blue-600 transition-all hover:bg-blue-50 hover:shadow-md">
-                View Our Services
-              </Button>
-            </Link>
+          
           </div>
 
           {/* Stats Grid */}

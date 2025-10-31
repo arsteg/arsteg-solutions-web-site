@@ -1,34 +1,43 @@
 'use client';
+
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react";
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-   const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubscribe = async (e) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     setMessage("");
 
-    if (!email.trim()) {
+    const trimmedEmail = email.trim();
+    if (!trimmedEmail) {
       setMessage("Please enter a valid email.");
       return;
     }
 
     const { error } = await supabase
       .from("subscriptions")
-      .insert([{ email }]);
+      .insert([{ email: trimmedEmail }]);
 
     if (error) {
       setMessage("Subscription failed. Maybe already subscribed?");
     } else {
-      setMessage("✅ Subscription successful!");
-      setEmail(""); // Clear field
+      setMessage("Subscription successful!");
+      setEmail("");
     }
   };
 
+  // Replace these with your real company social links
+  const socialLinks = [
+    { Icon: Facebook,  href: "https://www.facebook.com/arsteg/",   label: "Facebook" },
+    { Icon: Twitter,   href: "https://x.com/ARSTEGSolutions",          label: "X (Twitter)" },
+    { Icon: Linkedin,  href: "https://in.linkedin.com/company/arsteg-solutions-pvt--ltd", label: "LinkedIn" },
+    { Icon: Instagram, href: "https://instagram.com/arsteg",  label: "Instagram" },
+  ];
 
   return (
     <footer className="relative overflow-hidden bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-gray-100">
@@ -50,14 +59,16 @@ export default function Footer() {
               Building innovative software solutions that empower businesses to thrive in the digital age.
             </p>
 
-            {/* Social Icons */}
+            {/* Social Icons – Open in New Tab */}
             <div className="flex gap-4">
-              {[Facebook, Twitter, Linkedin, Instagram].map((Icon, i) => (
+              {socialLinks.map(({ Icon, href, label }, i) => (
                 <a
                   key={i}
-                  href="#"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group flex h-10 w-10 items-center justify-center rounded-full bg-gray-700/50 backdrop-blur-sm transition-all hover:scale-110 hover:bg-blue-600 hover:shadow-lg"
-                  aria-label={`Follow us on ${Icon.name}`}
+                  aria-label={`Follow us on ${label}`}
                 >
                   <Icon className="h-5 w-5 text-gray-300 transition-colors group-hover:text-white" />
                 </a>
@@ -91,13 +102,13 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-gray-400">
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-blue-400" />
-                <a href="mailto:hello@arsteg.com" className="hover:text-blue-400 transition-colors">
+                <a href="mailto:info@arsteg.com" className="hover:text-blue-400 transition-colors">
                   info@arsteg.com
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-blue-400" />
-                <a href="tel:+911234567890" className="hover:text-blue-400 transition-colors">
+                <a href="tel:+918447470101" className="hover:text-blue-400 transition-colors">
                   +91-844-747-0101
                 </a>
               </li>
@@ -109,33 +120,34 @@ export default function Footer() {
           </div>
 
           {/* Newsletter */}
-            <div>
-      <h4 className="text-lg font-semibold text-white mb-4">Stay Updated</h4>
-      <p className="text-sm text-gray-400 mb-4">
-        Subscribe to get the latest insights and updates.
-      </p>
-      <form className="flex flex-col sm:flex-row gap-2" onSubmit={handleSubscribe}>
-        <input
-          type="email"
-          placeholder="Your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="flex-1 rounded-lg bg-gray-700/50 px-4 py-2.5 text-sm text-gray-100 placeholder-gray-500 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <button
-          type="submit"
-          className="rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2.5 text-sm font-medium text-white shadow-md transition-all hover:scale-105 hover:shadow-lg"
-        >
-          Subscribe
-        </button>
-      </form>
+          <div>
+            <h4 className="text-lg font-semibold text-white mb-4">Stay Updated</h4>
+            <p className="text-sm text-gray-400 mb-4">
+              Subscribe to get the latest insights and updates.
+            </p>
+            <form className="flex flex-col sm:flex-row gap-2" onSubmit={handleSubscribe}>
+              <input
+                type="email"
+                placeholder="Your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="flex-1 rounded-lg bg-gray-700/50 px-4 py-2.5 text-sm text-gray-100 placeholder-gray-500 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
+              <button
+                type="submit"
+                className="rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2.5 text-sm font-medium text-white shadow-md transition-all hover:scale-105 hover:shadow-lg"
+              >
+                Subscribe
+              </button>
+            </form>
 
-      {message && (
-        <p className="text-sm mt-2 text-green-400">
-          {message}
-        </p>
-      )}
-    </div>
+            {message && (
+              <p className={`text-sm mt-2 ${message.includes('successful') ? 'text-green-400' : 'text-red-400'}`}>
+                {message}
+              </p>
+            )}
+          </div>
         </div>
 
         {/* Divider */}
