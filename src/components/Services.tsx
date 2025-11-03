@@ -5,6 +5,7 @@ import * as Icons from "lucide-react";
 import Link from "next/link";
 import { CheckCircle, ArrowRight } from "lucide-react";
 
+// Define Service interface with required slug
 interface Service {
   id: string;
   icon: string;
@@ -22,52 +23,70 @@ const Services = () => {
 
   useEffect(() => {
     import("../data/services.json")
-      .then((data) => setServices(data.default))
-      .catch((err) => console.error("Failed to load services:", err));
+      .then((module) => {
+        const rawServices = module.default;
+
+        // Auto-generate slug if missing
+        const servicesWithSlug: Service[] = rawServices.map((s: any) => ({
+          ...s,
+          slug: s.slug || s.title
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/(^-|-$)/g, ""),
+        }));
+
+        setServices(servicesWithSlug);
+      })
+      .catch((err) => {
+        console.error("Failed to load services:", err);
+        setServices([]);
+      });
   }, []);
 
   return (
     <>
-      {/* Service ItemList + Organization Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            "name": "Custom Software Development Services – ARSTEG Gurugram",
-            "description": "Full-stack software development: .NET, React, Vue.js, Node.js, AWS, Azure, AI, mobile apps, email marketing. 50+ engineers. 150+ projects. Free audit.",
-            "itemListElement": services.map((s, i) => ({
-              "@type": "ListItem",
-              "position": i + 1,
-              "item": {
-                "@type": "Service",
-                "name": s.title,
-                "description": s.description,
-                "url": `https://arsteg.com/services/${s.slug}`,
-                "provider": {
-                  "@type": "Organization",
-                  "name": "ARSTEG Solutions Pvt. Ltd.",
-                  "address": {
-                    "@type": "PostalAddress",
-                    "streetAddress": "LG-048, Elan Miracle, Sector 84",
-                    "addressLocality": "Gurugram",
-                    "addressRegion": "Haryana",
-                    "postalCode": "122004",
-                    "addressCountry": "IN"
+      {/* JSON-LD Schema – Only render when services are loaded */}
+      {services.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ItemList",
+              "name": "Custom Software Development Services – ARSTEG Gurugram",
+              "description": "Full-stack software development: .NET, React, Vue.js, Node.js, AWS, Azure, AI, mobile apps, email marketing. 50+ engineers. 150+ projects. Free audit.",
+              "itemListElement": services.map((s, i) => ({
+                "@type": "ListItem",
+                "position": i + 1,
+                "item": {
+                  "@type": "Service",
+                  "name": s.title,
+                  "description": s.description,
+                  "url": `https://arsteg.com/services/${s.slug}`,
+                  "provider": {
+                    "@type": "Organization",
+                    "name": "ARSTEG Solutions Pvt. Ltd.",
+                    "address": {
+                      "@type": "PostalAddress",
+                      "streetAddress": "LG-048, Elan Miracle, Sector 84",
+                      "addressLocality": "Gurugram",
+                      "addressRegion": "Haryana",
+                      "postalCode": "122004",
+                      "addressCountry": "IN"
+                    },
+                    "telephone": "+91-844-747-0101"
                   },
-                  "telephone": "+91-844-747-0101"
-                },
-                "offers": {
-                  "@type": "Offer",
-                  "name": "Free Project Audit",
-                  "price": "0"
+                  "offers": {
+                    "@type": "Offer",
+                    "name": "Free Project Audit",
+                    "price": "0"
+                  }
                 }
-              }
-            }))
-          })
-        }}
-      />
+              }))
+            })
+          }}
+        />
+      )}
 
       <section
         id="services"
@@ -97,7 +116,7 @@ const Services = () => {
 
           {/* Services Grid */}
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto mb-16">
-            {services.map((service, index) => {
+            {services.map((service) => {
               const IconComponent = Icons[service.icon as keyof typeof Icons] || Icons.Code;
 
               return (

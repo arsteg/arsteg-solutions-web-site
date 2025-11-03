@@ -23,12 +23,14 @@
       "Accelerate time-to-market with modern frameworks",
       "Scalable, high-performance applications",
       "Smart integration with AI, IoT, and cloud services"
-    ]
+    ],
+    "result": "150+ enterprise projects delivered",
+    "slug": "custom-software-development"
   },
   {
     "id": "software-maintenance",
     "icon": "Wrench",
-    "title": "Software Maintenance",
+    "title": "Software Maintenance & Modernization",
     "description": "Keep your systems running smoothly while upgrading legacy applications to modern, secure, and high-performance platforms.",
     "approach": [
       "Assess current application performance",
@@ -37,65 +39,72 @@
       "Continuous support and monitoring"
     ],
     "details": [
-      "Support for Classic ASP, VB6, WinForms, WPF, React Native, AngularJS, Next.js,React.js",
+      "Support for Classic ASP, VB6, WinForms, WPF, React Native, AngularJS",
       "Migration to .NET Core, MAUI, Angular, React, Blazor",
-      "Application performance optimization and security enhancements",
+      "Application performance optimization and security hardening",
       "Cloud migration and multi-platform deployment"
     ],
     "benefits": [
       "Reduced downtime and extended application lifespan",
       "Enhanced performance and security"
-    ]
+    ],
+    "result": "80% faster load times post-migration",
+    "slug": "software-maintenance-modernization"
   },
   {
-    "id": "API-Integrations",
+    "id": "api-integrations",
     "icon": "PlugZap",
-    "title": "API Integrations",
+    "title": "API & Third-Party Integrations",
     "description": "Seamlessly connect your platform with third-party services and automate workflows across industries.",
     "approach": [
-      "Assess current application performance",
-      "Implement performance & security enhancements",
-      "Migrate legacy systems to modern tech stack",
-      "Continuous support and monitoring"
+      "Map integration requirements and data flows",
+      "Secure OAuth, API key, and webhook implementation",
+      "Build real-time sync and error handling",
+      "Test, monitor, and scale integrations"
     ],
     "details": [
       "Health & Fitness: iHealth, Garmin, Fitbit, Google Fit, Withings, Dexcom, Biosense",
-      "Finance & Accounting: QuickBooks, Stripe, PayPal, Moneris",
-      "Messaging & Communication: Twilio, Firebase Cloud Messaging, SendGrid",
-      "AI & ML: OpenAI, Google AI",
-      "Custom Integrations: IoT devices, blockchain networks, AR/VR platforms"
+      "Finance & Accounting: QuickBooks, Stripe, PayPal, Moneris, Xero",
+      "Messaging: Twilio, Firebase Cloud Messaging, SendGrid, Mailgun",
+      "AI & ML: OpenAI, Google AI, Hugging Face",
+      "Custom: IoT devices, blockchain, AR/VR platforms"
     ],
     "benefits": [
       "Unified platforms and real-time insights",
       "Automated, efficient workflows"
-    ]
+    ],
+    "result": "100% data sync accuracy",
+    "slug": "api-third-party-integrations"
   },
   {
-    "id": "HireExpertDevelopers",
+    "id": "hire-expert-developers",
     "icon": "UsersRound",
     "title": "Hire Expert Developers",
     "description": "Access our team of full-stack engineers, AI specialists, mobile developers, and DevOps professionals on an hourly or project basis.",
     "approach": [
-      "Flexible engagement models",
+      "Flexible engagement: hourly, part-time, or dedicated teams",
       "Deep expertise across 50+ technologies",
-      "Migrate legacy systems to modern tech stack",
-      "Continuous support and monitoring"
+      "Onboarding within 48 hours",
+      "Daily standups, weekly demos, monthly reports"
     ],
     "details": [
-      "Health & Fitness: iHealth, Garmin, Fitbit, Google Fit, Withings, Dexcom, Biosense",
-      "Finance & Accounting: QuickBooks, Stripe, PayPal, Moneris",
-      "Proven track record with 150+ projects in 10+ countries"
+      "50+ senior engineers (avg. 8+ years exp)",
+      "Tech stack: .NET, React, Vue.js, Node.js, AWS, Azure, Flutter",
+      "Proven track record: 150+ projects in 20+ countries",
+      "Transparent pricing, no hidden fees"
     ],
     "benefits": [
       "Reliable and scalable engineering talent",
       "Transparent communication and delivery"
-    ]
+    ],
+    "result": "90% client retention rate",
+    "slug": "hire-expert-developers"
   },
   {
     "id": "email-marketing",
     "icon": "Send",
     "title": "Email Marketing & Automation",
-    "description": "Turn emails into a revenue engine. We create data-backed, beautifully crafted email campaigns that build trust, drive engagement, and convert subscribers into loyal customers.",
+    "description": "Turn emails into a revenue engine. We create data-backed, beautifully crafted campaigns that build trust, drive engagement, and convert subscribers into loyal customers.",
     "approach": [
       "Research-driven audience segmentation and targeting",
       "Create compelling copy, visuals, and A/B test variations",
@@ -104,17 +113,18 @@
       "Analyze behavior insights and continuously optimize for conversions"
     ],
     "details": [
-      "Platforms: Mailchimp, Klaviyo, HubSpot, ActiveCampaign, ConvertKit, Zoho Campaigns",
+      "Platforms: Klaviyo, HubSpot, Mailchimp, ActiveCampaign, ConvertKit",
       "Automation: Welcome series, cart recovery, lead nurturing, re-engagement flows",
-      "Audience: Smart segmentation using user behavior, demographics, and purchase triggers",
+      "Audience: Smart segmentation using behavior, demographics, purchase triggers",
       "Creatives: Persuasive subject lines, copywriting, graphics & CTA optimization",
-      "Tracking & Reporting: A/B testing, heatmaps, engagement scoring, ROI dashboards"
+      "Tracking: A/B testing, heatmaps, engagement scoring, ROI dashboards"
     ],
     "benefits": [
       "Higher open rates, click-throughs, and conversions",
-      "Stronger brand trust and long-term customer relationships",
-      "Data-driven revenue growth using marketing automation",
-      "Better targeting with minimal cost vs other marketing channels"
-    ]
+      "Stronger brand trust and long-term relationships",
+      "Data-driven revenue growth using automation"
+    ],
+    "result": "42x average ROI in 6 months",
+    "slug": "email-marketing-automation"
   }
 ]
