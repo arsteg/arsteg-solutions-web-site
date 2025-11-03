@@ -70,12 +70,7 @@ export default function Navbar() {
               </Link>
             ))}
 
-            <button
-              onClick={() => scrollTo("contact")}
-              className="rounded-md bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 transition-colors"
-            >
-              Get Quote
-            </button>
+         
           </div>
 
           {/* Mobile Toggle */}

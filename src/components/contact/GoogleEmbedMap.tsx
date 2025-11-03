@@ -14,13 +14,15 @@ export default function GoogleEmbedMap({
   className = "",
 }: GoogleEmbedMapProps) {
   const [isLoading, setIsLoading] = useState(true);
-
-  const src = `https://www.google.com/maps?q=${lat},${lng}&z=${zoom}&output=embed`;
-
+  const placeName = encodeURIComponent("ARSTEG Solutions Pvt. Ltd., LG-048, Elan Miracle, Sector 84, Gurugram, Haryana 122004");
+  
+  // Fixed embed URL using place name + coordinates (no API key)
+  //const src = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d${3510.5 / Math.pow(2, zoom)}!2d${lng}!3d${lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s${placeName}!5e0!3m2!1sen!2sin!4v${Date.now()}!5m2!1sen!2sin`;
+ const src = `https://www.google.com/maps?q=${lat},${lng}&z=${zoom}&output=embed`;
   return (
     <div
-      className={`relative overflow-hidden rounded-3xl bg-white/70 shadow-xl backdrop-blur-sm ring-1 ring-gray-200/50 transition-all hover:scale-[1.01] hover:shadow-2xl ${className}`}
-      style={{ aspectRatio: "16 / 9" }}
+      className={`relative w-full overflow-hidden rounded-3xl bg-white/70 shadow-xl backdrop-blur-sm ring-1 ring-gray-200/50 transition-all hover:scale-[1.01] hover:shadow-2xl ${className}`}
+      style={{ height: "100%", minHeight: "400px" }} // Ensures full height usage
     >
       {/* Loading Skeleton */}
       {isLoading && (
@@ -29,24 +31,24 @@ export default function GoogleEmbedMap({
         </div>
       )}
 
-      {/* Google Map iframe */}
+      {/* Google Map iframe - Full Space */}
       <iframe
         src={src}
         width="100%"
         height="100%"
-        style={{ border: 0 }}
+        style={{ border: 0, display: "block" }}
         allowFullScreen
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
-        title="ARSTEG Solutions – Office Location"
-        className="h-full w-full"
+        title="ARSTEG Solutions – Office Location in Gurugram"
+        className="absolute inset-0 h-full w-full"
         onLoad={() => setIsLoading(false)}
-        aria-label="Interactive map showing ARSTEG Solutions office in Gurgaon, Haryana"
+        aria-label="Interactive map showing ARSTEG Solutions office at LG-048, Elan Miracle, Sector 84, Gurugram, Haryana 122004"
       />
 
-      {/* Optional: Floating pin badge */}
+      {/* Floating Pin Badge */}
       <div className="pointer-events-none absolute bottom-4 left-4 rounded-full bg-white px-3 py-1.5 shadow-lg ring-1 ring-gray-200">
-        <span className="text-xs font-semibold text-gray-800">Gurgaon, Haryana</span>
+        <span className="text-xs font-semibold text-gray-800">Gurugram, Haryana</span>
       </div>
     </div>
   );
