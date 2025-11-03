@@ -5,7 +5,7 @@ import * as Icons from "lucide-react";
 import Link from "next/link";
 import { CheckCircle, ArrowRight } from "lucide-react";
 
-// Define Service interface with required slug
+// Full Service with required slug
 interface Service {
   id: string;
   icon: string;
@@ -18,16 +18,21 @@ interface Service {
   slug: string;
 }
 
+// Partial version (what comes from JSON)
+interface PartialService
+  extends Omit<Service, "slug"> {
+  slug?: string;
+}
+
 const Services = () => {
   const [services, setServices] = useState<Service[]>([]);
 
   useEffect(() => {
     import("../data/services.json")
       .then((module) => {
-        const rawServices = module.default;
+        const rawServices: PartialService[] = module.default;
 
-        // Auto-generate slug if missing
-        const servicesWithSlug: Service[] = rawServices.map((s: any) => ({
+        const servicesWithSlug: Service[] = rawServices.map((s) => ({
           ...s,
           slug: s.slug || s.title
             .toLowerCase()
@@ -45,7 +50,7 @@ const Services = () => {
 
   return (
     <>
-      {/* JSON-LD Schema – Only render when services are loaded */}
+      {/* JSON-LD Schema – Only when loaded */}
       {services.length > 0 && (
         <script
           type="application/ld+json"
@@ -99,7 +104,7 @@ const Services = () => {
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          {/* SEO-Optimized Header */}
+          {/* SEO Header */}
           <div className="text-center mb-16">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
               Custom{" "}
@@ -126,26 +131,21 @@ const Services = () => {
                   className="group block"
                 >
                   <div className="group relative overflow-hidden rounded-3xl bg-white/70 p-8 shadow-lg backdrop-blur-sm ring-1 ring-gray-200/50 transition-all hover:scale-105 hover:shadow-2xl hover:ring-blue-300">
-                    {/* Hover Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100 rounded-3xl" />
 
                     <div className="relative z-10">
-                      {/* Icon */}
                       <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-100/70 to-indigo-100/70 text-blue-600 transition-all group-hover:scale-110 group-hover:from-blue-600 group-hover:to-indigo-600 group-hover:text-white">
                         <IconComponent className="h-8 w-8" />
                       </div>
 
-                      {/* Title */}
                       <h3 className="mb-3 text-xl font-bold text-gray-900 transition-colors group-hover:text-blue-600">
                         {service.title}
                       </h3>
 
-                      {/* Description */}
                       <p className="mb-5 text-sm leading-relaxed text-gray-600 line-clamp-3">
                         {service.description}
                       </p>
 
-                      {/* Result Badge */}
                       {service.result && (
                         <div className="mb-4 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-emerald-100 to-teal-100 px-3 py-1.5 text-xs font-bold text-emerald-800 shadow-sm">
                           <CheckCircle className="h-3.5 w-3.5" />
@@ -153,7 +153,6 @@ const Services = () => {
                         </div>
                       )}
 
-                      {/* Approach (Limited) */}
                       {service.approach && service.approach.length > 0 && (
                         <div className="mb-4">
                           <h4 className="text-sm font-semibold text-gray-800 mb-2">
@@ -175,7 +174,6 @@ const Services = () => {
                         </div>
                       )}
 
-                      {/* Micro CTA */}
                       <div className="mt-4 flex items-center text-blue-600 opacity-0 transition-all group-hover:opacity-100">
                         <span className="text-sm font-semibold">Explore Service</span>
                         <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -187,7 +185,7 @@ const Services = () => {
             })}
           </div>
 
-          {/* Final CTA */}
+          {/* CTA */}
           <div className="text-center">
             <div className="mb-6 inline-flex items-center gap-3 rounded-full bg-emerald-50 px-6 py-3 text-sm font-bold text-emerald-800 ring-2 ring-emerald-200">
               <CheckCircle className="h-5 w-5" />
@@ -205,7 +203,7 @@ const Services = () => {
             </Link>
           </div>
 
-          {/* Hidden SEO Content */}
+          {/* Hidden SEO */}
           <div className="sr-only">
             <h2>Custom Software Development Services in Gurugram – ARSTEG Solutions</h2>
             <p>
@@ -217,21 +215,13 @@ const Services = () => {
           </div>
         </div>
 
-        {/* Fade-up Animation */}
+        {/* Animation */}
         <style jsx>{`
           @keyframes fadeUp {
-            from {
-              opacity: 0;
-              transform: translateY(30px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
           }
-          [style] {
-            animation: fadeUp 0.6s ease-out forwards;
-          }
+          [style] { animation: fadeUp 0.6s ease-out forwards; }
         `}</style>
       </section>
     </>
