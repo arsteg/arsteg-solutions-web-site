@@ -1,4 +1,5 @@
 import { BenefitsSection } from "./BenefitsSection";
+import { CaseStudiesSection } from "./CaseStudiesSection";
 import { CTASection } from "./CTASection";
 import { EmailHero } from "./EmailHero";
 import { PlatformsSection } from "./PlatformsSection";
@@ -15,6 +16,7 @@ const EmailMarketing = () => {
       <BenefitsSection />
       <ProcessSection />
       <StatsSection />
+      <CaseStudiesSection/>
       <CTASection />
     </div>
   );
