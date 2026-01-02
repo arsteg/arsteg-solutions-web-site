@@ -2,10 +2,9 @@ import Hero from '../components/Hero';
 import About from '../components/About';
 import PortfolioPage from './portfolio/page';
 import ContactForm from '../components/contact/ContactForm';
-import Careers from '../components/Careers';
 import ServicesPage from './services/page';
 import BlogPage from './blog/page';
-import EmailMarketingPage from './EmailMarketing/page';
+import DigitalMarketingPage from './DigitalMarketing/page';
 
 export default function Home() {
   return (
@@ -13,11 +12,11 @@ export default function Home() {
       <Hero />
       <About />
       <ServicesPage />
-      <EmailMarketingPage />
-      <PortfolioPage />  
+      <DigitalMarketingPage />
+      <PortfolioPage />
       <BlogPage />
       <ContactForm />
-     
+
     </div>
   );
 }

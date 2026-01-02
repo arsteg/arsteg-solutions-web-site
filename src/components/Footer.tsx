@@ -33,10 +33,10 @@ export default function Footer() {
 
   // Replace these with your real company social links
   const socialLinks = [
-    { Icon: Facebook,  href: "https://www.facebook.com/arsteg/",   label: "Facebook" },
-    { Icon: Twitter,   href: "https://x.com/ARSTEGSolutions",          label: "X (Twitter)" },
-    { Icon: Linkedin,  href: "https://in.linkedin.com/company/arsteg-solutions-pvt--ltd", label: "LinkedIn" },
-    { Icon: Instagram, href: "https://instagram.com/arsteg",  label: "Instagram" },
+    { Icon: Facebook, href: "https://www.facebook.com/arsteg/", label: "Facebook" },
+    { Icon: Twitter, href: "https://x.com/ARSTEGSolutions", label: "X (Twitter)" },
+    { Icon: Linkedin, href: "https://in.linkedin.com/company/arsteg-solutions-pvt--ltd", label: "LinkedIn" },
+    { Icon: Instagram, href: "https://instagram.com/arsteg", label: "Instagram" },
   ];
 
   return (
@@ -113,7 +113,7 @@ export default function Footer() {
             <div>
               <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
               <ul className="space-y-2 text-sm text-gray-400">
-                {["Home", "About", "Services", "Portfolio", "Blog", "Contact"].map((link) => (
+                {["Home", "About", "Services", "Digital Marketing", "Portfolio", "Blog", "Contact"].map((link) => (
                   <li key={link}>
                     <a
                       href={`/#${link.toLowerCase()}`}
@@ -208,8 +208,8 @@ export default function Footer() {
         <div className="sr-only">
           <h2>Software Development Company in Gurugram – ARSTEG Solutions</h2>
           <p>
-            ARSTEG is a leading software development company in Gurugram, India. 
-            Services: custom web apps, mobile development, AI solutions, cloud migration, email marketing. 
+            ARSTEG is a leading software development company in Gurugram, India.
+            Services: custom web apps, mobile development, AI solutions, cloud migration, email marketing.
             Contact: +91-844-747-0101 | info@arsteg.com | LG-048, Elan Miracle, Sector 84, Gurugram 122004.
           </p>
         </div>

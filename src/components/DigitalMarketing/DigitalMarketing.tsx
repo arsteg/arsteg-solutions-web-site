@@ -1,25 +1,25 @@
 import { BenefitsSection } from "./BenefitsSection";
 import { CaseStudiesSection } from "./CaseStudiesSection";
 import { CTASection } from "./CTASection";
-import { EmailHero } from "./EmailHero";
+import { DigitalMarketingHero } from "./DigitalMarketingHero";
 import { PlatformsSection } from "./PlatformsSection";
 import { ProcessSection } from "./ProcessSection";
 import { ServicesGrid } from "./ServicesGrid";
 import { StatsSection } from "./StatsSection";
 
-const EmailMarketing = () => {
+const DigitalMarketing = () => {
   return (
-    <div id="emailmarketing" className="min-h-screen">
-      <EmailHero />
+    <div id="digitalmarketing" className="min-h-screen">
+      <DigitalMarketingHero />
       <ServicesGrid />
       <PlatformsSection />
       <BenefitsSection />
       <ProcessSection />
       <StatsSection />
-      <CaseStudiesSection/>
+      <CaseStudiesSection />
       <CTASection />
     </div>
   );
 };
 
-export default EmailMarketing;
+export default DigitalMarketing;

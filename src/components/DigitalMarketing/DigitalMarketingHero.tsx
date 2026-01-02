@@ -1,23 +1,23 @@
 "use client";
 
 import Button from "@/components/ui/Button";
-import { ArrowRight, Mail, Zap, TrendingUp, CheckCircle } from "lucide-react";
+import { ArrowRight, Globe, Zap, TrendingUp, CheckCircle, BarChart, Smartphone } from "lucide-react";
 import Link from "next/link";
 
-export const EmailHero = () => {
+export const DigitalMarketingHero = () => {
   return (
     <>
-      {/* Email Marketing Service Schema */}
+      {/* Digital Marketing Service Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            "serviceType": "Email Marketing Services",
-            "name": "Expert Email Marketing Services – ARSTEG Solutions",
-            "description": "Professional email marketing with Klaviyo, Mailchimp, HubSpot, ActiveCampaign. 95% delivery, 42x ROI, 24/7 support. Free strategy session.",
-            "url": "https://arsteg.com/email-marketing",
+            "serviceType": "Digital Marketing Services",
+            "name": "Expert Digital Marketing Services – ARSTEG Solutions",
+            "description": "Comprehensive digital marketing solutions including SEO, PPC, Social Media, Content Marketing, and Email Marketing. Drive growth and ROI.",
+            "url": "https://arsteg.com/digital-marketing",
             "provider": {
               "@type": "Organization",
               "name": "ARSTEG Solutions Pvt. Ltd.",
@@ -36,7 +36,7 @@ export const EmailHero = () => {
             "areaServed": "Worldwide",
             "offers": {
               "@type": "Offer",
-              "name": "Free Email Marketing Strategy Session",
+              "name": "Free Digital Marketing Strategy Session",
               "url": "https://arsteg.com/contact",
               "price": "0",
               "priceCurrency": "USD"
@@ -44,7 +44,7 @@ export const EmailHero = () => {
             "aggregateRating": {
               "@type": "AggregateRating",
               "ratingValue": "4.9",
-              "reviewCount": "127"
+              "reviewCount": "150"
             }
           })
         }}
@@ -63,22 +63,22 @@ export const EmailHero = () => {
             {/* SEO Badge */}
             <div className="mx-auto mb-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-100/70 to-indigo-100/70 px-5 py-2.5 text-sm font-semibold text-blue-700 shadow-md ring-1 ring-blue-200/50 backdrop-blur-sm">
               <Zap className="h-4 w-4" />
-              42x ROI Email Marketing Agency in Gurugram
+              Full-Service Digital Marketing Agency
             </div>
 
             {/* H1 with High-Intent Keywords */}
             <h1 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-7xl">
               <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">
-                42x ROI Email Marketing
+                Drive Growth with
               </span>{" "}
-              That Converts
+              Data-Driven Marketing
             </h1>
 
             {/* SEO-Rich Subheading */}
             <p className="mx-auto mb-10 max-w-3xl text-lg text-gray-600 md:text-xl lg:text-2xl">
-              We build high-converting email campaigns using <strong>Klaviyo, Mailchimp, HubSpot, ActiveCampaign</strong>. 
-              <strong>95% delivery</strong>, <strong>42x average ROI</strong>, <strong>24/7 support</strong> — 
-              from welcome flows to cart abandonment to VIP retention.
+              From <strong>SEO & PPC</strong> to <strong>Social Media</strong> and <strong>Email Marketing</strong>,
+              we build integrated strategies that deliver measurable results.
+              <strong>Maximize ROI</strong>, increase visibility, and convert more customers.
             </p>
 
             {/* Primary CTA */}
@@ -96,9 +96,9 @@ export const EmailHero = () => {
             {/* Trust & Results Stats */}
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3 max-w-4xl mx-auto">
               {[
-                { Icon: Mail, value: "95%", label: "Delivery Rate", color: "blue" },
-                { Icon: TrendingUp, value: "42x", label: "Average ROI", color: "emerald" },
-                { Icon: Zap, value: "24/7", label: "Expert Support", color: "purple" },
+                { Icon: Globe, value: "300%", label: "Traffic Growth", color: "blue" },
+                { Icon: TrendingUp, value: "10x", label: "ROI Improvement", color: "emerald" },
+                { Icon: BarChart, value: "24/7", label: "Analytics & Support", color: "purple" },
               ].map(({ Icon, value, label, color }, i) => (
                 <div
                   key={i}
@@ -118,12 +118,12 @@ export const EmailHero = () => {
 
             {/* Hidden SEO Content */}
             <div className="sr-only">
-              <h2>Email Marketing Services in Gurugram – 42x ROI with Klaviyo, Mailchimp, HubSpot</h2>
+              <h2>Digital Marketing Services in Gurugram – SEO, PPC, Social Media</h2>
               <p>
-                ARSTEG is a full-service email marketing agency in Gurugram. 
-                We help e-commerce, SaaS, and B2B brands scale with Klaviyo flows, 
-                Mailchimp automation, HubSpot CRM integration, and ActiveCampaign sequences. 
-                95% deliverability. 42x ROI. Free audit + strategy session.
+                ARSTEG is a leading digital marketing agency offering comprehensive solutions including
+                Search Engine Optimization (SEO), Pay-Per-Click (PPC) advertising, Social Media Marketing,
+                Content Marketing, and Web Design. We help businesses grow online with data-driven strategies
+                and expert execution.
               </p>
             </div>
           </div>

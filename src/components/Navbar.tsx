@@ -9,7 +9,7 @@ const navLinks = [
   { label: "Home", id: "home" },
   { label: "About", id: "about" },
   { label: "Services", id: "services" },
-  { label: "Email Marketing", id: "emailmarketing" },
+  { label: "Digital Marketing", id: "digitalmarketing" },
   { label: "Portfolio", id: "portfolio" },
   { label: "Blog", id: "blog" },
   { label: "Contact", id: "contact" },
@@ -31,8 +31,8 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
 
-        
-        {/* ==== LOGO – UPDATED ==== */}
+
+          {/* ==== LOGO – UPDATED ==== */}
           <Link
             href="/#home"
             onClick={() => scrollTo("home")}
@@ -70,7 +70,7 @@ export default function Navbar() {
               </Link>
             ))}
 
-         
+
           </div>
 
           {/* Mobile Toggle */}
@@ -87,9 +87,8 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`absolute inset-x-0 top-full overflow-hidden bg-white shadow-lg transition-all duration-300 ease-out md:hidden ${
-          isOpen ? "max-h-96 border-t border-gray-200" : "max-h-0"
-        }`}
+        className={`absolute inset-x-0 top-full overflow-hidden bg-white shadow-lg transition-all duration-300 ease-out md:hidden ${isOpen ? "max-h-96 border-t border-gray-200" : "max-h-0"
+          }`}
       >
         <div className="space-y-1 px-4 pb-4 pt-2">
           {navLinks.map((link) => (

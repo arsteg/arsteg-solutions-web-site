@@ -191,7 +191,7 @@ export const CaseStudiesSection = () => {
                     </div>
 
                     {/* Company Logo */}
-                   
+
 
                     {/* Summary Text */}
                     <div className="absolute bottom-6 left-6 right-6 text-white">
@@ -292,7 +292,7 @@ export const CaseStudiesSection = () => {
                         <Quote className="absolute -top-4 left-6 h-10 w-10 text-blue-200" />
                         <blockquote className="relative z-10">
                           <p className="text-lg italic text-gray-800 lg:text-xl">
-                            "{study.quote.text}"
+                            &quot;{study.quote.text}&quot;
                           </p>
                           <footer className="mt-4 flex items-center gap-3">
                             <div className="h-12 w-12 rounded-full bg-gradient-to-br from-blue-600 to-indigo-600 p-0.5">
