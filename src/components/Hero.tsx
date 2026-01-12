@@ -28,7 +28,7 @@ export default function Hero() {
             "name": "ARSTEG Solutions Pvt. Ltd.",
             "url": "https://arsteg.com",
             "logo": "https://arsteg.com/logo.png",
-            "description": "Top software development company in Gurugram. 50+ engineers. Custom web, mobile, AI, cloud, email marketing. 150+ projects. 4.9/5 rating.",
+            "description": "Your Trusted Software Development Partner in Gurugram. 50+ engineers. Custom web, mobile, AI, cloud, email marketing. 150+ projects. 4.9/5 rating.",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "LG-048, Elan Miracle, Sector 84",
@@ -77,7 +77,7 @@ export default function Hero() {
               <div className="space-y-4">
                 {/* SEO-Optimized H1 */}
                 <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-7xl">
-                  Top Software Company in{" "}
+                  Your Trusted Software Development Partner in{" "}
                   <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent animate-shine">
                     Gurugram
                   </span>

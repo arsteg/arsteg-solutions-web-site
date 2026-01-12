@@ -41,7 +41,7 @@ export default function About() {
             "name": "ARSTEG Solutions Pvt. Ltd.",
             "url": "https://arsteg.com",
             "logo": "https://arsteg.com/logo.png",
-            "description": "Top software development company in Gurugram. 50+ engineers. 150+ projects. .NET, Java, React, Angular, AWS, Azure. Healthcare, FinTech, E-commerce.",
+            "description": "Your Trusted Software Development Partner in Gurugram. 50+ engineers. 150+ projects. .NET, Java, React, Angular, AWS, Azure. Healthcare, FinTech, E-commerce.",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "LG-048, Elan Miracle, Sector 84",
@@ -82,7 +82,7 @@ export default function About() {
           {/* SEO-Optimized Heading */}
           <div className="text-center mb-16">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-              Top Software Company in{" "}
+              Your Trusted Software Development Partner in{" "}
               <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                 Gurugram
               </span>

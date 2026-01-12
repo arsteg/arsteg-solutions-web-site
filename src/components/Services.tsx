@@ -187,7 +187,7 @@ const Services = () => {
           <div className="sr-only">
             <h2>Custom Software Development Services in Gurugram – ARSTEG Solutions</h2>
             <p>
-              ARSTEG is a top software development company in Gurugram offering custom web & mobile apps, 
+              ARSTEG is a trsted software development company in Gurugram offering custom web & mobile apps, 
               AI solutions, cloud migration, and email marketing. 
               Expertise in .NET, React, Vue.js, Node.js, AWS, Azure. 
               50+ engineers. 150+ global projects. Free consultation.
