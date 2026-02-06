@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Briefcase, Users, Award, Globe, ArrowRight, CheckCircle } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const stats = [
   { Icon: Briefcase, value: "150+", label: "Projects Delivered", proof: "Global clients" },
@@ -12,6 +14,12 @@ const stats = [
 ] as const;
 
 export default function Hero() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+  const y2 = useTransform(scrollY, [0, 500], [0, -150]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -61,181 +69,191 @@ export default function Hero() {
         }}
       />
 
-      <section id="home" className="relative overflow-hidden bg-gradient-to-b from-white via-blue-50/30 to-white py-20 lg:py-32">
-
-        {/* Blob Background Animation */}
-        <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-          <div className="absolute left-10 top-20 h-80 w-80 rounded-full bg-blue-200/40 blur-3xl animate-blob" />
-          <div className="absolute right-20 bottom-20 h-96 w-96 rounded-full bg-indigo-200/40 blur-3xl animate-blob animation-delay-2000" />
+      <section
+        id="home"
+        ref={containerRef}
+        className="relative min-h-[90vh] overflow-hidden bg-white pt-32 pb-20 lg:pt-48 lg:pb-32"
+      >
+        {/* Immersive Background elements */}
+        <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+          <motion.div
+            style={{ y: y1 }}
+            className="absolute -left-[10%] top-[10%] h-[500px] w-[500px] rounded-full bg-blue-100/40 blur-[120px]"
+          />
+          <motion.div
+            style={{ y: y2 }}
+            className="absolute -right-[5%] bottom-[5%] h-[600px] w-[600px] rounded-full bg-indigo-100/30 blur-[120px]"
+          />
+          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150" />
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+        <div className="container relative z-10 px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-16 lg:grid-cols-2 lg:gap-24 items-center">
 
-            {/* Left Section */}
-            <div className="space-y-8 animate-slideUp">
-              <div className="space-y-4">
-                {/* SEO-Optimized H1 */}
-                <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-7xl">
-                  Your Trusted Software Development Partner in{" "}
-                  <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent animate-shine">
-                    Gurugram
+            {/* Left Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col space-y-8"
+            >
+              <div className="space-y-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50/50 px-4 py-1.5 text-sm font-medium text-blue-700"
+                >
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75"></span>
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-blue-500"></span>
+                  </span>
+                  Trusted by 150+ Global Clients
+                </motion.div>
+
+                <h1 className="text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl md:text-7xl">
+                  Building the Future of{" "}
+                  <span className="relative inline-block">
+                    <span className="relative z-10 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                      Digital Solutions
+                    </span>
+                    <motion.span
+                      initial={{ width: 0 }}
+                      animate={{ width: "100%" }}
+                      transition={{ delay: 1, duration: 1 }}
+                      className="absolute bottom-2 left-0 h-3 w-full bg-blue-100/50 z-0"
+                    />
                   </span>
                 </h1>
 
-                <p className="max-w-2xl text-lg text-gray-600 lg:text-xl">
-                  <strong>Custom web, mobile, AI, cloud & email marketing</strong> solutions. 
-                  <strong>50+ senior engineers</strong>. <strong>150+ projects</strong>. 
-                  <strong>Free consultation</strong>.
-                </p>
-              </div>
-
-              <div className="rounded-3xl bg-white/80 p-8 shadow-lg backdrop-blur-sm ring-1 ring-gray-200/50 hover:shadow-xl animate-fadeIn animation-delay-300">
-                <p className="text-sm leading-relaxed text-gray-700">
-                  We build <strong>scalable, secure, high-performance</strong> software for 
-                  <strong> Healthcare, FinTech, E-commerce, EdTech</strong>. 
-                  Certified in <strong>.NET, React, Angular, AWS, Azure, Klaviyo</strong>.
+                <p className="max-w-xl text-lg leading-relaxed text-gray-600 lg:text-xl">
+                  We empower businesses with <strong>cutting-edge software</strong>.
+                  From custom web apps to AI-driven mobile solutions,
+                  we bridge the gap between imagination and execution.
                 </p>
               </div>
 
               {/* CTA Buttons */}
               <div className="flex flex-col gap-4 sm:flex-row">
-                <Link
-                  href="/contact"
-                  className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl focus-visible:ring-4 focus-visible:ring-blue-500/50 animate-fadeIn animation-delay-500"
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  Get Free Project Quote
-                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Link>
+                  <Link
+                    href="/contact"
+                    className="group relative inline-flex h-14 items-center justify-center gap-3 overflow-hidden rounded-2xl bg-gray-900 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-black"
+                  >
+                    <span className="relative z-10 text-white">Get Free Consultation</span>
+                    <ArrowRight className="relative z-10 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-blue-600 to-indigo-600 transition-transform duration-500 group-hover:translate-x-0" />
+                  </Link>
+                </motion.div>
 
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   onClick={() => scrollTo("services")}
-                  className="group inline-flex items-center justify-center gap-2 rounded-xl border-2 border-blue-600 px-8 py-4 text-lg font-semibold text-blue-600 transition-all hover:bg-blue-50 hover:shadow-md focus-visible:ring-4 focus-visible:ring-blue-500/50 animate-fadeIn animation-delay-700"
+                  className="inline-flex h-14 items-center justify-center gap-2 rounded-2xl border-2 border-gray-200 bg-white px-8 py-4 text-lg font-semibold text-gray-700 transition-all hover:border-blue-600 hover:text-blue-600"
                 >
                   Explore Services
-                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1 opacity-0 group-hover:opacity-100" />
-                </button>
+                </motion.button>
               </div>
-            </div>
 
-            {/* Right Section - Hero Image */}
-            <div className="relative animate-floatSlow animation-delay-300">
-              <div className="relative overflow-hidden rounded-3xl shadow-2xl ring-1 ring-gray-200/50 transition-transform duration-700 hover:scale-[1.02]">
+              {/* Certifications / Trust */}
+              <div className="flex flex-wrap items-center gap-6 pt-4 grayscale opacity-60">
+                <span className="text-sm font-semibold tracking-wider text-gray-400 uppercase">Certified Partner in</span>
+                <div className="flex gap-4">
+                  <div className="h-6 w-px bg-gray-300" />
+                  <span className="text-sm font-bold">AWS</span>
+                  <span className="text-sm font-bold">AZURE</span>
+                  <span className="text-sm font-bold">REACT</span>
+                  <span className="text-sm font-bold">.NET</span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right Hero Image / 3D Layout */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, rotateY: 10 }}
+              animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              className="perspective-1000 relative hidden lg:block"
+            >
+              <motion.div
+                whileHover={{ rotateY: -5, rotateX: 2, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 100 }}
+                className="preserve-3d relative overflow-hidden rounded-[2.5rem] shadow-2xl ring-1 ring-black/5"
+              >
                 <Image
                   src="/images/hero-illustration.jpg"
-                  alt="ARSTEG Solutions – Custom software development in Gurugram. Web, mobile, AI, cloud, email marketing"
-                  width={800}
-                  height={600}
+                  alt="Arsteg Solutions Software Development"
+                  width={1000}
+                  height={1200}
                   className="h-auto w-full object-cover"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-              </div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-transparent mix-blend-overlay" />
+              </motion.div>
 
-              {/* Floating Badge */}
-              <div className="absolute -bottom-5 -left-5 rounded-full bg-white px-5 py-3 shadow-xl ring-1 ring-gray-200 animate-bounceSlow">
-                <span className="text-sm font-semibold text-gray-800 flex items-center gap-1.5">
-                  <CheckCircle className="h-4 w-4 text-emerald-600" />
-                  Trusted by 150+ clients
-                </span>
-              </div>
-            </div>
+              {/* Floating elements for depth */}
+              <motion.div
+                animate={{ y: [0, -15, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -right-8 top-1/4 glass rounded-2xl p-4 shadow-xl pointer-events-none"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-full bg-emerald-100 flex items-center justify-center">
+                    <CheckCircle className="h-6 w-6 text-emerald-600" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500 font-medium">Project Success</p>
+                    <p className="text-sm font-bold text-gray-900">99.9% Delivery Rate</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                animate={{ y: [0, 15, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute -left-12 bottom-1/4 glass rounded-2xl p-5 shadow-2xl pointer-events-none"
+              >
+                <div className="space-y-2">
+                  <div className="flex -space-x-3">
+                    {[1, 2, 3, 4].map(i => (
+                      <div key={i} className="h-8 w-8 rounded-full border-2 border-white bg-gray-200" />
+                    ))}
+                  </div>
+                  <p className="text-xs font-bold text-gray-600">50+ Senior Engineers</p>
+                </div>
+              </motion.div>
+            </motion.div>
           </div>
 
-          {/* Stats Section */}
-          <div className="mt-20 grid grid-cols-2 gap-8 md:grid-cols-4 max-w-7xl mx-auto">
+          {/* Stats Bar */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-24 grid grid-cols-2 gap-4 md:grid-cols-4 lg:mt-32"
+          >
             {stats.map(({ Icon, value, label, proof }, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="group relative rounded-3xl bg-white/80 p-8 text-center shadow-lg backdrop-blur-sm ring-1 ring-gray-200/50 transition-transform hover:scale-105 hover:shadow-2xl hover:ring-blue-300 animate-zoomIn"
-                style={{ animationDelay: `${i * 200 + 800}ms` }}
+                whileHover={{ y: -8 }}
+                className="group glass relative overflow-hidden rounded-3xl p-8 text-center transition-all hover:shadow-2xl hover:bg-white/90"
               >
-                <Icon className="mx-auto mb-4 h-10 w-10 text-blue-600 transition-all group-hover:scale-110" />
-                <div className="text-3xl font-bold text-gray-900 lg:text-4xl">{value}</div>
-                <div className="mt-2 text-sm font-medium text-gray-600">{label}</div>
-                <div className="mt-1 text-xs text-emerald-700 font-semibold flex items-center justify-center gap-1">
-                  <CheckCircle className="h-3 w-3" />
+                <div className="absolute inset-x-0 bottom-0 h-1 w-0 bg-blue-600 transition-all duration-500 group-hover:w-full" />
+                <Icon className="mx-auto mb-4 h-8 w-8 text-blue-600 transition-transform group-hover:scale-110" />
+                <div className="text-3xl font-bold text-gray-900 lg:text-4xl tracking-tight">{value}</div>
+                <div className="mt-2 text-sm font-medium text-gray-500">{label}</div>
+                <div className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-700">
+                  <CheckCircle className="h-2.5 w-2.5" />
                   {proof}
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
-
-          {/* Trust Bar */}
-          <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600">
-            <div className="flex items-center gap-2">
-              <CheckCircle className="h-5 w-5 text-emerald-600" />
-              <span>.NET & React Certified</span>
-            </div>
-            <div className="h-5 w-px bg-gray-300" />
-            <div className="flex items-center gap-2">
-              <CheckCircle className="h-5 w-5 text-emerald-600" />
-              <span>AWS & Azure Partner</span>
-            </div>
-            <div className="h-5 w-px bg-gray-300" />
-            <div className="flex items-center gap-2">
-              <CheckCircle className="h-5 w-5 text-emerald-600" />
-              <span>Free Audit & Quote</span>
-            </div>
-          </div>
-
-          {/* Hidden SEO Content */}
-          <div className="sr-only">
-            <h1>Software Development Company in Gurugram – ARSTEG Solutions</h1>
-            <p>
-              ARSTEG is a leading software development company in Gurugram, India. 
-              50+ senior engineers. Custom web, mobile, AI, cloud, email marketing solutions. 
-              150+ projects delivered in 20+ countries. Free consultation. Fixed-price. 30-day support.
-            </p>
-          </div>
+          </motion.div>
         </div>
-
-        {/* Keyframes */}
-        <style jsx>{`
-          @keyframes floatSlow {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-          }
-          @keyframes bounceSlow {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-6px); }
-          }
-          @keyframes blob {
-            0%, 100% { transform: translate(0,0) scale(1); }
-            33% { transform: translate(30px,-20px) scale(1.1); }
-            66% { transform: translate(-20px,10px) scale(0.9); }
-          }
-          @keyframes slideUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to   { opacity: 1; transform: translateY(0); }
-          }
-          @keyframes fadeIn {
-            from { opacity: 0; }
-            to   { opacity: 1; }
-          }
-          @keyframes zoomIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to   { opacity: 1; transform: scale(1); }
-          }
-          @keyframes shine {
-            to { background-position: -200% center; }
-          }
-
-          .animate-slideUp { animation: slideUp 1s ease-out forwards; }
-          .animate-fadeIn { animation: fadeIn 1s ease-out forwards; }
-          .animate-zoomIn { animation: zoomIn 1s ease-out forwards; }
-          .animate-floatSlow { animation: floatSlow 6s ease-in-out infinite; }
-          .animate-bounceSlow { animation: bounceSlow 4s ease-in-out infinite; }
-          .animate-blob { animation: blob 8s infinite; }
-          .animation-delay-2000 { animation-delay: 2s; }
-          .animation-delay-300 { animation-delay: 0.3s; }
-          .animation-delay-500 { animation-delay: 0.5s; }
-          .animation-delay-700 { animation-delay: 0.7s; }
-          .animate-shine {
-            background-size: 200% auto;
-            animation: shine 3s linear infinite;
-          }
-        `}</style>
       </section>
     </>
   );

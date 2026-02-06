@@ -4,61 +4,71 @@
 All colors MUST be HSL. */
 
 :root {
-  --background: 0 0% 100%; /* White */
-  --foreground: 217 33% 17%; /* Dark blue-gray */
+  --background: 210 40% 98%;
+  /* Soft off-white */
+  --foreground: 222 47% 11%;
+  /* Deep navy for contrast */
   --card: 0 0% 100%;
-  --card-foreground: 217 33% 17%;
+  --card-foreground: 222 47% 11%;
   --popover: 0 0% 100%;
-  --popover-foreground: 217 33% 17%;
-  --primary: 221 83% 53%; /* Bright blue */
-  --primary-foreground: 0 0% 100%;
-  --secondary: 243 75% 59%;
-  --secondary-foreground: 0 0% 100%;
-  --muted: 220 13% 95%;
-  --muted-foreground: 217 10% 45%;
-  --accent: 43 96% 56%;
-  --accent-foreground: 217 33% 17%;
+  --popover-foreground: 222 47% 11%;
+  --primary: 221 83% 53%;
+  /* Vercel-like blue */
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222 47% 11.2%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222 47% 11.2%;
   --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 0 0% 100%;
-  --border: 220 13% 91%;
-  --input: 220 13% 91%;
-  --ring: 221 83% 53%;
-  --radius: 0.75rem;
-  --dark-section: 217 33% 17%;
-  --dark-section-foreground: 0 0% 100%;
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, hsl(221, 83%, 53%), hsl(243, 75%, 59%));
-  --gradient-hero: linear-gradient(135deg, hsl(221, 83%, 53%) 0%, hsl(243, 75%, 59%) 100%);
-  --gradient-accent: linear-gradient(90deg, hsl(221, 83%, 53%), hsl(243, 75%, 59%), hsl(43, 96%, 56%));
-  /* Shadows */
-  --shadow-lg: 0 20px 50px -12px hsl(221 83% 53% / 0.25);
-  --shadow-hover: 0 25px 60px -15px hsl(221 83% 53% / 0.35);
-  --shadow-card: 0 10px 30px -10px hsl(217 33% 17% / 0.1);
-  /* Animations */
-  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 221.2 83.2% 53.3%;
+  --radius: 1rem;
+  /* More modern, rounded */
+
+  /* Advanced Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.2);
+
+  /* Transitions */
+  --ease-spring: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .dark {
-  --background: 217 33% 17%; /* Dark blue-gray */
-  --foreground: 0 0% 100%; /* White */
-  --card: 217 33% 17%;
-  --card-foreground: 0 0% 100%;
-  --popover: 217 33% 17%;
-  --popover-foreground: 0 0% 100%;
-  --primary: 221 83% 53%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 243 75% 59%;
-  --secondary-foreground: 0 0% 100%;
-  --muted: 217 33% 25%;
-  --muted-foreground: 220 13% 65%;
-  --accent: 43 96% 56%;
-  --accent-foreground: 217 33% 17%;
+  --background: 222 47% 11%;
+  --foreground: 210 40% 98%;
+  --card: 222 47% 11%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222 47% 11%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 210 40% 98%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
   --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 100%;
-  --border: 217 33% 25%;
-  --input: 217 33% 25%;
-  --ring: 221 83% 53%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 212.7 26.8% 83.9%;
+
+  --glass-bg: rgba(15, 23, 42, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.05);
 }
 
 /* Base styles */
@@ -69,9 +79,11 @@ All colors MUST be HSL. */
 body {
   background: hsl(var(--background));
   color: hsl(var(--foreground));
-  font-family: Arial, Helvetica, sans-serif, var(--font-geist-sans, sans-serif);
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "cv02", "cv05", "cv11";
+  letter-spacing: -0.011em;
 }
 
 html {
@@ -121,6 +133,7 @@ html {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -132,6 +145,7 @@ html {
     opacity: 0;
     transform: translateY(40px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -143,6 +157,7 @@ html {
     opacity: 0;
     transform: scale(0.95);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -158,17 +173,25 @@ html {
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop‑shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop‑shadow(0 0 2em #61dafbaa);
 }
 
 @keyframes logo-spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
+
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
@@ -186,7 +209,9 @@ html {
    3. Optional – dark‑mode tweaks (Tailwind handles most)
    ───────────────────────────────────────────────────── */
 @media (prefers-color-scheme: dark) {
-  .read-the-docs { color: #aaa; }
+  .read-the-docs {
+    color: #aaa;
+  }
 }
 
 /* ─────────────────────────────────────────────────────
@@ -195,14 +220,29 @@ html {
 .container {
   @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
+
 .card {
   @apply p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md;
 }
 
 /* src/app/globals.css – add at bottom */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.animate-fade-up { animation: fadeUp 0.6s ease-out forwards; }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
 
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.6s ease-out forwards;
+}
+.perspective-1000 { perspective: 1000px; }
+.preserve-3d { transform-style: preserve-3d; }
+.backface-hidden { backface-visibility: hidden; }
+.glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px) saturate(180%); -webkit-backdrop-filter: blur(12px) saturate(180%); border: 1px solid rgba(255, 255, 255, 0.2); }
+.glass-dark { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px) saturate(180%); -webkit-backdrop-filter: blur(12px) saturate(180%); border: 1px solid rgba(255, 255, 255, 0.05); }
