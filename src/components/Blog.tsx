@@ -6,31 +6,31 @@ import { Calendar, User, ArrowRight } from "lucide-react";
 const Blog = () => {
   const posts = [
     {
-      title: "How AI-Powered Food Scanning is Revolutionizing Nutrition Planning",
+      title: "How AI-Powered Solutions are Transforming Enterprise Software",
       excerpt:
-        "Discover how OpenAI integration enables users to snap a photo and instantly get detailed nutritional information, transforming the way we track our diet.",
+        "Discover how OpenAI and machine learning integrations are enabling businesses to automate workflows, enhance decision-making, and deliver personalized experiences at scale.",
       author: "ARSTEG Tech Team",
       date: "Jan 15, 2025",
-      category: "Health-Tech",
-      image: "/images/food.jpg",
+      category: "AI & ML",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
     },
     {
-      title: "Top 5 Health-Tech APIs to Watch in 2025",
+      title: "Building Scalable APIs: Lessons from 150+ Integrations",
       excerpt:
-        "An in-depth look at the most promising health-tech APIs including iHealth, Fitbit, Dexcom, and more that are shaping the future of digital health.",
+        "An in-depth look at API architecture patterns, authentication strategies, and performance optimizations we've learned from integrating with hundreds of third-party services.",
       author: "Integration Experts",
       date: "Jan 10, 2025",
-      category: "API Integration",
-      image: "/images/health.jpg",
+      category: "Engineering",
+      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
     },
     {
-      title: "Scaling Legacy Systems with Modern .NET Core Solutions",
+      title: "From Legacy to Cloud: A Migration Success Story",
       excerpt:
-        "Learn how we help businesses modernize their legacy applications while maintaining business continuity and improving performance.",
+        "Learn how we helped a 15-year-old insurance platform migrate to cloud-native architecture with zero downtime and 80% performance improvement.",
       author: "Development Team",
       date: "Jan 5, 2025",
-      category: "Software Development",
-      image: "/images/business.jpg",
+      category: "Case Study",
+      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
     },
   ];
 

@@ -3,128 +3,148 @@
     "id": "custom-software",
     "icon": "Code2",
     "title": "Custom Software Development",
-    "description": "We build tailor-made applications that meet your business goals using the latest technologies across web, mobile, and cloud platforms.",
+    "tagline": "From MVP to enterprise scale",
+    "problem": "Off-the-shelf software doesn't fit your unique business processes, and building in-house is too slow and expensive.",
+    "solution": "We architect and build custom applications designed specifically for your workflows, users, and growth trajectory.",
+    "description": "Full-stack development from concept to deployment. We build web applications, mobile apps, and cloud-native systems that scale with your business.",
     "approach": [
-      "Understand business goals and challenges",
-      "Design scalable architecture and choose the right tech stack",
-      "Agile development with continuous feedback",
-      "Testing, deployment, and post-launch support"
+      "Deep discovery to understand business goals and technical constraints",
+      "Architecture design with scalability built in from day one",
+      "Agile sprints with continuous feedback and iteration",
+      "Production deployment with monitoring and support"
     ],
-    "details": [
-      "Frontend: React.js, Next.js, Angular, Vue.js, Svelte, Flutter Web, Blazor",
-      "Backend: .NET Core, ASP.NET MVC, Node.js, Express.js, Django, Spring Boot",
-      "Mobile: Flutter, React Native, MAUI, Swift, Kotlin",
-      "Databases: SQL Server, PostgreSQL, MySQL, MongoDB, Firebase, Redis",
-      "Cloud & DevOps: Azure, AWS, Google Cloud, Docker, Kubernetes, CI/CD pipelines",
-      "AI & Data: OpenAI, TensorFlow, PyTorch, Power BI, Apache Kafka, Elasticsearch",
-      "Emerging Tech: Blockchain, AR/VR, IoT, Chatbots, Voice Assistants"
+    "techStack": [
+      "React, Next.js, Vue.js, Angular",
+      ".NET Core, Node.js, Python, Go",
+      "Flutter, React Native, Swift, Kotlin",
+      "AWS, Azure, Google Cloud",
+      "PostgreSQL, MongoDB, Redis"
     ],
-    "benefits": [
-      "Accelerate time-to-market with modern frameworks",
-      "Scalable, high-performance applications",
-      "Smart integration with AI, IoT, and cloud services"
+    "outcomes": [
+      "Ship 2x faster than hiring in-house",
+      "Architecture that scales to millions of users",
+      "Full IP ownership from day one"
     ],
-    "result": "150+ enterprise projects delivered",
+    "result": "150+ products shipped",
+    "caseStudy": "Built a health-tech platform that scaled from 10K to 500K users with zero downtime",
     "slug": "custom-software-development"
   },
   {
     "id": "software-maintenance",
     "icon": "Wrench",
-    "title": "Software Maintenance & Modernization",
-    "description": "Keep your systems running smoothly while upgrading legacy applications to modern, secure, and high-performance platforms.",
+    "title": "Legacy Modernization",
+    "tagline": "Transform technical debt into competitive advantage",
+    "problem": "Your legacy system is slow, expensive to maintain, and blocking your ability to innovate and grow.",
+    "solution": "We modernize your stack incrementally — no big-bang rewrites that risk your business continuity.",
+    "description": "Migrate legacy applications to modern frameworks while maintaining business continuity. Performance optimization, security hardening, and cloud migration.",
     "approach": [
-      "Assess current application performance",
-      "Implement performance & security enhancements",
-      "Migrate legacy systems to modern tech stack",
-      "Continuous support and monitoring"
+      "Comprehensive audit of current architecture and pain points",
+      "Phased modernization roadmap with quick wins first",
+      "Gradual migration with parallel running systems",
+      "Knowledge transfer to your internal team"
     ],
-    "details": [
-      "Support for Classic ASP, VB6, WinForms, WPF, React Native, AngularJS",
-      "Migration to .NET Core, MAUI, Angular, React, Blazor",
-      "Application performance optimization and security hardening",
-      "Cloud migration and multi-platform deployment"
+    "techStack": [
+      "Migration from VB6, Classic ASP, WinForms to modern stacks",
+      ".NET Core, React, Angular, Vue.js",
+      "Cloud migration to AWS, Azure, GCP",
+      "Container orchestration with Docker, Kubernetes"
     ],
-    "benefits": [
-      "Reduced downtime and extended application lifespan",
-      "Enhanced performance and security"
+    "outcomes": [
+      "80% faster application performance",
+      "60% reduction in maintenance costs",
+      "Modern codebase your team can actually work with"
     ],
-    "result": "80% faster load times post-migration",
+    "result": "80% faster post-migration",
+    "caseStudy": "Migrated a 15-year-old insurance platform to cloud-native architecture in 6 months",
     "slug": "software-maintenance-modernization"
   },
   {
     "id": "api-integrations",
     "icon": "PlugZap",
-    "title": "API & Third-Party Integrations",
-    "description": "Seamlessly connect your platform with third-party services and automate workflows across industries.",
+    "title": "API & System Integration",
+    "tagline": "Connect everything. Automate anything.",
+    "problem": "Your systems don't talk to each other, creating data silos, manual work, and errors.",
+    "solution": "We build robust integrations that unify your tech stack and automate data flows across your organization.",
+    "description": "Connect your platforms with third-party services, payment gateways, health devices, CRMs, and custom APIs.",
     "approach": [
-      "Map integration requirements and data flows",
-      "Secure OAuth, API key, and webhook implementation",
-      "Build real-time sync and error handling",
-      "Test, monitor, and scale integrations"
+      "Map all integration requirements and data flows",
+      "Design secure authentication and error handling",
+      "Build real-time sync with comprehensive logging",
+      "Monitor, alert, and continuously optimize"
     ],
-    "details": [
-      "Health & Fitness: iHealth, Garmin, Fitbit, Google Fit, Withings, Dexcom, Biosense",
-      "Finance & Accounting: QuickBooks, Stripe, PayPal, Moneris, Xero",
-      "Messaging: Twilio, Firebase Cloud Messaging, SendGrid, Mailgun",
-      "AI & ML: OpenAI, Google AI, Hugging Face",
-      "Custom: IoT devices, blockchain, AR/VR platforms"
+    "techStack": [
+      "Health: iHealth, Garmin, Fitbit, Google Fit, Dexcom, Withings",
+      "Payments: Stripe, PayPal, QuickBooks, Xero",
+      "Communication: Twilio, SendGrid, Firebase",
+      "AI: OpenAI, Google AI, Hugging Face",
+      "Custom: IoT, blockchain, AR/VR platforms"
     ],
-    "benefits": [
-      "Unified platforms and real-time insights",
-      "Automated, efficient workflows"
+    "outcomes": [
+      "100% data sync accuracy",
+      "Eliminate manual data entry",
+      "Real-time insights across all systems"
     ],
-    "result": "100% data sync accuracy",
+    "result": "100% sync accuracy",
+    "caseStudy": "Integrated 8+ health devices for a telemedicine platform serving 50K+ patients",
     "slug": "api-third-party-integrations"
   },
   {
-    "id": "hire-expert-developers",
+    "id": "dedicated-teams",
     "icon": "UsersRound",
-    "title": "Hire Expert Developers",
-    "description": "Access our team of full-stack engineers, AI specialists, mobile developers, and DevOps professionals on an hourly or project basis.",
+    "title": "Dedicated Engineering Teams",
+    "tagline": "Your team, extended. Not outsourced.",
+    "problem": "Hiring takes months. Contractors are unreliable. You need senior engineering capacity now.",
+    "solution": "Get a dedicated team of senior engineers who integrate with your workflows, tools, and culture within 48 hours.",
+    "description": "Flexible engagement models from individual specialists to full product teams. All engineers have 8+ years experience.",
     "approach": [
-      "Flexible engagement: hourly, part-time, or dedicated teams",
-      "Deep expertise across 50+ technologies",
-      "Onboarding within 48 hours",
-      "Daily standups, weekly demos, monthly reports"
+      "Match engineers to your tech stack and industry",
+      "48-hour onboarding to your tools and processes",
+      "Daily standups, weekly demos, monthly reviews",
+      "Scale up or down as your needs change"
     ],
-    "details": [
-      "50+ senior engineers (avg. 8+ years exp)",
-      "Tech stack: .NET, React, Vue.js, Node.js, AWS, Azure, Flutter",
-      "Proven track record: 150+ projects in 20+ countries",
-      "Transparent pricing, no hidden fees"
+    "teamProfiles": [
+      "Full-stack engineers (React, .NET, Node.js)",
+      "Mobile developers (Flutter, React Native)",
+      "DevOps and cloud architects",
+      "AI/ML engineers",
+      "Technical leads and architects"
     ],
-    "benefits": [
-      "Reliable and scalable engineering talent",
-      "Transparent communication and delivery"
+    "outcomes": [
+      "Start building in 48 hours, not 3 months",
+      "Direct access to senior engineers",
+      "No recruiter fees or HR overhead"
     ],
-    "result": "90% client retention rate",
-    "slug": "hire-expert-developers"
+    "result": "90% client retention",
+    "caseStudy": "Provided a 12-person team for a Series B startup that shipped 3 products in 18 months",
+    "slug": "dedicated-engineering-teams"
   },
   {
-    "id": "email-marketing",
-    "icon": "Send",
-    "title": "Email Marketing & Automation",
-    "description": "Turn emails into a revenue engine. We create data-backed, beautifully crafted campaigns that build trust, drive engagement, and convert subscribers into loyal customers.",
+    "id": "digital-marketing",
+    "icon": "TrendingUp",
+    "title": "Digital Marketing & Growth",
+    "tagline": "Revenue-driven marketing, not vanity metrics",
+    "problem": "You're spending on marketing but can't connect it to revenue. Generic agencies don't understand your product.",
+    "solution": "Data-driven marketing strategies executed by a team that understands software products and B2B buyer journeys.",
+    "description": "Email marketing, SEO, paid acquisition, and content strategy designed specifically for software and tech companies.",
     "approach": [
-      "Research-driven audience segmentation and targeting",
-      "Create compelling copy, visuals, and A/B test variations",
-      "Automate lifecycle journeys: onboarding, retention, upsell & win-back",
-      "Monitor deliverability and inbox placement performance",
-      "Analyze behavior insights and continuously optimize for conversions"
+      "Audit current marketing stack and customer journey",
+      "Build automated email sequences that convert",
+      "SEO strategy focused on high-intent keywords",
+      "Paid campaigns with rigorous ROI tracking"
     ],
-    "details": [
-      "Platforms: Klaviyo, HubSpot, Mailchimp, ActiveCampaign, ConvertKit",
-      "Automation: Welcome series, cart recovery, lead nurturing, re-engagement flows",
-      "Audience: Smart segmentation using behavior, demographics, purchase triggers",
-      "Creatives: Persuasive subject lines, copywriting, graphics & CTA optimization",
-      "Tracking: A/B testing, heatmaps, engagement scoring, ROI dashboards"
+    "channels": [
+      "Email: Klaviyo, HubSpot, Mailchimp, ActiveCampaign",
+      "SEO: Technical audit, content strategy, link building",
+      "Paid: Google Ads, LinkedIn, Meta",
+      "Content: Blog, case studies, whitepapers"
     ],
-    "benefits": [
-      "Higher open rates, click-throughs, and conversions",
-      "Stronger brand trust and long-term relationships",
-      "Data-driven revenue growth using automation"
+    "outcomes": [
+      "42x average ROI on email campaigns",
+      "3x increase in qualified leads",
+      "Clear attribution from campaign to revenue"
     ],
-    "result": "42x average ROI in 6 months",
-    "slug": "email-marketing-automation"
+    "result": "42x average ROI",
+    "caseStudy": "Grew email revenue from $0 to $50K/month for a SaaS company in 6 months",
+    "slug": "digital-marketing-growth"
   }
 ]
