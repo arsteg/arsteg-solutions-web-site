@@ -1,13 +1,13 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
-import { ArrowRight, Globe, Zap, TrendingUp, CheckCircle, BarChart, Smartphone } from "lucide-react";
+import { ArrowRight, Globe, Zap, TrendingUp, CheckCircle, BarChart } from "lucide-react";
 import Link from "next/link";
 
 export const DigitalMarketingHero = () => {
   return (
     <>
-      {/* Digital Marketing Service Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -53,20 +53,37 @@ export const DigitalMarketingHero = () => {
       <section className="relative overflow-hidden bg-gradient-to-b from-white via-blue-50/30 to-white py-20 md:py-32 lg:py-40">
         {/* Animated Background Blobs */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-1/2 -right-1/4 h-96 w-96 rounded-full bg-blue-400/20 blur-3xl animate-pulse" />
-          <div className="absolute -bottom-1/2 -left-1/4 h-96 w-96 rounded-full bg-indigo-400/20 blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
+          <motion.div
+            animate={{ opacity: [0.1, 0.2, 0.1], scale: [1, 1.1, 1] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -top-1/2 -right-1/4 h-96 w-96 rounded-full bg-blue-400/20 blur-3xl"
+          />
+          <motion.div
+            animate={{ opacity: [0.1, 0.2, 0.1], scale: [1, 1.1, 1] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute -bottom-1/2 -left-1/4 h-96 w-96 rounded-full bg-indigo-400/20 blur-3xl"
+          />
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="mx-auto max-w-5xl text-center">
-
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mx-auto max-w-5xl text-center"
+          >
             {/* SEO Badge */}
-            <div className="mx-auto mb-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-100/70 to-indigo-100/70 px-5 py-2.5 text-sm font-semibold text-blue-700 shadow-md ring-1 ring-blue-200/50 backdrop-blur-sm">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mx-auto mb-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-100/70 to-indigo-100/70 px-5 py-2.5 text-sm font-semibold text-blue-700 shadow-md ring-1 ring-blue-200/50 backdrop-blur-sm"
+            >
               <Zap className="h-4 w-4" />
               Full-Service Digital Marketing Agency
-            </div>
+            </motion.div>
 
-            {/* H1 with High-Intent Keywords */}
+            {/* H1 */}
             <h1 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-7xl">
               <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">
                 Drive Growth with
@@ -74,14 +91,14 @@ export const DigitalMarketingHero = () => {
               Data-Driven Marketing
             </h1>
 
-            {/* SEO-Rich Subheading */}
+            {/* Subheading */}
             <p className="mx-auto mb-10 max-w-3xl text-lg text-gray-600 md:text-xl lg:text-2xl">
               From <strong>SEO & PPC</strong> to <strong>Social Media</strong> and <strong>Email Marketing</strong>,
               we build integrated strategies that deliver measurable results.
               <strong>Maximize ROI</strong>, increase visibility, and convert more customers.
             </p>
 
-            {/* Primary CTA */}
+            {/* CTA */}
             <div className="mb-16 flex flex-col justify-center gap-4 sm:flex-row">
               <Link href="/contact" className="group">
                 <Button
@@ -93,15 +110,19 @@ export const DigitalMarketingHero = () => {
               </Link>
             </div>
 
-            {/* Trust & Results Stats */}
+            {/* Trust Stats */}
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3 max-w-4xl mx-auto">
               {[
-                { Icon: Globe, value: "300%", label: "Traffic Growth", color: "blue" },
-                { Icon: TrendingUp, value: "10x", label: "ROI Improvement", color: "emerald" },
-                { Icon: BarChart, value: "24/7", label: "Analytics & Support", color: "purple" },
-              ].map(({ Icon, value, label, color }, i) => (
-                <div
+                { Icon: Globe, value: "300%", label: "Traffic Growth" },
+                { Icon: TrendingUp, value: "10x", label: "ROI Improvement" },
+                { Icon: BarChart, value: "24/7", label: "Analytics & Support" },
+              ].map(({ Icon, value, label }, i) => (
+                <motion.div
                   key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.4 + i * 0.1 }}
                   className="group rounded-3xl bg-white/70 p-6 shadow-lg backdrop-blur-sm ring-1 ring-gray-200/50 transition-all hover:scale-105 hover:shadow-2xl"
                 >
                   <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-100/70 to-indigo-100/70 text-blue-600 transition-all group-hover:from-blue-600 group-hover:to-indigo-600 group-hover:text-white">
@@ -112,7 +133,7 @@ export const DigitalMarketingHero = () => {
                     {label.includes("ROI") && <CheckCircle className="h-6 w-6 text-emerald-600" />}
                   </div>
                   <div className="mt-1 text-sm font-medium text-gray-600">{label}</div>
-                </div>
+                </motion.div>
               ))}
             </div>
 
@@ -126,18 +147,11 @@ export const DigitalMarketingHero = () => {
                 and expert execution.
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
-
-        {/* Fade-in animation */}
-        <style jsx>{`
-          @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to   { opacity: 1; transform: translateY(0); }
-          }
-          [style] { animation: fadeIn 0.6s ease-out forwards; }
-        `}</style>
       </section>
     </>
   );
 };
+
+export default DigitalMarketingHero;

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { Calendar, User, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Blog = () => {
   const posts = [
@@ -44,7 +45,13 @@ const Blog = () => {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
             Insights &{" "}
             <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
@@ -54,15 +61,18 @@ const Blog = () => {
           <p className="mx-auto mt-6 max-w-3xl text-lg text-gray-600 lg:text-xl">
             Stay updated with the latest in software development and health-tech innovations. Our blog covers industry trends, case studies, and tips to help your business thrive.
           </p>
-        </div>
+        </motion.div>
 
         {/* Blog Cards */}
         <div className="grid gap-8 md:grid-cols-3 max-w-7xl mx-auto mb-16">
           {posts.map((post, index) => (
-            <article
+            <motion.article
               key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group relative overflow-hidden rounded-3xl bg-white/70 shadow-lg backdrop-blur-sm ring-1 ring-gray-200/50 transition-all hover:scale-105 hover:shadow-2xl"
-              
             >
               {/* Image */}
               <div className="relative h-56 overflow-hidden">
@@ -110,35 +120,24 @@ const Blog = () => {
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </div>
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
 
         {/* CTA Button */}
-        <div className="text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-center"
+        >
           <button className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:scale-105 hover:shadow-2xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/50">
             See More Posts
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
           </button>
-        </div>
+        </motion.div>
       </div>
-
-      {/* Staggered fade-up animation */}
-      <style jsx>{`
-        @keyframes fadeUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        [style] {
-          animation: fadeUp 0.6s ease-out forwards;
-        }
-      `}</style>
     </section>
   );
 };

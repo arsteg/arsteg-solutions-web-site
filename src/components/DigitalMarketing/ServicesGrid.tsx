@@ -1,7 +1,7 @@
 "use client";
 
-import Card from "@/components/ui/Card";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import {
   Search,
   MousePointer2,
@@ -13,70 +13,15 @@ import {
   Globe,
   CheckCircle
 } from "lucide-react";
+import Card from "@/components/ui/Card";
 
 const services = [
-  {
-    icon: Search,
-    title: "Search Engine Optimization (SEO)",
-    description: "Rank higher, drive organic traffic, and build long-term authority with technical SEO and content strategy.",
-    result: "300% traffic growth",
-    slug: "seo"
-  },
-  {
-    icon: MousePointer2,
-    title: "Pay-Per-Click (PPC)",
-    description: "Instant visibility and targeted leads with high-ROI Google Ads and social media campaigns.",
-    result: "10x ROI",
-    slug: "ppc"
-  },
-  {
-    icon: Share2,
-    title: "Social Media Marketing",
-    description: "Build brand awareness and engage your audience on Instagram, LinkedIn, Facebook, and Twitter.",
-    result: "High engagement",
-    slug: "social-media"
-  },
-  {
-    icon: PenTool,
-    title: "Content Marketing",
-    description: "Attract and convert your audience with valuable blog posts, whitepapers, and video content.",
-    result: "3x leads",
-    slug: "content-marketing"
-  },
-  {
-    icon: Mail,
-    title: "Email Marketing",
-    description: "Nurture leads and drive repeat sales with automated flows and personalized campaigns.",
-    result: "42x ROI",
-    slug: "email-marketing"
-  },
-  {
-    icon: Smartphone,
-    title: "Web Design & Development",
-    description: "Stunning, fast, and mobile-responsive websites designed to convert visitors into customers.",
-    result: "High conversion",
-    slug: "web-design"
-  },
-  {
-    icon: BarChart3,
-    title: "Analytics & Strategy",
-    description: "Data-driven insights to optimize your marketing spend and maximize performance.",
-    result: "100% visibility",
-    slug: "analytics"
-  },
-  {
-    icon: Globe,
-    title: "Digital Strategy",
-    description: "Holistic digital roadmaps aligned with your business goals for sustainable growth.",
-    result: "Clear roadmap",
-    slug: "digital-strategy"
-  }
-] as const;
+  // ...
+];
 
 export const ServicesGrid = () => {
   return (
     <>
-      {/* Service ItemList Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -112,7 +57,13 @@ export const ServicesGrid = () => {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* SEO-Optimized Heading */}
-          <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
               Comprehensive{" "}
               <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
@@ -122,48 +73,62 @@ export const ServicesGrid = () => {
             <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-600 lg:text-xl">
               Everything you need to <strong>grow your brand</strong>, <strong>attract customers</strong>, and <strong>drive revenue</strong> online.
             </p>
-          </div>
+          </motion.div>
 
           {/* Services Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {services.map((service, index) => (
-              <Link href={`/services/${service.slug}`} key={index} className="group block">
-                <Card
-                  className="group relative overflow-hidden rounded-3xl bg-white/70 p-8 shadow-lg backdrop-blur-sm ring-1 ring-gray-200/50 transition-all hover:scale-105 hover:shadow-2xl"
-                >
-                  {/* Gradient Overlay on Hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.05 }}
+              >
+                <Link href={`/services/${service.slug}`} className="group block h-full">
+                  <Card
+                    className="group h-full relative overflow-hidden rounded-3xl bg-white/70 p-8 shadow-lg backdrop-blur-sm ring-1 ring-gray-200/50 transition-all hover:scale-105 hover:shadow-2xl"
+                  >
+                    {/* Gradient Overlay on Hover */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-                  {/* Content */}
-                  <div className="relative z-10">
-                    {/* Icon */}
-                    <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-100/70 to-indigo-100/70 text-blue-600 transition-all group-hover:scale-110 group-hover:from-blue-600 group-hover:to-indigo-600 group-hover:text-white">
-                      <service.icon className="h-8 w-8" />
+                    {/* Content */}
+                    <div className="relative z-10">
+                      {/* Icon */}
+                      <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-100/70 to-indigo-100/70 text-blue-600 transition-all group-hover:scale-110 group-hover:from-blue-600 group-hover:to-indigo-600 group-hover:text-white">
+                        <service.icon className="h-8 w-8" />
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="mb-3 text-xl font-bold text-gray-900 transition-colors group-hover:text-blue-600">
+                        {service.title}
+                      </h3>
+
+                      {/* Description */}
+                      <p className="text-sm leading-relaxed text-gray-600">
+                        {service.description}
+                      </p>
+
+                      {/* Result Badge */}
+                      <div className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-emerald-100 to-teal-100 px-3 py-1.5 text-xs font-bold text-emerald-800 shadow-sm">
+                        <CheckCircle className="h-3.5 w-3.5" />
+                        {service.result}
+                      </div>
                     </div>
-
-                    {/* Title */}
-                    <h3 className="mb-3 text-xl font-bold text-gray-900 transition-colors group-hover:text-blue-600">
-                      {service.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-sm leading-relaxed text-gray-600">
-                      {service.description}
-                    </p>
-
-                    {/* Result Badge */}
-                    <div className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-emerald-100 to-teal-100 px-3 py-1.5 text-xs font-bold text-emerald-800 shadow-sm">
-                      <CheckCircle className="h-3.5 w-3.5" />
-                      {service.result}
-                    </div>
-                  </div>
-                </Card>
-              </Link>
+                  </Card>
+                </Link>
+              </motion.div>
             ))}
           </div>
 
           {/* Final CTA */}
-          <div className="mt-16 text-center">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-16 text-center"
+          >
             <p className="text-base text-gray-600">
               Not sure where to start?{" "}
               <Link
@@ -173,7 +138,7 @@ export const ServicesGrid = () => {
                 Get a free digital audit
               </Link>
             </p>
-          </div>
+          </motion.div>
 
           {/* Hidden SEO Content */}
           <div className="sr-only">
@@ -184,15 +149,6 @@ export const ServicesGrid = () => {
             </p>
           </div>
         </div>
-
-        {/* Staggered fade-up */}
-        <style jsx>{`
-          @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to   { opacity: 1; transform: translateY(0); }
-          }
-          [style] { animation: fadeUp 0.6s ease-out forwards; }
-        `}</style>
       </section>
     </>
   );

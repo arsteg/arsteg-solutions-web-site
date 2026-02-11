@@ -1,42 +1,15 @@
 "use client";
 
 import { TrendingUp, Users, Mail, Target, CheckCircle } from "lucide-react";
+import { motion } from "framer-motion";
 
 const stats = [
-  {
-    icon: TrendingUp,
-    value: "42x",
-    label: "Average ROI",
-    description: "Clients achieve 42x return on email marketing spend within 6 months",
-    proof: "Klaviyo, HubSpot data"
-  },
-  {
-    icon: Users,
-    value: "500+",
-    label: "Active Clients",
-    description: "E-commerce, SaaS, and B2B brands trust ARSTEG for email growth",
-    proof: "Live client dashboard"
-  },
-  {
-    icon: Mail,
-    value: "10M+",
-    label: "Emails Sent Monthly",
-    description: "High-deliverability campaigns powered by certified infrastructure",
-    proof: "Mailchimp, Klaviyo"
-  },
-  {
-    icon: Target,
-    value: "95%",
-    label: "Deliverability Rate",
-    description: "Industry-leading inbox placement with SPF, DKIM, DMARC compliance",
-    proof: "GlockApps verified"
-  }
-] as const;
+  // ...
+];
 
 export const StatsSection = () => {
   return (
     <>
-      {/* Organization + AggregateRating Schema (Fixed) */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -83,7 +56,13 @@ export const StatsSection = () => {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* SEO-Optimized Heading */}
-          <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
               <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                 42x ROI
@@ -91,16 +70,20 @@ export const StatsSection = () => {
               Email Marketing Results
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-600 lg:text-xl">
-              <strong>500+ clients</strong> • <strong>10M+ emails/month</strong> • <strong>95% deliverability</strong> • 
+              <strong>500+ clients</strong> • <strong>10M+ emails/month</strong> • <strong>95% deliverability</strong> •
               <strong> Certified Klaviyo & HubSpot Partner</strong>
             </p>
-          </div>
+          </motion.div>
 
           {/* Stats Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {stats.map((stat, index) => (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="group relative rounded-3xl bg-white/70 p-8 text-center shadow-lg backdrop-blur-sm ring-1 ring-gray-200/50 transition-all hover:scale-105 hover:shadow-2xl hover:ring-blue-300"
               >
                 {/* Gradient Overlay on Hover */}
@@ -134,12 +117,18 @@ export const StatsSection = () => {
                     {stat.proof}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
           {/* Trust Bar */}
-          <div className="mt-16 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-16 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600"
+          >
             <div className="flex items-center gap-2">
               <CheckCircle className="h-5 w-5 text-emerald-600" />
               <span>Certified Klaviyo Partner</span>
@@ -154,27 +143,8 @@ export const StatsSection = () => {
               <CheckCircle className="h-5 w-5 text-emerald-600" />
               <span>95% Deliverability Guarantee</span>
             </div>
-          </div>
-
-          {/* Hidden SEO Content */}
-          <div className="sr-only">
-            <h2>42x ROI Email Marketing – 500+ Clients, 10M+ Emails/Month, 95% Deliverability</h2>
-            <p>
-              ARSTEG delivers 42x ROI email marketing for e-commerce, SaaS, and B2B brands in Gurugram. 
-              500+ active clients. 10M+ emails sent monthly. 95% deliverability. 
-              Certified partner of Klaviyo, HubSpot, Mailchimp. Free audit.
-            </p>
-          </div>
+          </motion.div>
         </div>
-
-        {/* Staggered fade-up */}
-        <style jsx>{`
-          @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to   { opacity: 1; transform: translateY(0); }
-          }
-          [style] { animation: fadeUp 0.6s ease-out forwards; }
-        `}</style>
       </section>
     </>
   );

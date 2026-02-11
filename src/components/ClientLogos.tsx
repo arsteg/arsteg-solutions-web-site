@@ -1,10 +1,11 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 
 // Technology icons as SVG components
 const TechIcon = ({ name }: { name: string }) => {
-  const icons: Record<string, JSX.Element> = {
+  const icons: Record<string, React.JSX.Element> = {
     "Microsoft Azure": (
       <svg viewBox="0 0 96 96" className="h-10 w-10">
         <defs>
