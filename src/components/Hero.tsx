@@ -78,7 +78,7 @@ export default function Hero() {
       <section
         id="home"
         ref={containerRef}
-        className="relative min-h-[95vh] overflow-hidden bg-white pt-32 pb-20 lg:pt-40 lg:pb-32"
+        className="relative min-h-[95vh] overflow-hidden bg-white pt-24 pb-16 lg:pt-28 lg:pb-24"
       >
         {/* Immersive Background elements */}
         <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">

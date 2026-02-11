@@ -63,13 +63,13 @@ export default function Navbar() {
               e.preventDefault();
               scrollTo("home");
             }}
-            className="group relative flex items-center"
+            className="group relative flex items-center gap-2"
             aria-label="Arsteg – Home"
           >
             <motion.div
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
-              className="relative"
+              className="relative flex items-center gap-2"
             >
               {/* Logo glow effect on hover */}
               <div className="absolute -inset-3 rounded-2xl bg-gradient-to-r from-blue-500/20 to-indigo-500/20 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100" />
@@ -77,11 +77,16 @@ export default function Navbar() {
                 <Image
                   src="/images/logo.png"
                   alt="Arsteg Logo"
-                  width={180}
-                  height={45}
+                  width={200}
+                  height={50}
                   priority
-                  className="h-10 w-auto object-contain md:h-11"
+                  className="h-11 w-auto object-contain md:h-12"
                 />
+              </div>
+              {/* Company Name */}
+              <div className="relative hidden sm:block">
+                <span className="text-xl font-bold tracking-tight text-gray-900">ARSTEG</span>
+                <span className="ml-2 text-xl font-light text-gray-500">Solutions</span>
               </div>
             </motion.div>
           </Link>
