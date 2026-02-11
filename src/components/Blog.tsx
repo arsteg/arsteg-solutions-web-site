@@ -72,20 +72,20 @@ const Blog = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-3xl bg-white/70 shadow-lg backdrop-blur-sm ring-1 ring-gray-200/50 transition-all hover:scale-105 hover:shadow-2xl"
+              className="group relative overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-200/50 transition-all hover:scale-105 hover:shadow-2xl"
             >
-              {/* Image */}
-              <div className="relative h-56 overflow-hidden">
+              {/* Image Container */}
+              <div className="relative aspect-video w-full overflow-hidden bg-gray-100">
                 <Image
                   src={post.image}
                   alt={post.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  width={600}
+                  height={400}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 {/* Category Badge */}
-                <div className="absolute top-4 left-4 rounded-full bg-white/90 px-3 py-1.5 shadow-md ring-1 ring-gray-200/50 backdrop-blur-sm">
+                <div className="absolute top-4 left-4 rounded-full bg-white/95 px-3 py-1.5 shadow-md ring-1 ring-gray-200/50">
                   <span className="text-xs font-semibold text-gray-800">{post.category}</span>
                 </div>
               </div>
