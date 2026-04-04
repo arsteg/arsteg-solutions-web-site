@@ -9,6 +9,11 @@ import BlogPage from './blog/page';
 import FAQ from '../components/FAQ';
 import ContactForm from '../components/contact/ContactForm';
 import FloatingButtons from '../components/FloatingButtons';
+import TrustBadges from '../components/TrustBadges';
+import BookCall from '../components/BookCall';
+import StickyCTA from '../components/StickyCTA';
+import ExitIntent from '../components/ExitIntent';
+import TawkToChat from '../components/TawkToChat';
 
 export default function Home() {
   return (
@@ -31,6 +36,9 @@ export default function Home() {
       {/* Testimonials - Client success stories */}
       <Testimonials />
 
+      {/* Trust Badges - Reviews & Certifications */}
+      <TrustBadges />
+
       {/* Portfolio - Proof of capabilities */}
       <PortfolioPage />
 
@@ -40,11 +48,23 @@ export default function Home() {
       {/* FAQ - Address common questions */}
       <FAQ />
 
+      {/* Book a Call - Calendly integration */}
+      <BookCall />
+
       {/* Contact - Conversion point */}
       <ContactForm />
 
-      {/* Floating Buttons - WhatsApp, Back to Top, Mobile CTA */}
+      {/* Floating Buttons - WhatsApp, Back to Top */}
       <FloatingButtons />
+
+      {/* Mobile Sticky CTA */}
+      <StickyCTA />
+
+      {/* Exit Intent Popup */}
+      <ExitIntent />
+
+      {/* Live Chat - Tawk.to widget */}
+      <TawkToChat />
     </main>
   );
 }

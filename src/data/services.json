@@ -146,5 +146,35 @@
     "result": "42x average ROI",
     "caseStudy": "Grew email revenue from $0 to $50K/month for a SaaS company in 6 months",
     "slug": "digital-marketing-growth"
+  },
+  {
+    "id": "zoho-development",
+    "icon": "Settings",
+    "title": "Zoho Development & Integration",
+    "tagline": "Transform your business with the complete Zoho ecosystem",
+    "problem": "Your business tools are disconnected, workflows are manual, and you're not getting the full value from your Zoho investment.",
+    "solution": "We implement, customize, and integrate Zoho products to streamline operations, automate workflows, and connect all your business systems.",
+    "description": "Expert Zoho CRM, Creator, Books, People, Desk implementation and customization. Custom integrations, workflow automation, and data migration.",
+    "approach": [
+      "Assess current processes and identify automation opportunities",
+      "Design custom Zoho solutions tailored to your workflows",
+      "Implement with data migration and third-party integrations",
+      "Train your team and provide ongoing support"
+    ],
+    "techStack": [
+      "Zoho CRM, Creator, Books, People, Desk, Inventory",
+      "Zoho One full suite implementation",
+      "Deluge scripting and custom functions",
+      "REST API integrations and webhooks",
+      "Third-party connectors: Stripe, PayPal, Shopify, Salesforce"
+    ],
+    "outcomes": [
+      "40% average efficiency improvement",
+      "100% data sync accuracy across systems",
+      "Eliminate manual data entry and workflows"
+    ],
+    "result": "50+ implementations",
+    "caseStudy": "Implemented Zoho One for a 200-person company, reducing operational costs by 35%",
+    "slug": "zoho-development"
   }
 ]

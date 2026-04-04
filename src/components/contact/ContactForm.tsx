@@ -26,6 +26,7 @@ const serviceOptions = [
   { value: "", label: "Select a service..." },
   { value: "custom-software", label: "Custom Software Development" },
   { value: "mobile-app", label: "Mobile App Development" },
+  { value: "zoho-development", label: "Zoho Development & Integration" },
   { value: "legacy-modernization", label: "Legacy Modernization" },
   { value: "api-integration", label: "API & System Integration" },
   { value: "dedicated-team", label: "Dedicated Engineering Team" },

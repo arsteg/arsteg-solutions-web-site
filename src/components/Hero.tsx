@@ -20,6 +20,7 @@ const clientTypes = [
   "Health-Tech Companies",
 ];
 
+
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
