@@ -51,7 +51,7 @@ export default function Services() {
   }, []);
 
   const getIconComponent = (iconName: string): LucideIcon => {
-    const validIcons = ["Code2", "Wrench", "PlugZap", "UsersRound", "Send", "TrendingUp"] as const;
+    const validIcons = ["Code2", "Wrench", "PlugZap", "UsersRound", "Send", "TrendingUp", "Settings"] as const;
     type ValidIconName = typeof validIcons[number];
     if (validIcons.includes(iconName as ValidIconName)) {
       return Icons[iconName as ValidIconName] as LucideIcon;

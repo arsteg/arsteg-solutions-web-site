@@ -118,12 +118,12 @@ export default function ServiceDetailPage({ service }: ServiceDetailPageProps) {
       />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 pt-28 pb-20">
+      <section className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-blue-50/50 to-indigo-50/50 pt-28 pb-20">
         {/* Background */}
         <div className="absolute inset-0 -z-10">
-          <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-blue-500/20 blur-[120px]" />
-          <div className="absolute right-1/4 bottom-1/4 h-96 w-96 rounded-full bg-indigo-500/20 blur-[120px]" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+          <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-blue-200/40 blur-[120px]" />
+          <div className="absolute right-1/4 bottom-1/4 h-96 w-96 rounded-full bg-indigo-200/40 blur-[120px]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb20_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb20_1px,transparent_1px)] bg-[size:4rem_4rem]" />
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -135,7 +135,7 @@ export default function ServiceDetailPage({ service }: ServiceDetailPageProps) {
           >
             <Link
               href="/#services"
-              className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-blue-600 transition-colors"
             >
               <ArrowLeft className="h-4 w-4" />
               Back to Services
@@ -148,36 +148,35 @@ export default function ServiceDetailPage({ service }: ServiceDetailPageProps) {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-white"
             >
               {/* Icon & Badge */}
               <div className="flex items-center gap-4 mb-6">
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600">
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 shadow-lg shadow-blue-500/25">
                   <Icon className="h-8 w-8 text-white" />
                 </div>
-                <span className="rounded-full bg-emerald-500/20 px-4 py-2 text-sm font-medium text-emerald-400">
+                <span className="rounded-full bg-emerald-100 px-4 py-2 text-sm font-medium text-emerald-700">
                   {service.result}
                 </span>
               </div>
 
-              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl mb-4">
+              <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl mb-4">
                 {service.title}
               </h1>
-              <p className="text-xl text-blue-200 mb-6">{service.tagline}</p>
-              <p className="text-lg text-gray-300 mb-8 max-w-xl">{service.description}</p>
+              <p className="text-xl text-blue-600 font-medium mb-6">{service.tagline}</p>
+              <p className="text-lg text-gray-600 mb-8 max-w-xl">{service.description}</p>
 
               {/* CTA */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="#service-contact"
-                  className="group inline-flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 text-lg font-semibold text-gray-900 transition-all hover:bg-gray-100"
+                  className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-blue-500/25 transition-all hover:shadow-xl hover:shadow-blue-500/30"
                 >
                   Get Started
                   <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <a
                   href="tel:+918447470101"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white/30 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-white/10"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-gray-200 bg-white px-8 py-4 text-lg font-semibold text-gray-700 transition-all hover:border-blue-600 hover:text-blue-600"
                 >
                   <Phone className="h-5 w-5" />
                   Call Us
@@ -192,13 +191,13 @@ export default function ServiceDetailPage({ service }: ServiceDetailPageProps) {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="hidden lg:block"
             >
-              <div className="rounded-2xl bg-white/10 backdrop-blur-sm p-8 border border-white/10">
-                <h3 className="text-xl font-bold text-white mb-6">What You&apos;ll Get</h3>
+              <div className="rounded-2xl bg-white p-8 shadow-xl ring-1 ring-gray-100">
+                <h3 className="text-xl font-bold text-gray-900 mb-6">What You&apos;ll Get</h3>
                 <ul className="space-y-4">
                   {service.outcomes.map((outcome, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <CheckCircle className="h-6 w-6 text-emerald-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-200">{outcome}</span>
+                      <CheckCircle className="h-6 w-6 text-emerald-500 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">{outcome}</span>
                     </li>
                   ))}
                 </ul>

@@ -1,0 +1,158 @@
+[
+  {
+    "slug": "ai-powered-enterprise-software",
+    "title": "How AI-Powered Solutions are Transforming Enterprise Software",
+    "excerpt": "Discover how OpenAI and machine learning integrations are enabling businesses to automate workflows, enhance decision-making, and deliver personalized experiences at scale.",
+    "author": "ARSTEG Tech Team",
+    "date": "Jan 15, 2025",
+    "category": "AI & ML",
+    "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Artificial Intelligence is no longer a futuristic concept - it's reshaping how enterprises build and deploy software today. From intelligent document processing to predictive analytics, AI-powered solutions are delivering measurable business value across industries."
+      },
+      {
+        "type": "heading",
+        "text": "The Rise of AI in Enterprise Software"
+      },
+      {
+        "type": "paragraph",
+        "text": "According to recent industry reports, over 75% of enterprises are actively implementing AI solutions. The integration of large language models like GPT-4 has opened new possibilities for automation, customer service, and decision support systems."
+      },
+      {
+        "type": "heading",
+        "text": "Key Applications We're Building"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Intelligent Document Processing - Extracting and categorizing data from unstructured documents with 95%+ accuracy",
+          "Conversational AI - Customer service bots that handle complex queries and integrate with backend systems",
+          "Predictive Analytics - ML models that forecast trends, detect anomalies, and optimize operations",
+          "Content Generation - Automated report writing, email drafting, and personalized communications"
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "Implementation Best Practices"
+      },
+      {
+        "type": "paragraph",
+        "text": "Success with AI requires more than just integrating APIs. We've found that the most successful implementations focus on clear use cases, quality data preparation, and robust error handling. Start small, measure impact, and scale what works."
+      },
+      {
+        "type": "paragraph",
+        "text": "At ARSTEG, we've helped clients reduce manual processing by 90%, improve customer response times by 5x, and unlock insights that were previously impossible to extract at scale."
+      }
+    ],
+    "readTime": "5 min read"
+  },
+  {
+    "slug": "building-scalable-apis",
+    "title": "Building Scalable APIs: Lessons from 150+ Integrations",
+    "excerpt": "An in-depth look at API architecture patterns, authentication strategies, and performance optimizations we've learned from integrating with hundreds of third-party services.",
+    "author": "Integration Experts",
+    "date": "Jan 10, 2025",
+    "category": "Engineering",
+    "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "After integrating with over 150 third-party APIs - from health devices to payment gateways - we've learned what separates robust integrations from fragile ones. Here are the patterns and practices that have proven most valuable."
+      },
+      {
+        "type": "heading",
+        "text": "Design for Failure"
+      },
+      {
+        "type": "paragraph",
+        "text": "Every external API will fail eventually. Networks go down, rate limits get hit, and providers push breaking changes. The key is building resilience from day one: circuit breakers, retry logic with exponential backoff, and graceful degradation."
+      },
+      {
+        "type": "heading",
+        "text": "Authentication Patterns That Scale"
+      },
+      {
+        "type": "list",
+        "items": [
+          "OAuth 2.0 for user-authorized access with proper token refresh handling",
+          "API keys with rotation strategies and secure storage",
+          "JWT tokens with appropriate expiration and revocation capabilities",
+          "Webhook signatures for secure event notifications"
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "Performance Optimization"
+      },
+      {
+        "type": "paragraph",
+        "text": "Caching, connection pooling, and request batching can dramatically improve performance. We've seen 10x improvements in throughput by implementing intelligent caching strategies and reducing redundant API calls."
+      },
+      {
+        "type": "heading",
+        "text": "Monitoring and Observability"
+      },
+      {
+        "type": "paragraph",
+        "text": "You can't fix what you can't see. Comprehensive logging, metrics collection, and alerting are essential. Track latency percentiles, error rates, and upstream availability to catch issues before they impact users."
+      }
+    ],
+    "readTime": "7 min read"
+  },
+  {
+    "slug": "legacy-to-cloud-migration",
+    "title": "From Legacy to Cloud: A Migration Success Story",
+    "excerpt": "Learn how we helped a 15-year-old insurance platform migrate to cloud-native architecture with zero downtime and 80% performance improvement.",
+    "author": "Development Team",
+    "date": "Jan 5, 2025",
+    "category": "Case Study",
+    "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "When a major insurance company approached us, their 15-year-old platform was struggling: slow performance, expensive maintenance, and an inability to ship new features. Here's how we transformed it without disrupting their business."
+      },
+      {
+        "type": "heading",
+        "text": "The Challenge"
+      },
+      {
+        "type": "paragraph",
+        "text": "The existing system was built on classic ASP and VB6 - technology that's increasingly difficult to maintain. Finding developers was nearly impossible, and every change carried risk. The company needed to modernize but couldn't afford downtime."
+      },
+      {
+        "type": "heading",
+        "text": "Our Approach: Strangler Fig Pattern"
+      },
+      {
+        "type": "paragraph",
+        "text": "Instead of a risky big-bang rewrite, we used the strangler fig pattern. We built new microservices in .NET Core that gradually replaced legacy functionality. Both systems ran in parallel, with traffic gradually shifted to the new platform."
+      },
+      {
+        "type": "heading",
+        "text": "Key Results"
+      },
+      {
+        "type": "list",
+        "items": [
+          "80% faster application performance",
+          "40% reduction in infrastructure costs",
+          "Zero downtime during migration",
+          "Modern codebase that developers actually want to work on",
+          "Deployment frequency increased from monthly to daily"
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "Lessons Learned"
+      },
+      {
+        "type": "paragraph",
+        "text": "The biggest lesson: don't try to modernize everything at once. Start with high-value, low-risk components. Build confidence and momentum before tackling the core systems. And always maintain the ability to roll back."
+      }
+    ],
+    "readTime": "6 min read"
+  }
+]

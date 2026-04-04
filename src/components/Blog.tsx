@@ -1,12 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Calendar, User, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Blog = () => {
   const posts = [
     {
+      slug: "ai-powered-enterprise-software",
       title: "How AI-Powered Solutions are Transforming Enterprise Software",
       excerpt:
         "Discover how OpenAI and machine learning integrations are enabling businesses to automate workflows, enhance decision-making, and deliver personalized experiences at scale.",
@@ -16,6 +18,7 @@ const Blog = () => {
       image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
     },
     {
+      slug: "building-scalable-apis",
       title: "Building Scalable APIs: Lessons from 150+ Integrations",
       excerpt:
         "An in-depth look at API architecture patterns, authentication strategies, and performance optimizations we've learned from integrating with hundreds of third-party services.",
@@ -25,6 +28,7 @@ const Blog = () => {
       image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
     },
     {
+      slug: "legacy-to-cloud-migration",
       title: "From Legacy to Cloud: A Migration Success Story",
       excerpt:
         "Learn how we helped a 15-year-old insurance platform migrate to cloud-native architecture with zero downtime and 80% performance improvement.",
@@ -72,54 +76,57 @@ const Blog = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-200/50 transition-all hover:scale-105 hover:shadow-2xl"
             >
-              {/* Image Container */}
-              <div className="relative aspect-video w-full overflow-hidden bg-gray-100">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  width={600}
-                  height={400}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                {/* Category Badge */}
-                <div className="absolute top-4 left-4 rounded-full bg-white/95 px-3 py-1.5 shadow-md ring-1 ring-gray-200/50">
-                  <span className="text-xs font-semibold text-gray-800">{post.category}</span>
-                </div>
-              </div>
-
-              {/* Post Content */}
-              <div className="p-8">
-                {/* Meta */}
-                <div className="mb-4 flex items-center gap-4 text-sm text-gray-600">
-                  <div className="flex items-center gap-1">
-                    <Calendar className="h-4 w-4 text-blue-600" />
-                    <span>{post.date}</span>
+              <Link href={`/blog/${post.slug}`} className="group block h-full">
+                <div className="relative h-full overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-200/50 transition-all hover:scale-105 hover:shadow-2xl">
+                  {/* Image Container */}
+                  <div className="relative aspect-video w-full overflow-hidden bg-gray-100">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      width={600}
+                      height={400}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                    {/* Category Badge */}
+                    <div className="absolute top-4 left-4 rounded-full bg-white/95 px-3 py-1.5 shadow-md ring-1 ring-gray-200/50">
+                      <span className="text-xs font-semibold text-gray-800">{post.category}</span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <User className="h-4 w-4 text-blue-600" />
-                    <span>{post.author}</span>
+
+                  {/* Post Content */}
+                  <div className="p-8">
+                    {/* Meta */}
+                    <div className="mb-4 flex items-center gap-4 text-sm text-gray-600">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="h-4 w-4 text-blue-600" />
+                        <span>{post.date}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <User className="h-4 w-4 text-blue-600" />
+                        <span>{post.author}</span>
+                      </div>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="mb-3 text-xl font-bold text-gray-900 transition-colors group-hover:text-blue-600">
+                      {post.title}
+                    </h3>
+
+                    {/* Excerpt */}
+                    <p className="mb-5 text-sm leading-relaxed text-gray-600 line-clamp-3">
+                      {post.excerpt}
+                    </p>
+
+                    {/* Read More */}
+                    <div className="flex items-center gap-2 text-blue-600 font-semibold text-sm transition-all group-hover:gap-3">
+                      Read More
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </div>
                   </div>
                 </div>
-
-                {/* Title */}
-                <h3 className="mb-3 text-xl font-bold text-gray-900 transition-colors group-hover:text-blue-600">
-                  {post.title}
-                </h3>
-
-                {/* Excerpt */}
-                <p className="mb-5 text-sm leading-relaxed text-gray-600 line-clamp-3">
-                  {post.excerpt}
-                </p>
-
-                {/* Read More */}
-                <div className="flex items-center gap-2 text-blue-600 font-semibold text-sm transition-all group-hover:gap-3 cursor-pointer">
-                  Read More
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </div>
-              </div>
+              </Link>
             </motion.article>
           ))}
         </div>
@@ -132,10 +139,13 @@ const Blog = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center"
         >
-          <button className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:scale-105 hover:shadow-2xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/50">
+          <Link
+            href="/blog"
+            className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:scale-105 hover:shadow-2xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/50"
+          >
             See More Posts
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-          </button>
+          </Link>
         </motion.div>
       </div>
     </section>

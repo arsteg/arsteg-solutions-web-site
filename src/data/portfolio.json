@@ -1,0 +1,170 @@
+[
+  {
+    "slug": "health-dashboard",
+    "title": "Health-Tech Platform",
+    "industry": "Healthcare",
+    "description": "Real-time patient monitoring dashboard with 8+ device integrations. HIPAA-compliant architecture serving 50,000+ users.",
+    "fullDescription": "We built a comprehensive telemedicine platform that enables healthcare providers to monitor patient vitals in real-time. The platform integrates with 8+ health devices including blood pressure monitors, glucose meters, and wearables to provide a complete picture of patient health.",
+    "tech": ["Vue.js", "Node.js", "PostgreSQL", "WebSocket", "Redis", "AWS"],
+    "result": "50x user growth",
+    "metrics": ["500K+ users", "8 device APIs", "99.9% uptime"],
+    "color": "from-emerald-500 to-teal-600",
+    "icon": "Activity",
+    "challenge": "The client needed to scale their telemedicine platform from serving a small pilot group to handling nationwide demand. They required real-time data synchronization from multiple health devices, HIPAA compliance, and the ability to handle sudden traffic spikes.",
+    "solution": "We architected a microservices-based platform using Node.js for high-concurrency data processing. WebSocket connections enable real-time updates while Redis handles caching and pub/sub for instant notifications. PostgreSQL with proper indexing ensures fast queries even at scale.",
+    "results": [
+      "Scaled from 10,000 to 500,000 active users",
+      "Integrated 8 different health device APIs (iHealth, Garmin, Fitbit, Dexcom, etc.)",
+      "Achieved 99.9% uptime with zero HIPAA violations",
+      "Reduced average page load time to under 1 second",
+      "Enabled real-time vitals monitoring with less than 100ms latency"
+    ],
+    "testimonial": {
+      "quote": "ARSTEG transformed our vision into a platform that's now used by half a million patients. Their engineering expertise in healthcare tech is unmatched.",
+      "author": "Chief Technology Officer",
+      "company": "Health-Tech Startup, USA"
+    },
+    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    "timeline": "6 months"
+  },
+  {
+    "slug": "ecommerce-platform",
+    "title": "E-Commerce Platform",
+    "industry": "Retail",
+    "description": "Multi-vendor marketplace handling 100K+ daily transactions. Integrated payments, inventory management, and real-time analytics.",
+    "fullDescription": "A full-featured multi-vendor marketplace that connects thousands of sellers with millions of buyers. The platform handles complex inventory management, real-time pricing, and seamless payment processing across multiple payment gateways.",
+    "tech": ["Next.js", ".NET Core", "Redis", "Stripe", "PostgreSQL", "Elasticsearch"],
+    "result": "3x revenue growth",
+    "metrics": ["$10M+ processed", "100K daily orders", "2s load time"],
+    "color": "from-blue-500 to-indigo-600",
+    "icon": "ShoppingCart",
+    "challenge": "The client's existing e-commerce platform was struggling with performance issues during peak traffic, cart abandonment due to slow checkout, and difficulty onboarding new vendors. They needed a complete overhaul to support their growth ambitions.",
+    "solution": "We rebuilt the platform using Next.js for fast, SEO-friendly pages and .NET Core for robust backend services. Elasticsearch powers lightning-fast product search, while Redis caching ensures snappy response times. Stripe integration provides reliable payment processing with fraud protection.",
+    "results": [
+      "3x increase in revenue within first year",
+      "Processed over $10M in transactions monthly",
+      "Reduced cart abandonment by 40%",
+      "Achieved sub-2-second page load times",
+      "Onboarded 500+ new vendors in 3 months"
+    ],
+    "testimonial": {
+      "quote": "The new platform has completely transformed our business. We went from struggling with daily crashes to processing 100,000 orders a day without breaking a sweat.",
+      "author": "CEO",
+      "company": "Retail Marketplace, India"
+    },
+    "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80",
+    "timeline": "8 months"
+  },
+  {
+    "slug": "insurance-portal",
+    "title": "Insurance Portal",
+    "industry": "FinTech",
+    "description": "Legacy system modernization for a 15-year-old insurance platform. Cloud migration with zero downtime.",
+    "fullDescription": "Complete modernization of a legacy insurance platform built on Classic ASP and VB6. We migrated the entire system to a modern cloud-native architecture while ensuring business continuity throughout the transition.",
+    "tech": ["React", ".NET Core", "Azure", "Kubernetes", "SQL Server", "RabbitMQ"],
+    "result": "80% faster",
+    "metrics": ["40% cost reduction", "Zero downtime", "Modern stack"],
+    "color": "from-violet-500 to-purple-600",
+    "icon": "Building2",
+    "challenge": "A 15-year-old insurance platform built on deprecated technology was becoming impossible to maintain. Finding developers was nearly impossible, and every change carried significant risk. The client needed to modernize without disrupting their 24/7 operations.",
+    "solution": "We employed the Strangler Fig pattern, gradually replacing legacy components with modern microservices. Azure Kubernetes Service provided scalable, containerized deployment. RabbitMQ enabled asynchronous processing of claims and policies. Both systems ran in parallel during the transition.",
+    "results": [
+      "80% improvement in application performance",
+      "40% reduction in infrastructure costs",
+      "Zero downtime during the entire migration",
+      "Deployment frequency increased from monthly to daily",
+      "Developer productivity increased 3x"
+    ],
+    "testimonial": {
+      "quote": "We thought modernizing our legacy system would be a nightmare. ARSTEG made it seamless. Our team can finally ship features without fear.",
+      "author": "VP of Engineering",
+      "company": "Insurance Company, Singapore"
+    },
+    "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80",
+    "timeline": "12 months"
+  },
+  {
+    "slug": "mobile-banking",
+    "title": "Mobile Banking App",
+    "industry": "FinTech",
+    "description": "Cross-platform banking application with biometric auth, real-time transactions, and PCI-DSS compliance.",
+    "fullDescription": "A secure, feature-rich mobile banking application serving hundreds of thousands of users. The app provides complete banking functionality including transfers, bill payments, and investment tracking with enterprise-grade security.",
+    "tech": ["Flutter", "Node.js", "AWS", "Firebase", "PostgreSQL", "Redis"],
+    "result": "4.8 App Store rating",
+    "metrics": ["200K+ downloads", "PCI compliant", "Biometric auth"],
+    "color": "from-amber-500 to-orange-600",
+    "icon": "Smartphone",
+    "challenge": "The bank needed a mobile application that could compete with fintech startups while maintaining the security and compliance requirements of traditional banking. They required biometric authentication, real-time transaction processing, and PCI-DSS compliance.",
+    "solution": "Flutter enabled us to build a beautiful, performant app for both iOS and Android from a single codebase. Node.js microservices handle transaction processing with sub-second response times. Firebase provides push notifications and analytics, while comprehensive security measures ensure PCI-DSS compliance.",
+    "results": [
+      "4.8 star rating on both App Store and Play Store",
+      "200,000+ downloads in first 6 months",
+      "Full PCI-DSS compliance certification",
+      "Biometric authentication with 99.9% success rate",
+      "Average transaction completion in under 3 seconds"
+    ],
+    "testimonial": {
+      "quote": "Our customers love the app. The biometric login and instant transfers have made banking actually enjoyable. App store reviews speak for themselves.",
+      "author": "Head of Digital Banking",
+      "company": "Regional Bank, UAE"
+    },
+    "image": "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
+    "timeline": "10 months"
+  },
+  {
+    "slug": "ai-document-processor",
+    "title": "AI Document Processor",
+    "industry": "Enterprise",
+    "description": "Intelligent document processing system using GPT-4 and computer vision. Reduced manual processing by 90%.",
+    "fullDescription": "An AI-powered document processing system that automatically extracts, categorizes, and processes information from various document types including invoices, contracts, and forms. The system combines large language models with computer vision for unprecedented accuracy.",
+    "tech": ["Python", "OpenAI", "FastAPI", "React", "AWS", "PostgreSQL"],
+    "result": "90% automation",
+    "metrics": ["1M+ docs processed", "95% accuracy", "10x faster"],
+    "color": "from-pink-500 to-rose-600",
+    "icon": "Brain",
+    "challenge": "The enterprise client was processing thousands of documents daily with a large manual team. Errors were common, turnaround was slow, and costs were escalating. They needed an intelligent system that could understand and process documents with human-like accuracy.",
+    "solution": "We built a document processing pipeline using GPT-4 for text understanding and custom computer vision models for layout analysis. FastAPI provides a high-performance backend, while React delivers an intuitive interface for human review of edge cases. The system learns and improves from corrections.",
+    "results": [
+      "90% reduction in manual document processing",
+      "Processed over 1 million documents in first year",
+      "95% accuracy on automated extractions",
+      "10x faster processing compared to manual handling",
+      "ROI achieved within 4 months of deployment"
+    ],
+    "testimonial": {
+      "quote": "The AI system has transformed our operations. What used to take a team of 20 people now runs automatically with higher accuracy. The ROI has been incredible.",
+      "author": "COO",
+      "company": "Enterprise Services, UK"
+    },
+    "image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
+    "timeline": "5 months"
+  },
+  {
+    "slug": "analytics-dashboard",
+    "title": "Analytics Dashboard",
+    "industry": "SaaS",
+    "description": "Real-time business intelligence platform with custom reporting, data visualization, and automated alerts.",
+    "fullDescription": "A comprehensive business intelligence platform that aggregates data from multiple sources, provides real-time visualizations, and enables custom reporting. The platform serves enterprise clients across various industries with different data needs.",
+    "tech": ["React", "D3.js", "Python", "Snowflake", "AWS", "Redis"],
+    "result": "200+ enterprise clients",
+    "metrics": ["1B+ data points", "Real-time sync", "Custom reports"],
+    "color": "from-cyan-500 to-blue-600",
+    "icon": "BarChart3",
+    "challenge": "The SaaS company needed a flexible analytics platform that could serve diverse enterprise clients with varying data sources and reporting requirements. The platform needed to handle massive data volumes while providing real-time insights.",
+    "solution": "We built a modular analytics platform using Snowflake for data warehousing and Python for data processing pipelines. React with D3.js enables beautiful, interactive visualizations. The platform supports custom data connectors and flexible report builders for each client's unique needs.",
+    "results": [
+      "Onboarded 200+ enterprise clients",
+      "Processing over 1 billion data points daily",
+      "Real-time dashboard updates with sub-second latency",
+      "Custom reporting engine with 50+ visualization types",
+      "99.9% platform availability"
+    ],
+    "testimonial": {
+      "quote": "This is the analytics platform we always wanted to build but never had the expertise. ARSTEG delivered exactly what we envisioned and more.",
+      "author": "Founder & CEO",
+      "company": "SaaS Analytics, USA"
+    },
+    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    "timeline": "9 months"
+  }
+]

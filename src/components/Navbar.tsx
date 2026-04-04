@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -18,12 +19,17 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      // Update active section based on scroll position
+      // Only track active section on homepage
+      if (!isHomePage) return;
+
       const sections = ["home", ...navLinks.map(l => l.id), "contact"];
       for (const section of sections.reverse()) {
         const el = document.getElementById(section);
@@ -35,13 +41,20 @@ export default function Navbar() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHomePage]);
 
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-      setIsOpen(false);
+  const navigateTo = (id: string) => {
+    setIsOpen(false);
+
+    if (isHomePage) {
+      // On homepage, just scroll to the section
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // On other pages, navigate to homepage with hash
+      router.push(`/#${id}`);
     }
   };
 
@@ -61,7 +74,7 @@ export default function Navbar() {
             href="/#home"
             onClick={(e) => {
               e.preventDefault();
-              scrollTo("home");
+              navigateTo("home");
             }}
             className="group relative flex items-center gap-2"
             aria-label="Arsteg – Home"
@@ -103,7 +116,7 @@ export default function Navbar() {
                     href={`/#${link.id}`}
                     onClick={(e) => {
                       e.preventDefault();
-                      scrollTo(link.id);
+                      navigateTo(link.id);
                     }}
                     className="relative"
                   >
@@ -138,7 +151,7 @@ export default function Navbar() {
                 href="/#contact"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollTo("contact");
+                  navigateTo("contact");
                 }}
                 className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gray-900 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-gray-800"
               >
@@ -211,7 +224,7 @@ export default function Navbar() {
                       href={`/#${link.id}`}
                       onClick={(e) => {
                         e.preventDefault();
-                        scrollTo(link.id);
+                        navigateTo(link.id);
                       }}
                       className={`flex items-center justify-between rounded-xl px-4 py-4 text-base font-medium transition-all ${
                         activeSection === link.id
@@ -235,7 +248,7 @@ export default function Navbar() {
                 className="mt-6 pt-6 border-t border-gray-200"
               >
                 <button
-                  onClick={() => scrollTo("contact")}
+                  onClick={() => navigateTo("contact")}
                   className="w-full rounded-xl bg-gradient-to-r from-gray-900 to-gray-800 py-4 text-center text-base font-semibold text-white shadow-lg transition-all active:scale-[0.98]"
                 >
                   Get a Quote
