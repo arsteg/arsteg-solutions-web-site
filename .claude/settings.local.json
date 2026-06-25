@@ -5,7 +5,10 @@
       "Bash(git checkout:*)",
       "Bash(npm run dev:*)",
       "Bash(ping:*)",
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Bash(dir:*)",
+      "Bash(if exist .next rmdir /s /q .next)",
+      "Bash(cmd /c \"rmdir /s /q .next 2>nul & npm run build\")"
     ]
   }
 }

@@ -14,11 +14,9 @@ export default function GoogleEmbedMap({
   className = "",
 }: GoogleEmbedMapProps) {
   const [isLoading, setIsLoading] = useState(true);
-  const placeName = encodeURIComponent("ARSTEG Solutions Pvt. Ltd., LG-048, Elan Miracle, Sector 84, Gurugram, Haryana 122004");
-  
-  // Fixed embed URL using place name + coordinates (no API key)
-  //const src = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d${3510.5 / Math.pow(2, zoom)}!2d${lng}!3d${lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s${placeName}!5e0!3m2!1sen!2sin!4v${Date.now()}!5m2!1sen!2sin`;
- const src = `https://www.google.com/maps?q=${lat},${lng}&z=${zoom}&output=embed`;
+
+  // Simple embed URL using coordinates
+  const src = `https://www.google.com/maps?q=${lat},${lng}&z=${zoom}&output=embed`;
   return (
     <div
       className={`relative w-full overflow-hidden rounded-3xl bg-white/70 shadow-xl backdrop-blur-sm ring-1 ring-gray-200/50 transition-all hover:scale-[1.01] hover:shadow-2xl ${className}`}

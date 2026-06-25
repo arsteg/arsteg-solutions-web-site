@@ -1,6 +1,8 @@
 "use client";
 
-import { TrendingUp, Users, Mail, Target, CheckCircle } from "lucide-react";
+import { CheckCircle } from "lucide-react";
+// Reserved for future stat icons
+// import { TrendingUp, Users, Mail, Target } from "lucide-react";
 import { motion } from "framer-motion";
 
 const stats = [

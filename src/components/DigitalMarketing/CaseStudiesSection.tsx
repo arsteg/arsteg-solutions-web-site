@@ -4,7 +4,7 @@ import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 import Image from "next/image";
 import { useState } from "react";
-import { ArrowRight, Quote, CheckCircle, TrendingUp, Users, Zap } from "lucide-react";
+import { ArrowRight, Quote, CheckCircle, TrendingUp, Zap } from "lucide-react";
 import clsx from "clsx";
 
 interface CaseStudy {

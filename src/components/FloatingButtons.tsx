@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { ArrowUp, MessageCircle, Send } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
 
 export default function FloatingButtons() {
   const [showBackToTop, setShowBackToTop] = useState(false);

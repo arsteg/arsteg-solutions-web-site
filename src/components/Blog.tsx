@@ -2,154 +2,187 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Calendar, User, ArrowRight } from "lucide-react";
+import { Calendar, ArrowRight, ArrowUpRight, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 
-const Blog = () => {
-  const posts = [
-    {
-      slug: "ai-powered-enterprise-software",
-      title: "How AI-Powered Solutions are Transforming Enterprise Software",
-      excerpt:
-        "Discover how OpenAI and machine learning integrations are enabling businesses to automate workflows, enhance decision-making, and deliver personalized experiences at scale.",
-      author: "ARSTEG Tech Team",
-      date: "Jan 15, 2025",
-      category: "AI & ML",
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
-    },
-    {
-      slug: "building-scalable-apis",
-      title: "Building Scalable APIs: Lessons from 150+ Integrations",
-      excerpt:
-        "An in-depth look at API architecture patterns, authentication strategies, and performance optimizations we've learned from integrating with hundreds of third-party services.",
-      author: "Integration Experts",
-      date: "Jan 10, 2025",
-      category: "Engineering",
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
-    },
-    {
-      slug: "legacy-to-cloud-migration",
-      title: "From Legacy to Cloud: A Migration Success Story",
-      excerpt:
-        "Learn how we helped a 15-year-old insurance platform migrate to cloud-native architecture with zero downtime and 80% performance improvement.",
-      author: "Development Team",
-      date: "Jan 5, 2025",
-      category: "Case Study",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
-    },
-  ];
+const posts = [
+  {
+    slug: "ai-powered-enterprise-software",
+    title: "How AI-Powered Solutions are Transforming Enterprise Software",
+    excerpt:
+      "Discover how OpenAI and machine learning integrations enable businesses to automate workflows and deliver personalized experiences at scale.",
+    date: "Jan 15, 2025",
+    readTime: "8 min read",
+    category: "AI & ML",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=90",
+    featured: true,
+  },
+  {
+    slug: "building-scalable-apis",
+    title: "Building Scalable APIs: Lessons from 150+ Integrations",
+    excerpt:
+      "API architecture patterns, authentication strategies, and performance optimizations from hundreds of third-party integrations.",
+    date: "Jan 10, 2025",
+    readTime: "6 min read",
+    category: "Engineering",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=90",
+    featured: false,
+  },
+  {
+    slug: "legacy-to-cloud-migration",
+    title: "From Legacy to Cloud: A Migration Success Story",
+    excerpt:
+      "How we helped a 15-year-old insurance platform migrate to cloud-native architecture with zero downtime.",
+    date: "Jan 5, 2025",
+    readTime: "5 min read",
+    category: "Case Study",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=90",
+    featured: false,
+  },
+];
+
+export default function Blog() {
+  const featuredPost = posts[0];
+  const regularPosts = posts.slice(1);
 
   return (
-    <section id="blog" className="relative overflow-hidden bg-gradient-to-b from-white via-blue-50/30 to-white py-20 lg:py-28">
-      {/* Subtle Background Blobs */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute left-1/4 top-32 h-80 w-80 rounded-full bg-blue-100/40 blur-3xl" />
-        <div className="absolute right-1/4 bottom-32 h-96 w-96 rounded-full bg-indigo-100/40 blur-3xl" />
-      </div>
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="blog" className="relative py-24 lg:py-32 bg-white overflow-hidden">
+      <div className="container">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12"
         >
-          <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-            Insights &{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              Trends
-            </span>
-          </h2>
-          <p className="mx-auto mt-6 max-w-3xl text-lg text-gray-600 lg:text-xl">
-            Stay updated with the latest in software development and health-tech innovations. Our blog covers industry trends, case studies, and tips to help your business thrive.
-          </p>
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-600 mb-6">
+              <span className="h-1.5 w-1.5 rounded-full bg-blue-600"></span>
+              Insights
+            </div>
+
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              Latest{" "}
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                thinking
+              </span>
+            </h2>
+
+            <p className="text-lg text-gray-600 max-w-xl">
+              Perspectives on software development, engineering best practices, and industry trends.
+            </p>
+          </div>
+
+          <Link
+            href="/blog"
+            className="group inline-flex items-center gap-2 text-gray-600 font-semibold hover:text-gray-900 transition-colors"
+          >
+            View all posts
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
         </motion.div>
 
-        {/* Blog Cards */}
-        <div className="grid gap-8 md:grid-cols-3 max-w-7xl mx-auto mb-16">
-          {posts.map((post, index) => (
-            <motion.article
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-            >
-              <Link href={`/blog/${post.slug}`} className="group block h-full">
-                <div className="relative h-full overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-200/50 transition-all hover:scale-105 hover:shadow-2xl">
-                  {/* Image Container */}
-                  <div className="relative aspect-video w-full overflow-hidden bg-gray-100">
-                    <Image
-                      src={post.image}
-                      alt={post.title}
-                      width={600}
-                      height={400}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                    {/* Category Badge */}
-                    <div className="absolute top-4 left-4 rounded-full bg-white/95 px-3 py-1.5 shadow-md ring-1 ring-gray-200/50">
-                      <span className="text-xs font-semibold text-gray-800">{post.category}</span>
+        {/* Featured Post */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-10"
+        >
+          <Link href={`/blog/${featuredPost.slug}`} className="group block">
+            <div className="relative rounded-3xl overflow-hidden bg-gray-900">
+              <div className="grid lg:grid-cols-2">
+                <div className="relative h-64 lg:h-auto lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+                  <Image
+                    src={featuredPost.image}
+                    alt={featuredPost.title}
+                    width={800}
+                    height={500}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/80 to-transparent lg:bg-gradient-to-l" />
+                </div>
+
+                <div className="relative p-8 lg:p-12 lg:pr-24">
+                  <div className="flex items-center gap-4 mb-6">
+                    <span className="rounded-full bg-blue-500/20 px-3 py-1 text-xs font-bold text-blue-400">
+                      {featuredPost.category}
+                    </span>
+                    <div className="flex items-center gap-2 text-sm text-gray-400">
+                      <Calendar className="h-4 w-4" />
+                      {featuredPost.date}
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-gray-400">
+                      <Clock className="h-4 w-4" />
+                      {featuredPost.readTime}
                     </div>
                   </div>
 
-                  {/* Post Content */}
-                  <div className="p-8">
-                    {/* Meta */}
-                    <div className="mb-4 flex items-center gap-4 text-sm text-gray-600">
-                      <div className="flex items-center gap-1">
-                        <Calendar className="h-4 w-4 text-blue-600" />
-                        <span>{post.date}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <User className="h-4 w-4 text-blue-600" />
-                        <span>{post.author}</span>
-                      </div>
-                    </div>
+                  <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">
+                    {featuredPost.title}
+                  </h3>
 
-                    {/* Title */}
-                    <h3 className="mb-3 text-xl font-bold text-gray-900 transition-colors group-hover:text-blue-600">
-                      {post.title}
-                    </h3>
+                  <p className="text-gray-400 mb-8 leading-relaxed">
+                    {featuredPost.excerpt}
+                  </p>
 
-                    {/* Excerpt */}
-                    <p className="mb-5 text-sm leading-relaxed text-gray-600 line-clamp-3">
-                      {post.excerpt}
-                    </p>
+                  <div className="inline-flex items-center gap-2 text-white font-semibold group-hover:gap-3 transition-all">
+                    Read article
+                    <ArrowRight className="h-5 w-5" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
+        </motion.div>
 
-                    {/* Read More */}
-                    <div className="flex items-center gap-2 text-blue-600 font-semibold text-sm transition-all group-hover:gap-3">
-                      Read More
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </div>
+        {/* Regular Posts */}
+        <div className="grid gap-6 md:grid-cols-2">
+          {regularPosts.map((post, i) => (
+            <motion.article
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+            >
+              <Link href={`/blog/${post.slug}`} className="group flex flex-col sm:flex-row gap-6 p-6 rounded-2xl bg-gray-50 hover:bg-white hover:shadow-lg transition-all">
+                <div className="relative w-full sm:w-48 h-48 sm:h-32 flex-shrink-0 rounded-xl overflow-hidden">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    width={200}
+                    height={150}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-0.5 rounded">
+                      {post.category}
+                    </span>
+                    <span className="text-xs text-gray-500">{post.readTime}</span>
+                  </div>
+
+                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+                    {post.title}
+                  </h3>
+
+                  <p className="text-sm text-gray-600 line-clamp-2 mb-4">
+                    {post.excerpt}
+                  </p>
+
+                  <div className="flex items-center gap-1 text-sm font-medium text-gray-500 group-hover:text-gray-900 transition-colors">
+                    Read more
+                    <ArrowUpRight className="h-4 w-4" />
                   </div>
                 </div>
               </Link>
             </motion.article>
           ))}
         </div>
-
-        {/* CTA Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center"
-        >
-          <Link
-            href="/blog"
-            className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:scale-105 hover:shadow-2xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/50"
-          >
-            See More Posts
-            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-          </Link>
-        </motion.div>
       </div>
     </section>
   );
-};
-
-export default Blog;
+}

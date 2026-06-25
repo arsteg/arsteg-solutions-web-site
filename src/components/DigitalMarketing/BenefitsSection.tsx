@@ -1,13 +1,7 @@
 "use client";
 
-import {
-  DollarSign,
-  Users,
-  Globe,
-  Zap,
-  Target,
-  TrendingUp,
-} from "lucide-react";
+// Icons reserved for future benefit items
+// import { DollarSign, Users, Globe, Zap, Target, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 import Card from "@/components/ui/Card";
 

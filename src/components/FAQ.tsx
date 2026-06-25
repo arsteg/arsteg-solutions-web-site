@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, HelpCircle } from "lucide-react";
+import { ChevronDown, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 const faqs = [
   {
@@ -42,13 +43,8 @@ const faqs = [
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
   return (
     <>
-      {/* FAQ Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -67,64 +63,52 @@ export default function FAQ() {
         }}
       />
 
-      <section id="faq" className="relative overflow-hidden bg-gray-50/50 py-24 lg:py-32">
-        {/* Background */}
-        <div className="absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute left-1/4 top-32 h-[500px] w-[500px] rounded-full bg-blue-50/50 blur-[100px]" />
-          <div className="absolute right-1/4 bottom-32 h-[500px] w-[500px] rounded-full bg-indigo-50/50 blur-[100px]" />
-        </div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="faq" className="relative py-24 lg:py-32 bg-white overflow-hidden">
+        <div className="container">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="max-w-3xl mx-auto text-center mb-12"
           >
-            <span className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 mb-6">
-              <HelpCircle className="h-4 w-4" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-600 shadow-sm mb-6">
+              <span className="h-1.5 w-1.5 rounded-full bg-blue-600"></span>
               FAQ
-            </span>
-            <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-              Frequently Asked{" "}
-              <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                Questions
-              </span>
+            </div>
+
+            <h2 className="text-headline text-gray-900 mb-6">
+              Frequently asked{" "}
+              <span className="gradient-text">questions</span>
             </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-600">
-              Everything you need to know about working with ARSTEG. Can&apos;t find the answer? Contact us directly.
+
+            <p className="text-body-lg">
+              Everything you need to know about working with us.
             </p>
           </motion.div>
 
           {/* FAQ Accordion */}
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-2xl mx-auto">
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="mb-4"
+                transition={{ delay: index * 0.04 }}
+                className="border-b border-gray-100"
               >
                 <button
-                  onClick={() => toggleFAQ(index)}
-                  className={`w-full flex items-center justify-between gap-4 rounded-2xl bg-white p-6 text-left shadow-sm ring-1 transition-all ${
-                    openIndex === index
-                      ? "ring-blue-200 shadow-md"
-                      : "ring-gray-100 hover:ring-gray-200 hover:shadow-md"
-                  }`}
+                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                  className="w-full flex items-center justify-between gap-4 py-5 text-left"
                 >
-                  <span className="text-lg font-semibold text-gray-900">
+                  <span className="text-base font-medium text-gray-900">
                     {faq.question}
                   </span>
                   <motion.div
                     animate={{ rotate: openIndex === index ? 180 : 0 }}
                     transition={{ duration: 0.2 }}
-                    className={`flex-shrink-0 rounded-full p-1 ${
-                      openIndex === index ? "bg-blue-100 text-blue-600" : "bg-gray-100 text-gray-500"
-                    }`}
+                    className="flex-shrink-0 text-gray-400"
                   >
                     <ChevronDown className="h-5 w-5" />
                   </motion.div>
@@ -136,12 +120,12 @@ export default function FAQ() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 py-4 text-gray-600 leading-relaxed">
+                      <p className="pb-5 text-sm text-gray-600 leading-relaxed">
                         {faq.answer}
-                      </div>
+                      </p>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -151,23 +135,19 @@ export default function FAQ() {
 
           {/* CTA */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mt-12"
           >
             <p className="text-gray-600 mb-4">Still have questions?</p>
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700 transition-colors"
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-2 text-gray-900 font-semibold hover:text-gray-700 transition-colors"
             >
               Contact our team
-              <span aria-hidden="true">→</span>
-            </a>
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </Link>
           </motion.div>
         </div>
       </section>

@@ -2,17 +2,9 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  Search,
-  MousePointer2,
-  Share2,
-  PenTool,
-  Mail,
-  Smartphone,
-  BarChart3,
-  Globe,
-  CheckCircle
-} from "lucide-react";
+import { CheckCircle } from "lucide-react";
+// Reserved for future service icons
+// import { Search, MousePointer2, Share2, PenTool, Mail, Smartphone, BarChart3, Globe } from "lucide-react";
 import Card from "@/components/ui/Card";
 
 const services = [

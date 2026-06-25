@@ -1,15 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { MapPin, Mail, Phone, Send, ChevronDown } from "lucide-react";
+import { MapPin, Mail, Phone, ChevronDown, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import GoogleEmbedMap from "./GoogleEmbedMap";
 
 const contactInfo = [
-  {
-    Icon: MapPin,
-    title: "Address",
-    detail: "LG-048, Elan Miracle, Hayatpur, Sector 84, Near Sector 83, Gurugram, Haryana 122004, India",
-  },
   {
     Icon: Mail,
     title: "Email",
@@ -19,6 +15,11 @@ const contactInfo = [
     Icon: Phone,
     title: "Phone",
     detail: "+91-844-747-0101",
+  },
+  {
+    Icon: MapPin,
+    title: "Office",
+    detail: "Gurugram, Haryana, India",
   },
 ] as const;
 
@@ -110,305 +111,282 @@ export default function Contact() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const inputStyles = "w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-gray-900 placeholder:text-gray-400 transition-all focus:border-gray-900 focus:outline-none focus:ring-0 hover:border-gray-300";
+  const selectStyles = "w-full appearance-none rounded-xl border border-gray-200 bg-white px-4 py-3.5 pr-10 text-gray-900 transition-all focus:border-gray-900 focus:outline-none focus:ring-0 hover:border-gray-300";
+
   return (
     <>
-      {/* Contact Page Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ContactPage",
-            "name": "Contact ARSTEG Solutions - Software Development Company in Gurugram",
-            "description": "Get in touch with ARSTEG for custom software, mobile apps, AI, cloud, and health-tech solutions. Free quote in 24 hours. Gurugram office.",
+            "name": "Contact ARSTEG Solutions",
+            "description": "Get in touch for custom software development. Free quote in 24 hours.",
             "url": "https://arsteg.com/contact",
-            "publisher": {
-              "@type": "Organization",
-              "name": "ARSTEG Solutions Pvt. Ltd.",
-              "logo": "https://arsteg.com/logo.png"
-            },
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "LG-048, Elan Miracle, Hayatpur, Sector 84, Near Sector 83",
-              "addressLocality": "Gurugram",
-              "addressRegion": "Haryana",
-              "postalCode": "122004",
-              "addressCountry": "IN"
-            },
-            "telephone": "+91-844-747-0101",
-            "email": "info@arsteg.com",
-            "openingHours": "Mo-Fr 09:00-18:00",
-            "contactType": "Customer Service",
-            "areaServed": "Worldwide"
           })
         }}
       />
 
-      <section id="contact" className="relative overflow-hidden bg-gradient-to-b from-white via-blue-50/30 to-white py-20 lg:py-28">
-        {/* Background blobs */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute left-10 top-32 h-80 w-80 rounded-full bg-blue-100/40 blur-3xl" />
-          <div className="absolute right-10 bottom-32 h-96 w-96 rounded-full bg-indigo-100/40 blur-3xl" />
-        </div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          {/* SEO-Optimized Heading */}
-          <div className="text-center mb-16">
-            <span className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 mb-6">
+      <section id="contact" className="relative py-24 lg:py-32 bg-white overflow-hidden">
+        <div className="container">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto text-center mb-12"
+          >
+            <div className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-600 shadow-sm mb-6">
+              <span className="h-1.5 w-1.5 rounded-full bg-blue-600"></span>
               Get Started
-            </span>
-            <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-              Let&apos;s Build Something{" "}
-              <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                Great
-              </span>
+            </div>
+
+            <h2 className="text-headline text-gray-900 mb-6">
+              Let&apos;s build something{" "}
+              <span className="gradient-text">great</span>
             </h2>
-            <p className="mx-auto mt-6 max-w-3xl text-lg text-gray-600 lg:text-xl">
-              Ready to transform your ideas into reality? Tell us about your project and get a <strong>free quote within 24 hours</strong>.
+
+            <p className="text-body-lg">
+              Tell us about your project and get a free quote within 24 hours.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 max-w-7xl mx-auto">
-
+          <div className="grid gap-12 lg:grid-cols-5 max-w-6xl mx-auto">
             {/* Contact Form */}
-            <div className="rounded-3xl bg-white p-8 shadow-xl ring-1 ring-gray-200/50">
-              <h3 className="mb-6 text-2xl font-bold text-gray-900">Send Us a Message</h3>
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-3"
+            >
+              <div className="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-900/5">
+                {error && (
+                  <div className="mb-6 rounded-xl bg-red-50 p-4 text-sm text-red-700">
+                    {error}
+                  </div>
+                )}
+                {success && (
+                  <div className="mb-6 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-700">
+                    {success}
+                  </div>
+                )}
 
-              {/* Feedback */}
-              {error && (
-                <div className="mb-5 rounded-xl bg-red-50 p-4 text-sm text-red-700 ring-1 ring-red-200">
-                  {error}
-                </div>
-              )}
-              {success && (
-                <div className="mb-5 rounded-xl bg-green-50 p-4 text-sm text-green-700 ring-1 ring-green-200">
-                  {success}
-                </div>
-              )}
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                        Full Name *
+                      </label>
+                      <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="John Smith"
+                        required
+                        className={inputStyles}
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                        Email Address *
+                      </label>
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="john@company.com"
+                        required
+                        className={inputStyles}
+                      />
+                    </div>
+                  </div>
 
-              <form onSubmit={handleSubmit} className="space-y-5">
-                {/* Name & Email Row */}
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1.5">
-                      Full Name *
-                    </label>
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="John Smith"
-                      required
-                      className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
-                    />
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                        Phone Number
+                      </label>
+                      <input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+1 (555) 000-0000"
+                        className={inputStyles}
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+                        Company Name
+                      </label>
+                      <input
+                        id="company"
+                        name="company"
+                        type="text"
+                        value={formData.company}
+                        onChange={handleChange}
+                        placeholder="Acme Inc."
+                        className={inputStyles}
+                      />
+                    </div>
                   </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1.5">
-                      Email Address *
-                    </label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="john@company.com"
-                      required
-                      className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
-                    />
-                  </div>
-                </div>
 
-                {/* Phone & Company Row */}
-                <div className="grid gap-5 sm:grid-cols-2">
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1.5">
-                      Phone Number
-                    </label>
-                    <input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      placeholder="+1 (555) 000-0000"
-                      className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1.5">
-                      Company Name
-                    </label>
-                    <input
-                      id="company"
-                      name="company"
-                      type="text"
-                      value={formData.company}
-                      onChange={handleChange}
-                      placeholder="Acme Inc."
-                      className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
-                    />
-                  </div>
-                </div>
-
-                {/* Service Type */}
-                <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1.5">
-                    Service Needed
-                  </label>
-                  <div className="relative">
-                    <select
-                      id="service"
-                      name="service"
-                      value={formData.service}
-                      onChange={handleChange}
-                      className="w-full appearance-none rounded-xl border border-gray-200 bg-white px-4 py-3 pr-10 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
-                    >
-                      {serviceOptions.map((option) => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
-                    <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 pointer-events-none" />
-                  </div>
-                </div>
-
-                {/* Budget & Referral Row */}
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <div>
-                    <label htmlFor="budget" className="block text-sm font-medium text-gray-700 mb-1.5">
-                      Budget Range
-                    </label>
-                    <input
-                      id="budget"
-                      name="budget"
-                      type="text"
-                      value={formData.budget}
-                      onChange={handleChange}
-                      placeholder="$10,000 - $50,000"
-                      className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="referral" className="block text-sm font-medium text-gray-700 mb-1.5">
-                      How did you find us?
+                    <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
+                      Service Needed
                     </label>
                     <div className="relative">
                       <select
-                        id="referral"
-                        name="referral"
-                        value={formData.referral}
+                        id="service"
+                        name="service"
+                        value={formData.service}
                         onChange={handleChange}
-                        className="w-full appearance-none rounded-xl border border-gray-200 bg-white px-4 py-3 pr-10 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
+                        className={selectStyles}
                       >
-                        {referralOptions.map((option) => (
+                        {serviceOptions.map((option) => (
                           <option key={option.value} value={option.value}>
                             {option.label}
                           </option>
                         ))}
                       </select>
-                      <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 pointer-events-none" />
+                      <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
                     </div>
                   </div>
-                </div>
 
-                {/* Project Description */}
-                <div>
-                  <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1.5">
-                    Project Description *
-                  </label>
-                  <textarea
-                    id="description"
-                    name="description"
-                    value={formData.description}
-                    onChange={handleChange}
-                    placeholder="Tell us about your project goals, timeline, and any specific requirements..."
-                    rows={5}
-                    required
-                    className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all resize-none"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="group flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-4 text-base font-semibold text-white shadow-lg shadow-blue-500/25 transition-all hover:shadow-xl hover:shadow-blue-500/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? "Sending..." : "Submit Your Inquiry"}
-                  <Send className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </button>
-
-                <p className="text-center text-sm text-gray-500">
-                  We typically respond within 24 hours
-                </p>
-              </form>
-            </div>
-
-            {/* Contact Info & Map */}
-            <div className="space-y-8">
-              {/* Info Cards */}
-              <div className="space-y-4">
-                {contactInfo.map(({ Icon, title, detail }, i) => (
-                  <div
-                    key={i}
-                    className="group flex gap-4 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-100 transition-all hover:shadow-lg hover:ring-blue-100"
-                  >
-                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50 text-blue-600 transition-all group-hover:from-blue-600 group-hover:to-indigo-600 group-hover:text-white">
-                      <Icon className="h-6 w-6" />
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="budget" className="block text-sm font-medium text-gray-700 mb-2">
+                        Budget Range
+                      </label>
+                      <input
+                        id="budget"
+                        name="budget"
+                        type="text"
+                        value={formData.budget}
+                        onChange={handleChange}
+                        placeholder="$10,000 - $50,000"
+                        className={inputStyles}
+                      />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900">{title}</h4>
-                      <p className="mt-1 text-sm text-gray-600 break-words">
-                        {title === "Email" ? (
-                          <a href={`mailto:${detail}`} className="hover:text-blue-600 transition-colors">
-                            {detail}
-                          </a>
-                        ) : title === "Phone" ? (
-                          <a href={`tel:${detail.replace(/[^0-9+]/g, "")}`} className="hover:text-blue-600 transition-colors">
-                            {detail}
-                          </a>
-                        ) : (
-                          detail
-                        )}
-                      </p>
+                      <label htmlFor="referral" className="block text-sm font-medium text-gray-700 mb-2">
+                        How did you find us?
+                      </label>
+                      <div className="relative">
+                        <select
+                          id="referral"
+                          name="referral"
+                          value={formData.referral}
+                          onChange={handleChange}
+                          className={selectStyles}
+                        >
+                          {referralOptions.map((option) => (
+                            <option key={option.value} value={option.value}>
+                              {option.label}
+                            </option>
+                          ))}
+                        </select>
+                        <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
+                      </div>
                     </div>
                   </div>
-                ))}
-              </div>
 
-              {/* Google Map */}
-              <div className="overflow-hidden rounded-2xl shadow-lg ring-1 ring-gray-100">
-                <div className="h-80 w-full bg-gray-100">
+                  <div>
+                    <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-2">
+                      Project Description *
+                    </label>
+                    <textarea
+                      id="description"
+                      name="description"
+                      value={formData.description}
+                      onChange={handleChange}
+                      placeholder="Tell us about your project goals, timeline, and any specific requirements..."
+                      rows={5}
+                      required
+                      className={`${inputStyles} resize-none`}
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="group w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gray-900 px-6 py-4 font-semibold text-white transition-all hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? "Sending..." : "Submit Inquiry"}
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </button>
+
+                  <p className="text-center text-sm text-gray-500">
+                    We typically respond within 24 hours
+                  </p>
+                </form>
+              </div>
+            </motion.div>
+
+            {/* Contact Info */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="lg:col-span-2 space-y-6"
+            >
+              {/* Info Cards */}
+              {contactInfo.map(({ Icon, title, detail }, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-4 rounded-xl bg-gray-50 p-5"
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white text-gray-600 shadow-sm">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-medium text-gray-500 uppercase tracking-wide">{title}</p>
+                    <p className="text-sm font-medium text-gray-900">
+                      {title === "Email" ? (
+                        <a href={`mailto:${detail}`} className="hover:text-gray-700">{detail}</a>
+                      ) : title === "Phone" ? (
+                        <a href={`tel:${detail.replace(/[^0-9+]/g, "")}`} className="hover:text-gray-700">{detail}</a>
+                      ) : (
+                        detail
+                      )}
+                    </p>
+                  </div>
+                </div>
+              ))}
+
+              {/* Map */}
+              <div className="overflow-hidden rounded-xl">
+                <div className="h-48 w-full bg-gray-100">
                   <GoogleEmbedMap />
                 </div>
               </div>
 
-              {/* Trust Badges */}
-              <div className="rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 p-6 text-white">
-                <h4 className="font-semibold mb-4">Why contact us?</h4>
-                <ul className="space-y-3 text-sm text-gray-300">
-                  <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                    Free consultation & project estimate
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                    Response within 24 hours
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                    No obligation or commitment
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                    NDA available upon request
-                  </li>
+              {/* Trust Card */}
+              <div className="rounded-xl bg-gray-900 p-6">
+                <h4 className="font-semibold text-white mb-4">Why reach out?</h4>
+                <ul className="space-y-3 text-sm text-gray-400">
+                  {[
+                    "Free consultation & estimate",
+                    "Response within 24 hours",
+                    "No obligation or commitment",
+                    "NDA available upon request",
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-2">
+                      <span className="h-1 w-1 rounded-full bg-emerald-400" />
+                      {item}
+                    </li>
+                  ))}
                 </ul>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
