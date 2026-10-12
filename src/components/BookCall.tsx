@@ -1,230 +1,92 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { Calendar, Clock, Globe, CheckCircle, ArrowRight, Video, Phone } from "lucide-react";
-import Link from "next/link";
+import { useEffect, useState } from "react";
+import Script from "next/script";
+import { Calendar, Clock, Globe, Phone, ArrowRight } from "lucide-react";
+import { site, telHref, mailHref, whatsappUrl } from "@/config/site";
+import { track } from "@/lib/analytics";
 
-interface BookCallProps {
-  calendlyUrl?: string;
-  showFallback?: boolean;
-}
-
-export default function BookCall({
-  calendlyUrl = "https://calendly.com/arsteg/consultation",
-  showFallback = true
-}: BookCallProps) {
-  const [isCalendlyLoaded, setIsCalendlyLoaded] = useState(false);
-  const [showCalendly, setShowCalendly] = useState(false);
+/**
+ * Discovery-call booking.
+ *
+ * - When NEXT_PUBLIC_CALENDLY_URL is set (`site.flags.calendlyUrl`), embeds the
+ *   real Calendly inline widget. Calendly handles timezones for the visitor.
+ * - When it's NOT set, shows an accessible fallback (enquiry form + direct
+ *   contact). We never render a fake calendar or a no-op "book" button.
+ */
+export default function BookCall() {
+  const calendlyUrl = site.flags.calendlyUrl;
+  const [announced, setAnnounced] = useState(false);
 
   useEffect(() => {
-    // Check if Calendly widget script is available
-    if (typeof window !== 'undefined' && showCalendly) {
-      // Load Calendly widget script
-      const script = document.createElement('script');
-      script.src = 'https://assets.calendly.com/assets/external/widget.js';
-      script.async = true;
-      script.onload = () => setIsCalendlyLoaded(true);
-      document.body.appendChild(script);
-
-      return () => {
-        document.body.removeChild(script);
-      };
+    if (calendlyUrl && !announced) {
+      track("booking_start", { provider: "calendly" });
+      setAnnounced(true);
     }
-  }, [showCalendly]);
-
-  const benefits = [
-    "30-minute strategy session",
-    "Discuss your project requirements",
-    "Get expert recommendations",
-    "No obligation consultation",
-  ];
-
-  const meetingTypes = [
-    {
-      icon: Video,
-      title: "Video Call",
-      description: "Google Meet or Zoom",
-      duration: "30 min",
-    },
-    {
-      icon: Phone,
-      title: "Phone Call",
-      description: "Direct conversation",
-      duration: "30 min",
-    },
-  ];
+  }, [calendlyUrl, announced]);
 
   return (
-    <section id="book-call" className="py-20 lg:py-28 bg-gradient-to-b from-white to-gray-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 mb-4"
-          >
-            <Calendar className="h-4 w-4" />
-            Schedule a Meeting
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl mb-4"
-          >
-            Book a{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              Free Consultation
-            </span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="mx-auto max-w-2xl text-lg text-gray-600"
-          >
-            Let&apos;s discuss your project and explore how we can help you achieve your goals.
-          </motion.p>
+    <section id="book-call" className="scroll-mt-24 border-t border-gray-100 bg-gray-50 py-16 lg:py-24">
+      <div className="container">
+        <div className="mx-auto max-w-2xl text-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-sm font-medium text-gray-600 ring-1 ring-gray-200">
+            <Calendar className="h-4 w-4 text-[hsl(var(--brand))]" /> Book a discovery call
+          </span>
+          <h2 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            Prefer to talk it through?
+          </h2>
+          <p className="mt-4 text-lg text-gray-600">
+            A short, no-obligation call to understand what you need and whether we&apos;re a fit.
+          </p>
         </div>
 
-        <div className="grid gap-12 lg:grid-cols-2 max-w-6xl mx-auto items-start">
-          {/* Left - Benefits & Meeting Types */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            {/* Benefits */}
-            <div className="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-100">
-              <h3 className="text-xl font-bold text-gray-900 mb-6">What to Expect</h3>
-              <ul className="space-y-4">
-                {benefits.map((benefit, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-100">
-                      <CheckCircle className="h-4 w-4 text-emerald-600" />
-                    </div>
-                    <span className="text-gray-700">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
+        {calendlyUrl ? (
+          <div className="mx-auto mt-10 max-w-3xl overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-900/5">
+            <div
+              className="calendly-inline-widget"
+              data-url={calendlyUrl}
+              style={{ minWidth: "320px", height: "680px" }}
+              aria-label="Booking calendar"
+            />
+            <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" />
+            <p className="flex items-center justify-center gap-2 border-t border-gray-100 py-3 text-sm text-gray-500">
+              <Globe className="h-4 w-4" /> Times shown in your local timezone
+            </p>
+          </div>
+        ) : (
+          <div className="mx-auto mt-10 grid max-w-4xl gap-6 sm:grid-cols-2">
+            <div className="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-900/5">
+              <h3 className="font-semibold text-gray-900">Request a call</h3>
+              <p className="mt-2 text-sm text-gray-600">
+                Send a one-line enquiry and we&apos;ll propose a couple of times that suit your timezone.
+              </p>
+              <a
+                href="#contact"
+                onClick={() => track("cta_click", { id: "request_call", location: "book_call" })}
+                className="mt-5 inline-flex items-center gap-2 rounded-xl bg-gray-900 px-5 py-3 font-semibold text-white transition-colors hover:bg-gray-800"
+              >
+                Send an enquiry <ArrowRight className="h-4 w-4" />
+              </a>
+              <p className="mt-4 flex items-center gap-2 text-sm text-gray-500">
+                <Clock className="h-4 w-4" /> Usually a 20–30 minute call
+              </p>
             </div>
-
-            {/* Meeting Types */}
-            <div className="space-y-4">
-              {meetingTypes.map((type, i) => (
-                <motion.div
-                  key={type.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="flex items-center gap-4 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-gray-100"
-                >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50">
-                    <type.icon className="h-6 w-6 text-blue-600" />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="font-semibold text-gray-900">{type.title}</h4>
-                    <p className="text-sm text-gray-500">{type.description}</p>
-                  </div>
-                  <div className="flex items-center gap-1 text-sm text-gray-500">
-                    <Clock className="h-4 w-4" />
-                    {type.duration}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Timezone note */}
-            <div className="flex items-center gap-2 text-sm text-gray-500">
-              <Globe className="h-4 w-4" />
-              <span>All times shown in your local timezone</span>
-            </div>
-          </motion.div>
-
-          {/* Right - Calendly or Fallback */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            {showCalendly ? (
-              // Calendly Embed
-              <div className="rounded-2xl bg-white shadow-xl ring-1 ring-gray-100 overflow-hidden min-h-[600px]">
-                {isCalendlyLoaded ? (
-                  <div
-                    className="calendly-inline-widget"
-                    data-url={calendlyUrl}
-                    style={{ minWidth: '320px', height: '600px' }}
-                  />
-                ) : (
-                  <div className="flex items-center justify-center h-[600px]">
-                    <div className="text-center">
-                      <div className="animate-spin h-8 w-8 border-4 border-blue-600 border-t-transparent rounded-full mx-auto mb-4" />
-                      <p className="text-gray-500">Loading calendar...</p>
-                    </div>
-                  </div>
-                )}
+            <div className="rounded-2xl bg-gray-900 p-8 text-white">
+              <h3 className="font-semibold">Reach us directly</h3>
+              <div className="mt-4 space-y-3 text-sm">
+                <a href={telHref} onClick={() => track("contact_phone_click")} className="flex items-center gap-2 text-gray-200 hover:text-white">
+                  <Phone className="h-4 w-4" /> {site.contact.phone}
+                </a>
+                <a href={mailHref} onClick={() => track("contact_email_click")} className="flex items-center gap-2 text-gray-200 hover:text-white">
+                  <span className="grid h-4 w-4 place-items-center">@</span> {site.contact.email}
+                </a>
+                <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" onClick={() => track("contact_whatsapp_click")} className="flex items-center gap-2 text-gray-200 hover:text-white">
+                  <span className="grid h-4 w-4 place-items-center">↗</span> WhatsApp
+                </a>
               </div>
-            ) : showFallback ? (
-              // Fallback CTA Card
-              <div className="rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 p-8 text-white">
-                <h3 className="text-2xl font-bold mb-4">Ready to Get Started?</h3>
-                <p className="text-gray-300 mb-8">
-                  Schedule a free 30-minute consultation to discuss your project requirements and get expert recommendations.
-                </p>
-
-                <div className="space-y-4">
-                  {/* Open Calendly */}
-                  <button
-                    onClick={() => setShowCalendly(true)}
-                    className="group w-full flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-4 text-base font-semibold text-gray-900 transition-all hover:bg-gray-100"
-                  >
-                    <Calendar className="h-5 w-5" />
-                    Schedule a Call
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </button>
-
-                  {/* Or contact form */}
-                  <Link
-                    href="/#contact"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-                    }}
-                    className="w-full flex items-center justify-center gap-2 rounded-xl border-2 border-white/20 px-6 py-4 text-base font-semibold text-white transition-all hover:bg-white/10"
-                  >
-                    Or Send a Message
-                  </Link>
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-white/10">
-                  <p className="text-sm text-gray-400 mb-4">Prefer to reach out directly?</p>
-                  <div className="space-y-2">
-                    <a
-                      href="tel:+918447470101"
-                      className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
-                    >
-                      <Phone className="h-4 w-4" />
-                      +91-844-747-0101
-                    </a>
-                    <a
-                      href="mailto:info@arsteg.com"
-                      className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
-                    >
-                      <span className="h-4 w-4 text-center">@</span>
-                      info@arsteg.com
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ) : null}
-          </motion.div>
-        </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

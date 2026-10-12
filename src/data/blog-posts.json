@@ -18,7 +18,7 @@
       },
       {
         "type": "paragraph",
-        "text": "According to recent industry reports, over 75% of enterprises are actively implementing AI solutions. The integration of large language models like GPT-4 has opened new possibilities for automation, customer service, and decision support systems."
+        "text": "A large and growing share of enterprises are adopting AI in their software. The integration of large language models has opened new possibilities for automation, customer service, and decision support systems."
       },
       {
         "type": "heading",
@@ -27,7 +27,7 @@
       {
         "type": "list",
         "items": [
-          "Intelligent Document Processing - Extracting and categorizing data from unstructured documents with 95%+ accuracy",
+          "Intelligent Document Processing - Extracting and categorizing data from unstructured documents, with a human-review step for low-confidence cases",
           "Conversational AI - Customer service bots that handle complex queries and integrate with backend systems",
           "Predictive Analytics - ML models that forecast trends, detect anomalies, and optimize operations",
           "Content Generation - Automated report writing, email drafting, and personalized communications"
@@ -43,15 +43,15 @@
       },
       {
         "type": "paragraph",
-        "text": "At ARSTEG, we've helped clients reduce manual processing by 90%, improve customer response times by 5x, and unlock insights that were previously impossible to extract at scale."
+        "text": "In our own work, well-scoped AI automation has let clients take significant manual effort out of document-heavy processes and speed up response times — provided the workflow includes validation and a human-review step."
       }
     ],
     "readTime": "5 min read"
   },
   {
     "slug": "building-scalable-apis",
-    "title": "Building Scalable APIs: Lessons from 150+ Integrations",
-    "excerpt": "An in-depth look at API architecture patterns, authentication strategies, and performance optimizations we've learned from integrating with hundreds of third-party services.",
+    "title": "Building Scalable APIs: Patterns That Hold Up in Production",
+    "excerpt": "An in-depth look at API architecture patterns, authentication strategies, and performance optimizations we've learned from integrating with a wide range of third-party services.",
     "author": "Integration Experts",
     "date": "Jan 10, 2025",
     "category": "Engineering",
@@ -59,7 +59,7 @@
     "content": [
       {
         "type": "paragraph",
-        "text": "After integrating with over 150 third-party APIs - from health devices to payment gateways - we've learned what separates robust integrations from fragile ones. Here are the patterns and practices that have proven most valuable."
+        "text": "After integrating with a wide range of third-party APIs - from health devices to payment gateways - we've learned what separates robust integrations from fragile ones. Here are the patterns and practices that have proven most valuable."
       },
       {
         "type": "heading",
@@ -103,16 +103,16 @@
   },
   {
     "slug": "legacy-to-cloud-migration",
-    "title": "From Legacy to Cloud: A Migration Success Story",
-    "excerpt": "Learn how we helped a 15-year-old insurance platform migrate to cloud-native architecture with zero downtime and 80% performance improvement.",
+    "title": "From Legacy to Cloud: Modernizing Without a Big-Bang Rewrite",
+    "excerpt": "Why the strangler-fig approach is a safer way to modernize an ageing platform than a risky full rewrite — and how we apply it.",
     "author": "Development Team",
     "date": "Jan 5, 2025",
-    "category": "Case Study",
+    "category": "Engineering",
     "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
     "content": [
       {
         "type": "paragraph",
-        "text": "When a major insurance company approached us, their 15-year-old platform was struggling: slow performance, expensive maintenance, and an inability to ship new features. Here's how we transformed it without disrupting their business."
+        "text": "Ageing platforms tend to struggle in the same ways: slow performance, expensive maintenance, and an inability to ship new features. Here's the approach we use to modernize them without disrupting the business that depends on them."
       },
       {
         "type": "heading",
@@ -120,7 +120,7 @@
       },
       {
         "type": "paragraph",
-        "text": "The existing system was built on classic ASP and VB6 - technology that's increasingly difficult to maintain. Finding developers was nearly impossible, and every change carried risk. The company needed to modernize but couldn't afford downtime."
+        "text": "A typical case: the system is built on classic ASP and VB6 - technology that's increasingly difficult to maintain. Finding developers is nearly impossible, and every change carries risk. The business needs to modernize but can't afford downtime."
       },
       {
         "type": "heading",
@@ -132,16 +132,16 @@
       },
       {
         "type": "heading",
-        "text": "Key Results"
+        "text": "What good looks like"
       },
       {
         "type": "list",
         "items": [
-          "80% faster application performance",
-          "40% reduction in infrastructure costs",
-          "Zero downtime during migration",
-          "Modern codebase that developers actually want to work on",
-          "Deployment frequency increased from monthly to daily"
+          "Noticeably faster application performance",
+          "Lower infrastructure and maintenance costs",
+          "No downtime during the migration itself",
+          "A modern codebase that developers actually want to work on",
+          "Deployments that move from occasional to on-demand"
         ]
       },
       {

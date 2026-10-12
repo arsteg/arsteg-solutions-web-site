@@ -38,6 +38,14 @@
   --accent-light: 252 100% 95%;
   --accent-foreground: 252 100% 30%;
 
+  /* Brand - ARSTEG red (the single restrained accent).
+     Derived from the logo monogram. Use sparingly: links, active states,
+     one CTA treatment, small markers — not large fills. */
+  --brand: 356 74% 50%;
+  --brand-dark: 356 72% 42%;
+  --brand-light: 356 80% 96%;
+  --brand-foreground: 0 0% 100%;
+
   /* Success - Trust signals */
   --success: 160 84% 39%;
   --success-light: 160 84% 95%;

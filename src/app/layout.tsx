@@ -1,90 +1,106 @@
 // src/app/layout.tsx
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import './App.css';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import Providers from '@/components/Providers';
+import Analytics from '@/components/Analytics';
 import TrackVisit from '@/components/TrackVisit';
+import { site } from '@/config/site';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
   title: {
-    default: 'ARSTEG Solutions - Enterprise Software Development | Web, Mobile, Zoho',
+    default: 'ARSTEG Solutions — Custom software, integrations & AI automation',
     template: '%s | ARSTEG Solutions',
   },
-  description: 'Enterprise software development company with 50+ senior engineers. Custom web & mobile apps, Zoho development, API integrations, and dedicated engineering teams. 150+ products shipped worldwide.',
+  description:
+    'ARSTEG is a software engineering partner for small and mid-sized businesses. We build custom applications, modernize legacy systems, and connect and automate the tools you already use.',
   keywords: [
-    'software development company',
     'custom software development',
-    'web development',
-    'mobile app development',
-    'Zoho development',
-    'Zoho CRM implementation',
-    'Zoho integration',
-    'API integration',
+    'software modernization',
+    'system integration',
+    'workflow automation',
+    'AI automation',
     'dedicated development team',
-    'enterprise software',
-    'software outsourcing',
+    'Zoho implementation',
     'Gurugram',
     'India',
   ],
-  authors: [{ name: 'ARSTEG Solutions Pvt. Ltd.' }],
-  creator: 'ARSTEG Solutions',
-  publisher: 'ARSTEG Solutions Pvt. Ltd.',
+  authors: [{ name: site.legalName }],
+  creator: site.name,
+  publisher: site.legalName,
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
   },
+  alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://arsteg.com',
-    siteName: 'ARSTEG Solutions',
-    title: 'ARSTEG Solutions - Enterprise Software Development',
-    description: 'Enterprise software development company with 50+ senior engineers. Custom web & mobile apps, Zoho development, API integrations.',
-    images: [
-      {
-        url: 'https://arsteg.com/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'ARSTEG Solutions - Enterprise Software Development',
-      },
-    ],
+    url: site.url,
+    siteName: site.name,
+    title: 'ARSTEG Solutions — Custom software, integrations & AI automation',
+    description:
+      'Software engineering partner for growing businesses: custom applications, modernization, integrations and AI automation.',
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'ARSTEG Solutions' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ARSTEG Solutions - Enterprise Software Development',
-    description: 'Enterprise software development company with 50+ senior engineers. Custom web & mobile apps, Zoho development, API integrations.',
-    images: ['https://arsteg.com/og-image.jpg'],
-    creator: '@ARSTEGSolutions',
-  },
-  alternates: {
-    canonical: 'https://arsteg.com',
-  },
-  verification: {
-    google: 'your-google-verification-code',
+    title: 'ARSTEG Solutions — Custom software, integrations & AI automation',
+    description:
+      'Software engineering partner for growing businesses: custom applications, modernization, integrations and AI automation.',
+    images: ['/og-image.jpg'],
   },
   category: 'technology',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export const viewport: Viewport = {
+  themeColor: '#0a0a0a',
+  width: 'device-width',
+  initialScale: 1,
+};
+
+// Organization structured data — verified facts only.
+const orgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: site.legalName,
+  url: site.url,
+  logo: `${site.url}/images/logo.png`,
+  description:
+    'Software engineering partner for small and mid-sized businesses: custom applications, modernization, integrations and AI automation.',
+  email: site.contact.email,
+  telephone: site.contact.phone,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: `${site.address.line1}, ${site.address.line2}`,
+    addressLocality: site.address.city,
+    addressRegion: site.address.region,
+    postalCode: site.address.postalCode,
+    addressCountry: site.address.country,
+  },
+  areaServed: site.markets.regions,
+  sameAs: [site.social.linkedin, site.social.x],
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="flex flex-col min-h-screen">
+      <body className="flex min-h-screen flex-col bg-white">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
+        <Analytics />
         <TrackVisit />
-        <Navbar />
-        <main className="flex-grow container">{children}</main>
-        <Footer />
+        <Providers>
+          <Navbar />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

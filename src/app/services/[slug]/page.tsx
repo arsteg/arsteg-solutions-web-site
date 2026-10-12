@@ -23,23 +23,23 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 
   if (!service) {
     return {
-      title: "Service Not Found | ARSTEG Solutions",
+      title: "Service not found",
     };
   }
 
   return {
-    title: `${service.title} | ARSTEG Solutions`,
-    description: service.description,
+    title: service.title,
+    description: service.summary,
     openGraph: {
-      title: `${service.title} | ARSTEG Solutions`,
-      description: service.description,
+      title: service.title,
+      description: service.summary,
       type: "website",
       url: `https://arsteg.com/services/${slug}`,
     },
     twitter: {
       card: "summary_large_image",
-      title: `${service.title} | ARSTEG Solutions`,
-      description: service.description,
+      title: service.title,
+      description: service.summary,
     },
   };
 }

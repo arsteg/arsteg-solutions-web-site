@@ -1,180 +1,221 @@
 [
   {
     "id": "custom-software",
+    "slug": "custom-software-development",
     "icon": "Code2",
-    "title": "Custom Software Development",
-    "tagline": "From MVP to enterprise scale",
-    "problem": "Off-the-shelf software doesn't fit your unique business processes, and building in-house is too slow and expensive.",
-    "solution": "We architect and build custom applications designed specifically for your workflows, users, and growth trajectory.",
-    "description": "Full-stack development from concept to deployment. We build web applications, mobile apps, and cloud-native systems that scale with your business.",
-    "approach": [
-      "Deep discovery to understand business goals and technical constraints",
-      "Architecture design with scalability built in from day one",
-      "Agile sprints with continuous feedback and iteration",
-      "Production deployment with monitoring and support"
+    "priority": 1,
+    "title": "Custom software & modernization",
+    "tagline": "Software built around how your business actually works",
+    "summary": "We design, build and modernize web and business applications for teams that have outgrown spreadsheets, off-the-shelf tools, or an ageing legacy system.",
+    "who": "Operations, finance and product leaders at small and mid-sized businesses whose processes no longer fit a generic tool — or whose existing system is slow, fragile, and expensive to change.",
+    "problems": [
+      "Manual, spreadsheet-driven workflows that don't scale and are error-prone",
+      "Off-the-shelf software that forces your team to work the wrong way",
+      "A legacy application that's slow, risky to change, and hard to hire for",
+      "Data trapped in disconnected tools with no single source of truth"
     ],
-    "techStack": [
-      "React, Next.js, Vue.js, Angular",
-      ".NET Core, Node.js, Python, Go",
-      "Flutter, React Native, Swift, Kotlin",
+    "deliverables": [
+      "A working, documented application deployed to your cloud account",
+      "A clear data model and admin tooling your team can operate",
+      "Source code and full IP ownership handed over to you",
+      "Automated tests and a deployment pipeline, not just a one-off build",
+      "A phased modernization plan when replacing a legacy system"
+    ],
+    "approach": [
+      "Discovery: map the real workflow, constraints and success criteria",
+      "Architecture and a thin end-to-end slice to de-risk early",
+      "Short build iterations with working software you can review",
+      "Launch, then hand over code, docs and knowledge to your team"
+    ],
+    "tech": [
+      "React, Next.js, TypeScript",
+      "Node.js, .NET, Python",
+      "PostgreSQL, SQL Server, MongoDB",
       "AWS, Azure, Google Cloud",
-      "PostgreSQL, MongoDB, Redis"
+      "Incremental migration from legacy stacks (Classic ASP, VB6, WinForms)"
     ],
-    "outcomes": [
-      "Ship 2x faster than hiring in-house",
-      "Architecture that scales to millions of users",
-      "Full IP ownership from day one"
+    "boundaries": [
+      "We don't do big-bang rewrites that put your operations at risk — modernization is phased.",
+      "We scope a first milestone before quoting a full build, so you're not committing blind.",
+      "If an off-the-shelf tool genuinely fits better, we'll say so."
     ],
-    "result": "150+ products shipped",
-    "caseStudy": "Built a health-tech platform that scaled from 10K to 500K users with zero downtime",
-    "slug": "custom-software-development"
+    "faqs": [
+      { "q": "Do we own the code?", "a": "Yes. You get full source code and IP ownership, deployed to infrastructure you control." },
+      { "q": "Can you work with our existing system?", "a": "Usually yes — we commonly build alongside and incrementally replace a legacy system rather than forcing a rebuild." },
+      { "q": "How do engagements start?", "a": "With a paid, fixed-scope discovery or a small first milestone, so both sides can judge fit before a larger commitment." }
+    ]
   },
   {
-    "id": "software-maintenance",
-    "icon": "Wrench",
-    "title": "Legacy Modernization",
-    "tagline": "Transform technical debt into competitive advantage",
-    "problem": "Your legacy system is slow, expensive to maintain, and blocking your ability to innovate and grow.",
-    "solution": "We modernize your stack incrementally — no big-bang rewrites that risk your business continuity.",
-    "description": "Migrate legacy applications to modern frameworks while maintaining business continuity. Performance optimization, security hardening, and cloud migration.",
-    "approach": [
-      "Comprehensive audit of current architecture and pain points",
-      "Phased modernization roadmap with quick wins first",
-      "Gradual migration with parallel running systems",
-      "Knowledge transfer to your internal team"
-    ],
-    "techStack": [
-      "Migration from VB6, Classic ASP, WinForms to modern stacks",
-      ".NET Core, React, Angular, Vue.js",
-      "Cloud migration to AWS, Azure, GCP",
-      "Container orchestration with Docker, Kubernetes"
-    ],
-    "outcomes": [
-      "80% faster application performance",
-      "60% reduction in maintenance costs",
-      "Modern codebase your team can actually work with"
-    ],
-    "result": "80% faster post-migration",
-    "caseStudy": "Migrated a 15-year-old insurance platform to cloud-native architecture in 6 months",
-    "slug": "software-maintenance-modernization"
-  },
-  {
-    "id": "api-integrations",
+    "id": "integrations-automation",
+    "slug": "integrations-automation",
     "icon": "PlugZap",
-    "title": "API & System Integration",
-    "tagline": "Connect everything. Automate anything.",
-    "problem": "Your systems don't talk to each other, creating data silos, manual work, and errors.",
-    "solution": "We build robust integrations that unify your tech stack and automate data flows across your organization.",
-    "description": "Connect your platforms with third-party services, payment gateways, health devices, CRMs, and custom APIs.",
+    "priority": 2,
+    "title": "Integrations & AI automation",
+    "tagline": "Connect your tools and automate the manual work between them",
+    "summary": "We connect the systems you already use — CRMs, accounting, payments, support, internal apps — and automate the repetitive work between them, including AI-assisted automation for tasks like document handling, triage and drafting.",
+    "who": "Teams losing hours to copy-paste between tools, re-keying data, or chasing information across systems that don't talk to each other.",
+    "problems": [
+      "The same data entered by hand into two or three different systems",
+      "Tools that don't integrate, creating silos and reconciliation work",
+      "Repetitive back-office tasks (sorting, tagging, drafting, routing) that eat staff time",
+      "No reliable, logged sync between your key systems"
+    ],
+    "deliverables": [
+      "Reliable integrations with authentication, retries and error logging",
+      "Automated workflows that remove specific manual steps",
+      "AI-assisted automations where they measurably save time (e.g. document extraction, classification, draft generation) — with a human review step",
+      "Monitoring and alerts so you know when something upstream breaks"
+    ],
     "approach": [
-      "Map all integration requirements and data flows",
-      "Design secure authentication and error handling",
-      "Build real-time sync with comprehensive logging",
-      "Monitor, alert, and continuously optimize"
+      "Map every system, data flow and manual step involved",
+      "Prioritize the automations with the clearest time saving",
+      "Build with secure auth, idempotency and full logging",
+      "Measure the time saved and tune from there"
     ],
-    "techStack": [
-      "Health: iHealth, Garmin, Fitbit, Google Fit, Dexcom, Withings",
-      "Payments: Stripe, PayPal, QuickBooks, Xero",
-      "Communication: Twilio, SendGrid, Firebase",
-      "AI: OpenAI, Google AI, Hugging Face",
-      "Custom: IoT, blockchain, AR/VR platforms"
+    "tech": [
+      "REST and webhook integrations, message queues",
+      "Payments & finance: Stripe, PayPal, QuickBooks, Xero",
+      "CRM & support: Zoho, HubSpot, Salesforce, Twilio, SendGrid",
+      "AI automation: OpenAI and similar LLM APIs, document & vision pipelines",
+      "Health & device APIs where relevant to the project"
     ],
-    "outcomes": [
-      "100% data sync accuracy",
-      "Eliminate manual data entry",
-      "Real-time insights across all systems"
+    "boundaries": [
+      "AI is used where it reliably helps — we don't add it for its own sake, and we keep a human in the loop for anything consequential.",
+      "We're honest about accuracy limits and build review/fallback steps into AI workflows.",
+      "We integrate with your approved tools and keep credentials server-side."
     ],
-    "result": "100% sync accuracy",
-    "caseStudy": "Integrated 8+ health devices for a telemedicine platform serving 50K+ patients",
-    "slug": "api-third-party-integrations"
+    "faqs": [
+      { "q": "Is the AI reliable enough to trust?", "a": "For well-scoped tasks (extraction, classification, drafting) it saves real time, but we design workflows with validation and human review rather than full autonomy for anything that matters." },
+      { "q": "Will this break when a provider changes their API?", "a": "We build with error handling and monitoring so failures are caught and alerted, not discovered weeks later." },
+      { "q": "Can you automate just one painful process first?", "a": "Yes — that's usually the best way to start and prove the value before expanding." }
+    ]
   },
   {
     "id": "dedicated-teams",
+    "slug": "dedicated-engineering-teams",
     "icon": "UsersRound",
-    "title": "Dedicated Engineering Teams",
-    "tagline": "Your team, extended. Not outsourced.",
-    "problem": "Hiring takes months. Contractors are unreliable. You need senior engineering capacity now.",
-    "solution": "Get a dedicated team of senior engineers who integrate with your workflows, tools, and culture within 48 hours.",
-    "description": "Flexible engagement models from individual specialists to full product teams. All engineers have 8+ years experience.",
-    "approach": [
-      "Match engineers to your tech stack and industry",
-      "48-hour onboarding to your tools and processes",
-      "Daily standups, weekly demos, monthly reviews",
-      "Scale up or down as your needs change"
+    "priority": 3,
+    "title": "Dedicated engineering teams",
+    "tagline": "Senior engineers who work as an extension of your team",
+    "summary": "When you need engineering capacity without a long hiring cycle, we provide dedicated engineers who integrate with your tools, standups and workflow — and ramp up or down as your needs change.",
+    "who": "Founders and engineering leaders who need to move faster than hiring allows, or to add specific skills (mobile, DevOps, AI) for a defined period.",
+    "problems": [
+      "Hiring the right senior engineer takes months you don't have",
+      "A roadmap that's slipping for want of capacity",
+      "A short-term need for a specific skill you don't want to hire full-time",
+      "Contractors who disappear or don't integrate with your team"
     ],
-    "teamProfiles": [
-      "Full-stack engineers (React, .NET, Node.js)",
-      "Mobile developers (Flutter, React Native)",
-      "DevOps and cloud architects",
-      "AI/ML engineers",
+    "deliverables": [
+      "Named engineers matched to your stack, not anonymous ticket-takers",
+      "Integration with your repo, board, standups and review process",
+      "Regular demos and transparent progress reporting",
+      "The flexibility to scale the team up or down with notice"
+    ],
+    "approach": [
+      "Understand your stack, roadmap and the gap you're filling",
+      "Propose specific engineers with relevant experience",
+      "Onboard into your tools and ways of working",
+      "Work in your process with regular demos and reviews"
+    ],
+    "tech": [
+      "Full-stack: React, Node.js, .NET, Python",
+      "Mobile: React Native, Flutter",
+      "DevOps & cloud: AWS, Azure, CI/CD, containers",
+      "AI/ML and data engineering",
       "Technical leads and architects"
     ],
-    "outcomes": [
-      "Start building in 48 hours, not 3 months",
-      "Direct access to senior engineers",
-      "No recruiter fees or HR overhead"
+    "boundaries": [
+      "This is team extension, not a black-box project — you direct the work.",
+      "We're clear about each engineer's experience level; we don't oversell.",
+      "Minimum engagement terms apply so onboarding effort pays off for both sides."
     ],
-    "result": "90% client retention",
-    "caseStudy": "Provided a 12-person team for a Series B startup that shipped 3 products in 18 months",
-    "slug": "dedicated-engineering-teams"
-  },
-  {
-    "id": "digital-marketing",
-    "icon": "TrendingUp",
-    "title": "Digital Marketing & Growth",
-    "tagline": "Revenue-driven marketing, not vanity metrics",
-    "problem": "You're spending on marketing but can't connect it to revenue. Generic agencies don't understand your product.",
-    "solution": "Data-driven marketing strategies executed by a team that understands software products and B2B buyer journeys.",
-    "description": "Email marketing, SEO, paid acquisition, and content strategy designed specifically for software and tech companies.",
-    "approach": [
-      "Audit current marketing stack and customer journey",
-      "Build automated email sequences that convert",
-      "SEO strategy focused on high-intent keywords",
-      "Paid campaigns with rigorous ROI tracking"
-    ],
-    "channels": [
-      "Email: Klaviyo, HubSpot, Mailchimp, ActiveCampaign",
-      "SEO: Technical audit, content strategy, link building",
-      "Paid: Google Ads, LinkedIn, Meta",
-      "Content: Blog, case studies, whitepapers"
-    ],
-    "outcomes": [
-      "42x average ROI on email campaigns",
-      "3x increase in qualified leads",
-      "Clear attribution from campaign to revenue"
-    ],
-    "result": "42x average ROI",
-    "caseStudy": "Grew email revenue from $0 to $50K/month for a SaaS company in 6 months",
-    "slug": "digital-marketing-growth"
+    "faqs": [
+      { "q": "How is this different from hiring a freelancer?", "a": "Engineers work inside your process and tools with continuity and oversight, and we handle cover and continuity if someone is unavailable." },
+      { "q": "Can we start with one engineer?", "a": "Yes — many engagements start with one and grow once the working relationship is proven." },
+      { "q": "Who owns the code?", "a": "You do. Everything is committed to your repositories." }
+    ]
   },
   {
     "id": "zoho-development",
+    "slug": "zoho-development",
     "icon": "Settings",
-    "title": "Zoho Development & Integration",
-    "tagline": "Transform your business with the complete Zoho ecosystem",
-    "problem": "Your business tools are disconnected, workflows are manual, and you're not getting the full value from your Zoho investment.",
-    "solution": "We implement, customize, and integrate Zoho products to streamline operations, automate workflows, and connect all your business systems.",
-    "description": "Expert Zoho CRM, Creator, Books, People, Desk implementation and customization. Custom integrations, workflow automation, and data migration.",
+    "priority": 99,
+    "title": "Zoho implementation & customization",
+    "tagline": "Get real value from the Zoho tools you're paying for",
+    "summary": "We implement, customize and integrate Zoho products — CRM, Creator, Books, People, Desk and Zoho One — so they fit your processes and connect to the rest of your systems.",
+    "who": "Businesses that have bought into Zoho but aren't getting full value, or need custom apps, automations and integrations on top of it.",
+    "problems": [
+      "A Zoho setup that doesn't match how your team actually works",
+      "Manual workflows that Zoho could automate",
+      "Zoho disconnected from your other tools and data",
+      "A need for custom apps or logic beyond the defaults"
+    ],
+    "deliverables": [
+      "Configured Zoho products mapped to your workflows",
+      "Custom modules, Deluge scripts and workflow automations",
+      "Integrations between Zoho and your other systems",
+      "Data migration and team enablement"
+    ],
     "approach": [
-      "Assess current processes and identify automation opportunities",
-      "Design custom Zoho solutions tailored to your workflows",
-      "Implement with data migration and third-party integrations",
-      "Train your team and provide ongoing support"
+      "Assess current processes and where Zoho is underused",
+      "Design the configuration, automations and integrations",
+      "Implement, migrate data and connect third-party tools",
+      "Train your team and support the rollout"
     ],
-    "techStack": [
+    "tech": [
       "Zoho CRM, Creator, Books, People, Desk, Inventory",
-      "Zoho One full suite implementation",
+      "Zoho One suite",
       "Deluge scripting and custom functions",
-      "REST API integrations and webhooks",
-      "Third-party connectors: Stripe, PayPal, Shopify, Salesforce"
+      "REST API integrations and webhooks"
     ],
-    "outcomes": [
-      "40% average efficiency improvement",
-      "100% data sync accuracy across systems",
-      "Eliminate manual data entry and workflows"
+    "boundaries": [
+      "We'll tell you when a native Zoho feature already covers your need instead of building custom.",
+      "Integrations keep credentials secure and server-side."
     ],
-    "result": "50+ implementations",
-    "caseStudy": "Implemented Zoho One for a 200-person company, reducing operational costs by 35%",
-    "slug": "zoho-development"
+    "faqs": [
+      { "q": "Do you work across the whole Zoho suite?", "a": "Yes — from single products like CRM through to Zoho One and custom Creator apps and integrations." },
+      { "q": "Can you connect Zoho to our other tools?", "a": "Yes, that's one of the most common requests — accounting, payments, e-commerce and internal systems." }
+    ]
+  },
+  {
+    "id": "digital-marketing",
+    "slug": "digital-marketing-growth",
+    "icon": "TrendingUp",
+    "priority": 99,
+    "title": "Growth & marketing engineering",
+    "tagline": "Marketing automation and measurement for software businesses",
+    "summary": "For product and SaaS teams, we set up the technical side of growth — analytics, attribution, email automation and landing pages — so marketing decisions are based on data, not guesses.",
+    "who": "Software and SaaS companies that need marketing automation, reliable tracking and attribution wired up correctly.",
+    "problems": [
+      "Marketing spend that can't be tied back to results",
+      "Email and lifecycle automation that was never set up properly",
+      "Analytics and attribution that can't be trusted",
+      "Landing pages and funnels that are slow to ship"
+    ],
+    "deliverables": [
+      "Analytics and conversion tracking implemented correctly",
+      "Email and lifecycle automation in your platform of choice",
+      "Fast, measurable landing pages",
+      "Reporting that connects activity to outcomes"
+    ],
+    "approach": [
+      "Audit the current stack, tracking and funnel",
+      "Fix measurement first so decisions are trustworthy",
+      "Build the automations and pages that matter most",
+      "Report on what's working and iterate"
+    ],
+    "tech": [
+      "Analytics: GA4, server-side tracking, consent handling",
+      "Email: Klaviyo, HubSpot, Mailchimp, ActiveCampaign",
+      "Landing pages and funnels",
+      "SEO and content infrastructure"
+    ],
+    "boundaries": [
+      "We focus on the engineering and measurement side of growth, not vanity-metric campaigns.",
+      "We set up privacy-respecting, consent-aware tracking."
+    ],
+    "faqs": [
+      { "q": "Do you run ad campaigns?", "a": "Our strength is the technical foundation — tracking, automation and pages. We can advise on campaigns but the measurement side is where we add the most value." }
+    ]
   }
 ]

@@ -19,9 +19,9 @@ const posts = [
   },
   {
     slug: "building-scalable-apis",
-    title: "Building Scalable APIs: Lessons from 150+ Integrations",
+    title: "Building Scalable APIs: Patterns That Hold Up in Production",
     excerpt:
-      "API architecture patterns, authentication strategies, and performance optimizations from hundreds of third-party integrations.",
+      "API architecture patterns, authentication strategies, and performance optimizations learned from real-world third-party integrations.",
     date: "Jan 10, 2025",
     readTime: "6 min read",
     category: "Engineering",
@@ -30,12 +30,12 @@ const posts = [
   },
   {
     slug: "legacy-to-cloud-migration",
-    title: "From Legacy to Cloud: A Migration Success Story",
+    title: "From Legacy to Cloud: Modernizing Without a Big-Bang Rewrite",
     excerpt:
-      "How we helped a 15-year-old insurance platform migrate to cloud-native architecture with zero downtime.",
+      "Why the strangler-fig approach is a safer way to modernize an ageing platform than a risky full rewrite.",
     date: "Jan 5, 2025",
     readTime: "5 min read",
-    category: "Case Study",
+    category: "Engineering",
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=90",
     featured: false,
   },

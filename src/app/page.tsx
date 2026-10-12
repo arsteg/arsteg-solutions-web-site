@@ -1,70 +1,42 @@
-import Hero from '../components/Hero';
-import ClientLogos from '../components/ClientLogos';
-import Services from '../components/Services';
-import About from '../components/About';
-import Process from '../components/Process';
-import Testimonials from '../components/Testimonials';
-import PortfolioPage from './portfolio/page';
-import BlogPage from './blog/page';
-import FAQ from '../components/FAQ';
-import ContactForm from '../components/contact/ContactForm';
-import FloatingButtons from '../components/FloatingButtons';
-import TrustBadges from '../components/TrustBadges';
-import BookCall from '../components/BookCall';
-import StickyCTA from '../components/StickyCTA';
-import ExitIntent from '../components/ExitIntent';
-import TawkToChat from '../components/TawkToChat';
+import Hero from "@/components/Hero";
+import TrustStrip from "@/components/TrustStrip";
+import Services from "@/components/Services";
+import Portfolio from "@/components/Portfolio";
+import Process from "@/components/Process";
+import WhyArsteg from "@/components/WhyArsteg";
+import FAQ from "@/components/FAQ";
+import ContactForm from "@/components/contact/ContactForm";
+import FloatingButtons from "@/components/FloatingButtons";
 
 export default function Home() {
   return (
-    <main>
-      {/* Hero - First impression, value proposition */}
+    <>
+      {/* 1. Clear proposition + primary/secondary CTAs */}
       <Hero />
 
-      {/* Social Proof - Establish credibility immediately */}
-      <ClientLogos />
+      {/* 2. Compact, verified evidence (renders only when approved assets exist) */}
+      <TrustStrip />
 
-      {/* Services - What we offer (moved up for clarity) */}
+      {/* 3. Priority customer problems and the services that address them */}
       <Services />
 
-      {/* About - Why choose us, differentiation */}
-      <About />
+      {/* 4. Representative examples of our work */}
+      <Portfolio limit={3} />
 
-      {/* Process - How we work, reduce uncertainty */}
+      {/* 5. Engagement process and what buyers receive */}
       <Process />
 
-      {/* Testimonials - Client success stories */}
-      <Testimonials />
+      {/* 6. Specific, evidenced reasons to choose ARSTEG */}
+      <WhyArsteg />
 
-      {/* Trust Badges - Reviews & Certifications */}
-      <TrustBadges />
-
-      {/* Portfolio - Proof of capabilities */}
-      <PortfolioPage />
-
-      {/* Blog - Thought leadership */}
-      <BlogPage />
-
-      {/* FAQ - Address common questions */}
+      {/* 7. FAQs addressing buying concerns */}
       <FAQ />
 
-      {/* Book a Call - Calendly integration */}
-      <BookCall />
-
-      {/* Contact - Conversion point */}
+      {/* 8. Short enquiry section */}
       <ContactForm />
 
-      {/* Floating Buttons - WhatsApp, Back to Top */}
+      {/* Persistent, non-intrusive contact affordances */}
       <FloatingButtons />
-
-      {/* Mobile Sticky CTA */}
-      <StickyCTA />
-
-      {/* Exit Intent Popup */}
-      <ExitIntent />
-
-      {/* Live Chat - Tawk.to widget */}
-      <TawkToChat />
-    </main>
+    </>
   );
 }

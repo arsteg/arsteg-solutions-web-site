@@ -1,5 +1,6 @@
-import DigitalMarketing from "@/components/DigitalMarketing/DigitalMarketing";
+import { redirect } from "next/navigation";
 
-export default function DigitalMarketingPage() {
-  return <DigitalMarketing />;
+// Digital marketing content now lives on the canonical service page.
+export default function DigitalMarketingRedirect() {
+  redirect("/services/digital-marketing-growth");
 }

@@ -8,7 +8,31 @@
       "Bash(tree:*)",
       "Bash(dir:*)",
       "Bash(if exist .next rmdir /s /q .next)",
-      "Bash(cmd /c \"rmdir /s /q .next 2>nul & npm run build\")"
+      "Bash(cmd /c \"rmdir /s /q .next 2>nul & npm run build\")",
+      "Bash(cp .env .env.bak)",
+      "Bash(awk -F= ' *)",
+      "Bash(cat .env .env.serveradd)",
+      "Bash(mv .env.new .env)",
+      "Bash(rm .env.serveradd)",
+      "Bash(grep -v '^NEXT_PUBLIC_POSTMARK_' .env)",
+      "Bash(mv .env.tmp .env)",
+      "Bash(sed -i 's/description: service.description,/description: service.summary,/g' \"src/app/services/[slug]/page.tsx\")",
+      "Bash(sed -i 's/description: project.description,/description: project.summary,/g' \"src/app/portfolio/[slug]/page.tsx\")",
+      "Bash(sed -i 's/pt-28 pb-16/pt-12 pb-16/' \"src/app/services/[slug]/ServiceDetailPage.tsx\")",
+      "Bash(sed -i 's/pt-28 pb-14/pt-12 pb-14/' \"src/app/portfolio/[slug]/PortfolioDetailPage.tsx\")",
+      "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('src/data/blog-posts.json','utf8'\\)\\); JSON.parse\\(require\\('fs'\\).readFileSync\\('src/data/services.json','utf8'\\)\\); JSON.parse\\(require\\('fs'\\).readFileSync\\('src/data/portfolio.json','utf8'\\)\\); console.log\\('JSON valid'\\)\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3100/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3100/services/custom-software-development)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3100/zoho)",
+      "Bash(netstat -ano)",
+      "Bash(PORT=3100 npm run start)",
+      "Bash(curl -s -o /dev/null -w \"home:%{http_code} \" http://localhost:3100/)",
+      "Bash(curl -s -o /dev/null -w \"svc:%{http_code} \" http://localhost:3100/services/custom-software-development)",
+      "Bash(curl -s -o /dev/null -w \"zoho:%{http_code}\\\\n\" http://localhost:3100/zoho)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3100/)",
+      "Bash(curl -s -X POST http://localhost:3100/api/send-email -H 'Content-Type: application/json' -d '{\"name\":\"Website Delivery Test\",\"email\":\"aanchal.arsteg@gmail.com\",\"message\":\"Automated end-to-end delivery test of the new enquiry endpoint. Please ignore — no action needed.\",\"company\":\"ARSTEG internal test\",\"service\":\"not-sure\"}' -w \"\\\\n[HTTP %{http_code}]\\\\n\")",
+      "Bash(PORT=3101 npm run start)",
+      "Bash(curl -s -o /dev/null -w \"contact:%{http_code}\\\\n\" http://localhost:3101/contact)"
     ]
   }
 }

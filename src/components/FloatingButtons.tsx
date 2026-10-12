@@ -1,111 +1,87 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ArrowUp, MessageCircle, Send } from "lucide-react";
+import { ArrowUp, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { whatsappUrl } from "@/config/site";
+import { track } from "@/lib/analytics";
+
+// Inline WhatsApp glyph (lucide has no brand icon)
+function WhatsAppIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884a9.82 9.82 0 016.993 2.899 9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.889 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.359.101 11.945c0 2.096.547 4.142 1.588 5.945L0 24l6.305-1.654a11.9 11.9 0 005.683 1.448h.005c6.581 0 11.943-5.359 11.946-11.945a11.9 11.9 0 00-3.418-8.4" />
+    </svg>
+  );
+}
 
 export default function FloatingButtons() {
-  const [showBackToTop, setShowBackToTop] = useState(false);
+  const [showTop, setShowTop] = useState(false);
   const [showMobileCTA, setShowMobileCTA] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Show back to top after scrolling 500px
-      setShowBackToTop(window.scrollY > 500);
-      // Show mobile CTA after scrolling 300px
-      setShowMobileCTA(window.scrollY > 300);
+    const onScroll = () => {
+      setShowTop(window.scrollY > 600);
+      setShowMobileCTA(window.scrollY > 400);
     };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  // WhatsApp number (replace with actual number)
-  const whatsappNumber = "918447470101";
-  const whatsappMessage = encodeURIComponent("Hi! I'm interested in your software development services.");
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
   return (
     <>
-      {/* Mobile Floating CTA - Only visible on mobile */}
+      {/* Mobile sticky CTA */}
       <AnimatePresence>
         {showMobileCTA && (
           <motion.div
-            initial={{ y: 100, opacity: 0 }}
+            initial={{ y: 80, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 100, opacity: 0 }}
-            transition={{ type: "spring", damping: 20 }}
-            className="fixed bottom-0 left-0 right-0 z-40 p-4 bg-gradient-to-t from-white via-white to-transparent lg:hidden"
+            exit={{ y: 80, opacity: 0 }}
+            className="fixed inset-x-0 bottom-0 z-40 border-t border-gray-200 bg-white/95 p-3 backdrop-blur lg:hidden"
           >
-            <button
-              onClick={scrollToContact}
-              className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-4 text-base font-semibold text-white shadow-lg shadow-blue-500/30"
+            <Link
+              href="/contact"
+              onClick={() => track("cta_click", { id: "discuss_project", location: "mobile_sticky" })}
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-gray-900 px-6 py-3.5 font-semibold text-white"
             >
-              <Send className="h-5 w-5" />
-              Get a Free Quote
-            </button>
+              Discuss your project <ArrowRight className="h-4 w-4" />
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Desktop Floating Buttons */}
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
-        {/* WhatsApp Button */}
-        <motion.a
-          href={whatsappUrl}
+      {/* Desktop/mobile floating actions */}
+      <div className="fixed bottom-6 right-5 z-50 flex flex-col gap-3">
+        <a
+          href={whatsappUrl()}
           target="_blank"
           rel="noopener noreferrer"
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 1, type: "spring" }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-green-500/30 transition-all hover:shadow-xl hover:shadow-green-500/40"
-          aria-label="Chat on WhatsApp"
+          onClick={() => track("contact_whatsapp_click")}
+          className="flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-105"
+          aria-label="Chat with ARSTEG on WhatsApp"
         >
-          <MessageCircle className="h-6 w-6" />
+          <WhatsAppIcon className="h-7 w-7" />
+        </a>
 
-          {/* Tooltip */}
-          <span className="absolute right-full mr-3 whitespace-nowrap rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 transition-opacity group-hover:opacity-100">
-            Chat with us
-          </span>
-
-          {/* Ping animation */}
-          <span className="absolute -top-1 -right-1 flex h-4 w-4">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
-            <span className="relative inline-flex h-4 w-4 rounded-full bg-green-500"></span>
-          </span>
-        </motion.a>
-
-        {/* Back to Top Button */}
         <AnimatePresence>
-          {showBackToTop && (
+          {showTop && (
             <motion.button
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0, opacity: 0 }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={scrollToTop}
-              className="group flex h-12 w-12 items-center justify-center rounded-full bg-gray-900 text-white shadow-lg transition-all hover:bg-gray-800 hover:shadow-xl"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-gray-900 text-white shadow-lg transition-colors hover:bg-gray-800"
               aria-label="Back to top"
             >
-              <ArrowUp className="h-5 w-5 transition-transform group-hover:-translate-y-0.5" />
+              <ArrowUp className="h-5 w-5" />
             </motion.button>
           )}
         </AnimatePresence>
       </div>
 
-      {/* Add padding at bottom on mobile to account for floating CTA */}
-      <div className="h-20 lg:hidden" />
+      {/* Spacer so mobile sticky CTA never covers footer content */}
+      <div className="h-16 lg:hidden" aria-hidden="true" />
     </>
   );
 }

@@ -21,24 +21,24 @@ export async function generateMetadata({ params }: PortfolioPageProps): Promise<
 
   if (!project) {
     return {
-      title: "Project Not Found | ARSTEG Solutions",
+      title: "Project not found",
     };
   }
 
   return {
-    title: `${project.title} Case Study | ARSTEG Solutions`,
-    description: project.description,
+    title: `${project.title}`,
+    description: project.summary,
     openGraph: {
-      title: `${project.title} Case Study | ARSTEG Solutions`,
-      description: project.description,
+      title: `${project.title}`,
+      description: project.summary,
       type: "article",
       url: `https://arsteg.com/portfolio/${slug}`,
       images: [{ url: project.image }],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${project.title} Case Study | ARSTEG Solutions`,
-      description: project.description,
+      title: `${project.title}`,
+      description: project.summary,
     },
   };
 }
