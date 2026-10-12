@@ -23,7 +23,7 @@ export default function Navbar() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-gray-950">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-700">
       <nav className="container" aria-label="Primary">
         <div className="flex h-[72px] items-center justify-between">
           {/* Logo (white wordmark reads on the dark header) */}
@@ -85,7 +85,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="overflow-hidden border-t border-white/10 bg-gray-950 lg:hidden"
+            className="overflow-hidden border-t border-white/10 bg-slate-700 lg:hidden"
           >
             <div className="container space-y-1 py-4">
               {navLinks.map((link) => (

@@ -32,7 +32,9 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3100/)",
       "Bash(curl -s -X POST http://localhost:3100/api/send-email -H 'Content-Type: application/json' -d '{\"name\":\"Website Delivery Test\",\"email\":\"aanchal.arsteg@gmail.com\",\"message\":\"Automated end-to-end delivery test of the new enquiry endpoint. Please ignore — no action needed.\",\"company\":\"ARSTEG internal test\",\"service\":\"not-sure\"}' -w \"\\\\n[HTTP %{http_code}]\\\\n\")",
       "Bash(PORT=3101 npm run start)",
-      "Bash(curl -s -o /dev/null -w \"contact:%{http_code}\\\\n\" http://localhost:3101/contact)"
+      "Bash(curl -s -o /dev/null -w \"contact:%{http_code}\\\\n\" http://localhost:3101/contact)",
+      "Bash(PORT=3102 npm run start)",
+      "Bash(curl -s -o /dev/null -w \"home:%{http_code}\\\\n\" http://localhost:3102/)"
     ]
   }
 }
