@@ -46,16 +46,16 @@ export default function ProductsPage() {
       />
 
       {/* Page header */}
-      <section className="bg-gray-900 py-20 lg:py-28">
+      <section className="bg-gray-50 py-20 lg:py-28">
         <div className="container">
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-wide text-[hsl(var(--brand))]">
               Our products
             </p>
-            <h1 className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            <h1 className="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
               We don&apos;t just build software for clients. We build our own.
             </h1>
-            <p className="mt-6 text-lg leading-relaxed text-gray-400">
+            <p className="mt-6 text-lg leading-relaxed text-gray-600">
               These three SaaS products are designed, engineered and operated entirely by ARSTEG —
               from product strategy and UX through AI integration, infrastructure and support.
               Running our own products keeps us honest: every practice we recommend to clients is
@@ -115,13 +115,13 @@ export default function ProductsPage() {
       ))}
 
       {/* Capability bridge: products as proof of client-work quality */}
-      <section className="bg-gray-900 py-20 lg:py-24">
+      <section className="border-t border-gray-100 bg-gray-50 py-20 lg:py-24">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               The same team can build your product
             </h2>
-            <p className="mt-4 text-lg text-gray-400">
+            <p className="mt-4 text-lg text-gray-600">
               Shipping and operating our own SaaS means we&apos;ve solved the hard parts —
               multi-tenant architecture, AI integration, billing, compliance, reliability — in
               production. If you&apos;re planning a product, you can hire the team that already
@@ -137,7 +137,7 @@ export default function ProductsPage() {
               </Link>
               <Link
                 href="/services/custom-software-development"
-                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-full border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-900 transition-colors hover:bg-white"
               >
                 See our development services
               </Link>
