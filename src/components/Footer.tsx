@@ -21,6 +21,12 @@ const navigation = {
     { name: "Dedicated engineering teams", href: "/services/dedicated-engineering-teams" },
     { name: "Zoho implementation", href: "/services/zoho-development" },
   ],
+  products: [
+    { name: "EffortlessHRM", href: "https://www.effortlesshrm.com", external: true },
+    { name: "EffortlessInsight", href: "https://effortlessinsight.in", external: true },
+    { name: "EffortlessPromo", href: "https://effortlesspromo.com", external: true },
+    { name: "All products", href: "/products", external: false },
+  ],
 };
 
 const socialLinks = [
@@ -59,7 +65,8 @@ export default function Footer() {
             <span className="text-2xl font-semibold text-white">ARSTEG</span>
             <p className="mt-5 leading-relaxed text-gray-400">
               A software engineering partner for growing businesses. We build custom applications,
-              modernize legacy systems, and connect and automate the tools you already use.
+              modernize legacy systems, and connect and automate the tools you already use — and we
+              build and run our own SaaS products: EffortlessHRM, EffortlessInsight and EffortlessPromo.
             </p>
 
             <div className="mt-8">
@@ -105,7 +112,7 @@ export default function Footer() {
           </div>
 
           {/* Link columns */}
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
             <div>
               <h3 className="mb-4 text-sm font-semibold text-white">Services</h3>
               <ul className="space-y-3">
@@ -114,6 +121,31 @@ export default function Footer() {
                     <Link href={item.href} className="text-sm text-gray-400 transition-colors hover:text-white">
                       {item.name}
                     </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="mb-4 text-sm font-semibold text-white">Products</h3>
+              <ul className="space-y-3">
+                {navigation.products.map((item) => (
+                  <li key={item.name}>
+                    {item.external ? (
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => track("product_click", { id: item.name, location: "footer" })}
+                        className="text-sm text-gray-400 transition-colors hover:text-white"
+                      >
+                        {item.name}
+                      </a>
+                    ) : (
+                      <Link href={item.href} className="text-sm text-gray-400 transition-colors hover:text-white">
+                        {item.name}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>

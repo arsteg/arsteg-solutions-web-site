@@ -21,7 +21,8 @@ export type AnalyticsEvent =
   | 'booking_start' // user opened the booking UI / Calendly
   | 'contact_email_click'
   | 'contact_phone_click'
-  | 'contact_whatsapp_click';
+  | 'contact_whatsapp_click'
+  | 'product_click'; // outbound click to one of our product sites. props: { id, location }
 
 type Props = Record<string, string | number | boolean | undefined>;
 
