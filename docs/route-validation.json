@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-16",
+  "results": [
+    {
+      "path": "/",
+      "status": 200,
+      "title": "Custom software, mobile apps &amp; dedicated developers"
+    },
+    {
+      "path": "/services",
+      "status": 200,
+      "title": "Software development services | ARSTEG Solutions"
+    },
+    {
+      "path": "/about",
+      "status": 200,
+      "title": "About ARSTEG Solutions | ARSTEG Solutions"
+    },
+    {
+      "path": "/products",
+      "status": 200,
+      "title": "Our products: EffortlessHRM, Insight &amp; Promo | ARSTEG Solutions"
+    },
+    {
+      "path": "/portfolio",
+      "status": 200,
+      "title": "Software solution examples | ARSTEG Solutions"
+    },
+    {
+      "path": "/blog",
+      "status": 200,
+      "title": "Software engineering insights | ARSTEG Solutions"
+    },
+    {
+      "path": "/careers",
+      "status": 200,
+      "title": "Careers at ARSTEG | ARSTEG Solutions"
+    },
+    {
+      "path": "/contact",
+      "status": 200,
+      "title": "Discuss your software project | ARSTEG Solutions"
+    },
+    {
+      "path": "/privacy",
+      "status": 200,
+      "title": "Privacy | ARSTEG Solutions"
+    },
+    {
+      "path": "/services/custom-software-development",
+      "status": 200,
+      "title": "Custom software development | ARSTEG Solutions"
+    },
+    {
+      "path": "/services/integrations-automation",
+      "status": 200,
+      "title": "Integrations &amp; AI automation | ARSTEG Solutions"
+    },
+    {
+      "path": "/services/dedicated-engineering-teams",
+      "status": 200,
+      "title": "Dedicated &amp; hourly developers | ARSTEG Solutions"
+    },
+    {
+      "path": "/services/zoho-development",
+      "status": 200,
+      "title": "Zoho implementation &amp; customization | ARSTEG Solutions"
+    },
+    {
+      "path": "/services/digital-marketing-growth",
+      "status": 200,
+      "title": "Growth &amp; marketing engineering | ARSTEG Solutions"
+    },
+    {
+      "path": "/services/mobile-app-development",
+      "status": 200,
+      "title": "Mobile app development | ARSTEG Solutions"
+    },
+    {
+      "path": "/services/desktop-application-development",
+      "status": 200,
+      "title": "Desktop application development | ARSTEG Solutions"
+    },
+    {
+      "path": "/portfolio/health-dashboard",
+      "status": 200,
+      "title": "Remote patient-monitoring platform | ARSTEG Solutions"
+    },
+    {
+      "path": "/portfolio/ecommerce-platform",
+      "status": 200,
+      "title": "Multi-vendor e-commerce platform | ARSTEG Solutions"
+    },
+    {
+      "path": "/portfolio/insurance-portal",
+      "status": 200,
+      "title": "Legacy insurance platform modernization | ARSTEG Solutions"
+    },
+    {
+      "path": "/portfolio/ai-document-processor",
+      "status": 200,
+      "title": "AI-assisted document processing | ARSTEG Solutions"
+    },
+    {
+      "path": "/portfolio/analytics-dashboard",
+      "status": 200,
+      "title": "Business analytics dashboard | ARSTEG Solutions"
+    },
+    {
+      "path": "/blog/ai-powered-enterprise-software",
+      "status": 200,
+      "title": "How AI-Powered Solutions are Transforming Enterprise Software | ARSTEG Solutions"
+    },
+    {
+      "path": "/blog/building-scalable-apis",
+      "status": 200,
+      "title": "Building Scalable APIs: Patterns That Hold Up in Production | ARSTEG Solutions"
+    },
+    {
+      "path": "/blog/legacy-to-cloud-migration",
+      "status": 200,
+      "title": "From Legacy to Cloud: Modernizing Without a Big-Bang Rewrite | ARSTEG Solutions"
+    }
+  ],
+  "redirects": 5,
+  "sitemapUrls": 24,
+  "previewRobots": "User-Agent: *\nDisallow: /\n\n"
+}

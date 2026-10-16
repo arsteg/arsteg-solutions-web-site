@@ -43,7 +43,7 @@
       },
       {
         "type": "paragraph",
-        "text": "In our own work, well-scoped AI automation has let clients take significant manual effort out of document-heavy processes and speed up response times — provided the workflow includes validation and a human-review step."
+        "text": "For document-heavy processes, start with a specific manual step and measure the effort involved. Validate extracted information and keep a human-review step for consequential decisions."
       }
     ],
     "readTime": "5 min read"
@@ -88,7 +88,7 @@
       },
       {
         "type": "paragraph",
-        "text": "Caching, connection pooling, and request batching can dramatically improve performance. We've seen 10x improvements in throughput by implementing intelligent caching strategies and reducing redundant API calls."
+        "text": "Caching, connection pooling and request batching can improve performance. Measure representative workloads before and after a change, and balance throughput against data freshness and operational complexity."
       },
       {
         "type": "heading",

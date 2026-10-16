@@ -1,10 +1,9 @@
 "use client";
 
 import { Canvas, extend } from "@react-three/fiber";
-import { Html, useLoader } from "@react-three/drei";
+import { Html } from "@react-three/drei";
 import { TextureLoader } from "three";
 import { Suspense, useEffect } from "react";
-import * as THREE from "three";
 
 extend({ TextureLoader });
 

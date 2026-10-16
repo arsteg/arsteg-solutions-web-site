@@ -6,12 +6,11 @@ import blog from "@/data/blog-posts.json";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = site.url;
-  const now = new Date();
+
 
   const staticRoutes = ["", "/services", "/products", "/portfolio", "/about", "/blog", "/careers", "/contact", "/privacy"].map(
     (path) => ({
       url: `${base}${path}`,
-      lastModified: now,
       changeFrequency: "monthly" as const,
       priority: path === "" ? 1 : 0.7,
     }),
@@ -19,21 +18,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const serviceRoutes = services.map((s) => ({
     url: `${base}/services/${s.slug}`,
-    lastModified: now,
     changeFrequency: "monthly" as const,
     priority: s.priority < 10 ? 0.8 : 0.6,
   }));
 
   const portfolioRoutes = portfolio.map((p) => ({
     url: `${base}/portfolio/${p.slug}`,
-    lastModified: now,
     changeFrequency: "monthly" as const,
     priority: 0.5,
   }));
 
   const blogRoutes = blog.map((b) => ({
     url: `${base}/blog/${b.slug}`,
-    lastModified: now,
     changeFrequency: "monthly" as const,
     priority: 0.5,
   }));

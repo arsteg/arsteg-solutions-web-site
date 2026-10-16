@@ -26,8 +26,8 @@ export default function NotFound() {
           Page not found
         </h1>
         <p className="text-gray-600 mb-8 leading-relaxed">
-          Sorry, we couldn&apos;t find the page you&apos;re looking for. The page may have
-          been moved, deleted, or never existed.
+          Sorry, we couldn&apos;t find the page you&apos;re looking for. The
+          page may have been moved, deleted, or never existed.
         </p>
 
         {/* Action Buttons */}
@@ -40,7 +40,9 @@ export default function NotFound() {
             Go to Homepage
           </Link>
           <button
-            onClick={() => typeof window !== "undefined" && window.history.back()}
+            onClick={() =>
+              typeof window !== "undefined" && window.history.back()
+            }
             className="inline-flex items-center justify-center gap-2 rounded-full border border-gray-200 bg-white px-6 py-3 font-semibold text-gray-700 transition-all hover:bg-gray-50"
           >
             <ArrowLeft className="h-4 w-4" />
@@ -55,16 +57,16 @@ export default function NotFound() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="/#services"
+              href="/services"
               className="text-sm font-medium text-blue-600 hover:underline"
             >
               Our Services
             </Link>
             <Link
-              href="/#portfolio"
+              href="/portfolio"
               className="text-sm font-medium text-blue-600 hover:underline"
             >
-              Case Studies
+              Solution examples
             </Link>
             <Link
               href="/contact"
@@ -73,7 +75,7 @@ export default function NotFound() {
               Contact Us
             </Link>
             <Link
-              href="/#blog"
+              href="/blog"
               className="text-sm font-medium text-blue-600 hover:underline"
             >
               Blog

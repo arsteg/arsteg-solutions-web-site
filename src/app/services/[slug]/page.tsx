@@ -1,56 +1,20 @@
 import { notFound } from "next/navigation";
-import { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import ServiceDetailPage from "./ServiceDetailPage";
-import servicesData from "@/data/services.json";
-
-interface ServicePageProps {
-  params: Promise<{
-    slug: string;
-  }>;
+import entries from "@/data/services.json";
+type Props = { params: Promise<{ slug: string }> };
+export function generateStaticParams() {
+  return entries.map((item) => ({ slug: item.slug }));
 }
-
-// Generate static params for all services
-export async function generateStaticParams() {
-  return servicesData.map((service) => ({
-    slug: service.slug,
-  }));
-}
-
-// Generate metadata for each service page
-export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  const service = servicesData.find((s) => s.slug === slug);
-
-  if (!service) {
-    return {
-      title: "Service not found",
-    };
-  }
-
-  return {
-    title: service.title,
-    description: service.summary,
-    openGraph: {
-      title: service.title,
-      description: service.summary,
-      type: "website",
-      url: `https://arsteg.com/services/${slug}`,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: service.title,
-      description: service.summary,
-    },
-  };
+  const item = entries.find((x) => x.slug === slug);
+  if (!item) return { title: "Page not found", robots: { index: false } };
+  return pageMetadata(item.title, item.summary, "/services/" + slug);
 }
-
-export default async function ServicePage({ params }: ServicePageProps) {
+export default async function Page({ params }: Props) {
   const { slug } = await params;
-  const service = servicesData.find((s) => s.slug === slug);
-
-  if (!service) {
-    notFound();
-  }
-
-  return <ServiceDetailPage service={service} />;
+  const item = entries.find((x) => x.slug === slug);
+  if (!item) notFound();
+  return <ServiceDetailPage service={item} />;
 }

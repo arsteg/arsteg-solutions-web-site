@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ServerClient } from 'postmark';
 import { supabase } from '@/lib/supabase';
+import { createHash } from 'node:crypto';
 
 /**
  * Enquiry intake endpoint.
@@ -33,6 +34,9 @@ const recentSubmissions = new Map<string, number>();
 
 function rateLimited(ip: string): boolean {
   const now = Date.now();
+  for (const [key, timestamps] of ipHits) {
+    if (!timestamps.some(t => now - t < RATE_LIMIT_WINDOW_MS)) ipHits.delete(key);
+  }
   const hits = (ipHits.get(ip) ?? []).filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
   hits.push(now);
   ipHits.set(ip, hits);
@@ -49,7 +53,6 @@ function isDuplicate(key: string): boolean {
     }
   }
   if (last && now - last < DEDUP_WINDOW_MS) return true;
-  recentSubmissions.set(key, now);
   return false;
 }
 
@@ -83,14 +86,16 @@ export async function POST(req: NextRequest) {
   let body: Record<string, unknown>;
   try {
     body = (await req.json()) as Record<string, unknown>;
+    if (!body || typeof body !== 'object' || Array.isArray(body)) {
+      return NextResponse.json({ error: 'Invalid request.' }, { status: 400 });
+    }
   } catch {
     return NextResponse.json({ error: 'Invalid request.' }, { status: 400 });
   }
 
-  // Honeypot: real users never fill this hidden field. Pretend success so bots
-  // don't learn they were caught, but drop the submission.
+  // Rejected submissions must never produce a successful acceptance response.
   if (str(body.hp_field)) {
-    return NextResponse.json({ ok: true }, { status: 200 });
+    return NextResponse.json({ error: 'Unable to accept this submission.' }, { status: 422 });
   }
 
   // Normalize (accept both new `message` and legacy `description`).
@@ -107,6 +112,9 @@ export async function POST(req: NextRequest) {
 
   // ---- Validation -------------------------------------------------------
   const errors: Record<string, string> = {};
+  for (const field of ['company', 'website', 'budget', 'service', 'referral'] as const) {
+    if (enquiry[field].length > 500) errors[field] = 'Please use 500 characters or fewer.';
+  }
   if (enquiry.name.length < 2 || enquiry.name.length > 100) {
     errors.name = 'Please enter your name.';
   }
@@ -132,7 +140,8 @@ export async function POST(req: NextRequest) {
       { status: 429 },
     );
   }
-  if (isDuplicate(`${enquiry.email}|${enquiry.message.slice(0, 64)}`)) {
+  const submissionKey = createHash('sha256').update(JSON.stringify(enquiry)).digest('hex');
+  if (isDuplicate(submissionKey)) {
     // Treat as already-received so the user sees success, not an error.
     return NextResponse.json({ ok: true, duplicate: true }, { status: 200 });
   }
@@ -216,6 +225,7 @@ export async function POST(req: NextRequest) {
 
   // Only report success if the enquiry was actually accepted somewhere.
   if (emailed || stored) {
+    recentSubmissions.set(submissionKey, Date.now());
     return NextResponse.json({ ok: true, stored, emailed }, { status: 200 });
   }
 

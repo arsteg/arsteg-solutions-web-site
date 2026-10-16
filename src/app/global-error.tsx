@@ -32,8 +32,8 @@ export default function GlobalError({
               Oops! Something went wrong
             </h1>
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              We&apos;re sorry, but something unexpected happened. Our team has been
-              notified and is working to fix the issue.
+                We&apos;re sorry, but something unexpected happened. Please try
+                again or contact us using the details below.
             </p>
 
             {/* Error Details (only in development) */}

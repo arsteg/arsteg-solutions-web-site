@@ -4,7 +4,7 @@
     "slug": "custom-software-development",
     "icon": "Code2",
     "priority": 1,
-    "title": "Custom software & modernization",
+    "title": "Custom software development",
     "tagline": "Software built around how your business actually works",
     "summary": "We design, build and modernize web and business applications for teams that have outgrown spreadsheets, off-the-shelf tools, or an ageing legacy system.",
     "who": "Operations, finance and product leaders at small and mid-sized businesses whose processes no longer fit a generic tool — or whose existing system is slow, fragile, and expensive to change.",
@@ -17,7 +17,7 @@
     "deliverables": [
       "A working, documented application deployed to your cloud account",
       "A clear data model and admin tooling your team can operate",
-      "Source code and full IP ownership handed over to you",
+      "Source-code handover and ownership terms defined in the agreement",
       "Automated tests and a deployment pipeline, not just a one-off build",
       "A phased modernization plan when replacing a legacy system"
     ],
@@ -40,16 +40,25 @@
       "If an off-the-shelf tool genuinely fits better, we'll say so."
     ],
     "faqs": [
-      { "q": "Do we own the code?", "a": "Yes. You get full source code and IP ownership, deployed to infrastructure you control." },
-      { "q": "Can you work with our existing system?", "a": "Usually yes — we commonly build alongside and incrementally replace a legacy system rather than forcing a rebuild." },
-      { "q": "How do engagements start?", "a": "With a paid, fixed-scope discovery or a small first milestone, so both sides can judge fit before a larger commitment." }
+      {
+        "q": "Do we own the code?",
+        "a": "Source-code access, IP rights and handover requirements are agreed in writing before development starts."
+      },
+      {
+        "q": "Can you work with our existing system?",
+        "a": "Usually yes — we commonly build alongside and incrementally replace a legacy system rather than forcing a rebuild."
+      },
+      {
+        "q": "How do engagements start?",
+        "a": "Start with a conversation about goals, constraints and the existing system. We then propose an appropriate discovery phase or first milestone, including its scope and commercial terms."
+      }
     ]
   },
   {
     "id": "integrations-automation",
     "slug": "integrations-automation",
     "icon": "PlugZap",
-    "priority": 2,
+    "priority": 5,
     "title": "Integrations & AI automation",
     "tagline": "Connect your tools and automate the manual work between them",
     "summary": "We connect the systems you already use — CRMs, accounting, payments, support, internal apps — and automate the repetitive work between them, including AI-assisted automation for tasks like document handling, triage and drafting.",
@@ -85,19 +94,28 @@
       "We integrate with your approved tools and keep credentials server-side."
     ],
     "faqs": [
-      { "q": "Is the AI reliable enough to trust?", "a": "For well-scoped tasks (extraction, classification, drafting) it saves real time, but we design workflows with validation and human review rather than full autonomy for anything that matters." },
-      { "q": "Will this break when a provider changes their API?", "a": "We build with error handling and monitoring so failures are caught and alerted, not discovered weeks later." },
-      { "q": "Can you automate just one painful process first?", "a": "Yes — that's usually the best way to start and prove the value before expanding." }
+      {
+        "q": "Is the AI reliable enough to trust?",
+        "a": "For well-scoped tasks (extraction, classification, drafting) it saves real time, but we design workflows with validation and human review rather than full autonomy for anything that matters."
+      },
+      {
+        "q": "Will this break when a provider changes their API?",
+        "a": "We build with error handling and monitoring so failures are caught and alerted, not discovered weeks later."
+      },
+      {
+        "q": "Can you automate just one painful process first?",
+        "a": "Yes — that's usually the best way to start and prove the value before expanding."
+      }
     ]
   },
   {
     "id": "dedicated-teams",
     "slug": "dedicated-engineering-teams",
     "icon": "UsersRound",
-    "priority": 3,
-    "title": "Dedicated engineering teams",
-    "tagline": "Senior engineers who work as an extension of your team",
-    "summary": "When you need engineering capacity without a long hiring cycle, we provide dedicated engineers who integrate with your tools, standups and workflow — and ramp up or down as your needs change.",
+    "priority": 4,
+    "title": "Dedicated & hourly developers",
+    "tagline": "The capacity you need. A way of working that fits.",
+    "summary": "Extend your team with dedicated developers, or tackle a defined backlog with hourly development support. Discuss your stack, priorities and availability with us.",
     "who": "Founders and engineering leaders who need to move faster than hiring allows, or to add specific skills (mobile, DevOps, AI) for a defined period.",
     "problems": [
       "Hiring the right senior engineer takes months you don't have",
@@ -106,10 +124,10 @@
       "Contractors who disappear or don't integrate with your team"
     ],
     "deliverables": [
-      "Named engineers matched to your stack, not anonymous ticket-takers",
-      "Integration with your repo, board, standups and review process",
-      "Regular demos and transparent progress reporting",
-      "The flexibility to scale the team up or down with notice"
+      "Developers matched to the technical needs and agreed scope",
+      "Work in your repositories, task board and review process",
+      "Progress updates and agreed reporting for hours and deliverables",
+      "An onboarding plan with access, communication and responsibilities defined"
     ],
     "approach": [
       "Understand your stack, roadmap and the gap you're filling",
@@ -125,14 +143,27 @@
       "Technical leads and architects"
     ],
     "boundaries": [
-      "This is team extension, not a black-box project — you direct the work.",
-      "We're clear about each engineer's experience level; we don't oversell.",
-      "Minimum engagement terms apply so onboarding effort pays off for both sides."
+      "Availability, working hours, time-zone overlap and notice periods are agreed in writing.",
+      "Hourly work is estimated and prioritised with you; rates and billing terms depend on scope.",
+      "Security, confidentiality, source-code rights and handover are covered in the agreement."
     ],
     "faqs": [
-      { "q": "How is this different from hiring a freelancer?", "a": "Engineers work inside your process and tools with continuity and oversight, and we handle cover and continuity if someone is unavailable." },
-      { "q": "Can we start with one engineer?", "a": "Yes — many engagements start with one and grow once the working relationship is proven." },
-      { "q": "Who owns the code?", "a": "You do. Everything is committed to your repositories." }
+      {
+        "q": "Dedicated developers or hourly support: which fits?",
+        "a": "Dedicated development suits a sustained roadmap and ongoing collaboration. Hourly support suits a focused backlog or intermittent technical needs. Share the work and we can discuss the trade-offs."
+      },
+      {
+        "q": "Can we start with one developer?",
+        "a": "Tell us the skills and time commitment you need. We will discuss a suitable arrangement and current availability before you commit."
+      },
+      {
+        "q": "How are hours and progress reported?",
+        "a": "Agree a task backlog, estimates, reporting cadence and approval process before starting. Commercial terms and any minimum commitments are set out in the proposal."
+      },
+      {
+        "q": "Can you work with our time zone?",
+        "a": "Share the collaboration hours your team needs. We agree workable overlap and communication expectations as part of scoping."
+      }
     ]
   },
   {
@@ -173,8 +204,14 @@
       "Integrations keep credentials secure and server-side."
     ],
     "faqs": [
-      { "q": "Do you work across the whole Zoho suite?", "a": "Yes — from single products like CRM through to Zoho One and custom Creator apps and integrations." },
-      { "q": "Can you connect Zoho to our other tools?", "a": "Yes, that's one of the most common requests — accounting, payments, e-commerce and internal systems." }
+      {
+        "q": "Do you work across the whole Zoho suite?",
+        "a": "Yes — from single products like CRM through to Zoho One and custom Creator apps and integrations."
+      },
+      {
+        "q": "Can you connect Zoho to our other tools?",
+        "a": "Yes, that's one of the most common requests — accounting, payments, e-commerce and internal systems."
+      }
     ]
   },
   {
@@ -215,7 +252,112 @@
       "We set up privacy-respecting, consent-aware tracking."
     ],
     "faqs": [
-      { "q": "Do you run ad campaigns?", "a": "Our strength is the technical foundation — tracking, automation and pages. We can advise on campaigns but the measurement side is where we add the most value." }
+      {
+        "q": "Do you run ad campaigns?",
+        "a": "Our strength is the technical foundation — tracking, automation and pages. We can advise on campaigns but the measurement side is where we add the most value."
+      }
+    ]
+  },
+  {
+    "id": "mobile-app",
+    "slug": "mobile-app-development",
+    "icon": "Code2",
+    "priority": 2,
+    "title": "Mobile app development",
+    "tagline": "Put your business in your customers’ hands.",
+    "summary": "Design and build mobile applications for customers and field teams, with connected backends and clear, usable workflows.",
+    "who": "Businesses building a customer app, a field-service tool or a mobile companion to an existing platform.",
+    "problems": [
+      "Customers need a simpler way to access your service on a phone",
+      "Field teams need data capture and workflows away from a desk",
+      "An existing app needs better usability or integration"
+    ],
+    "deliverables": [
+      "User journeys and interface designs for the agreed platforms",
+      "Mobile application and backend/API integrations",
+      "Testing across the agreed devices and operating-system versions",
+      "Release preparation, documentation and a maintenance plan"
+    ],
+    "approach": [
+      "Understand users, workflows and platform constraints",
+      "Prototype the important journeys and agree a first release",
+      "Build, integrate and test on the agreed devices and environments",
+      "Plan deployment, documentation and ongoing maintenance"
+    ],
+    "tech": [
+      "React Native",
+      "Flutter",
+      "REST APIs",
+      "Node.js / .NET backends"
+    ],
+    "boundaries": [
+      "Scope, delivery milestones, intellectual property and support are agreed in writing.",
+      "Third-party accounts, licences and platform fees are discussed during scoping."
+    ],
+    "faqs": [
+      {
+        "q": "Can one app support iOS and Android?",
+        "a": "React Native and Flutter can share substantial code across platforms. Device integrations and user experience requirements determine whether a shared approach fits."
+      },
+      {
+        "q": "Can the app work offline?",
+        "a": "Offline support requires deliberate storage, synchronisation and conflict-handling design. Tell us where connectivity is unreliable so we can scope it properly."
+      },
+      {
+        "q": "Will you help with app store releases?",
+        "a": "Release preparation can be included in the scope. Store accounts, review timelines and final approval remain subject to the platform’s requirements."
+      }
+    ]
+  },
+  {
+    "id": "desktop-application",
+    "slug": "desktop-application-development",
+    "icon": "Code2",
+    "priority": 3,
+    "title": "Desktop application development",
+    "tagline": "Software that works where your business does.",
+    "summary": "Build and modernise desktop applications for operational workflows, local data and existing business systems, with deployment planned around your environment.",
+    "who": "Teams relying on Windows business software, established desktop tools or workflows that need access to local systems.",
+    "problems": [
+      "A legacy application is becoming difficult to maintain",
+      "Local workflows and equipment do not fit a browser-only tool",
+      "Teams need a clear path from an old application to a supported platform"
+    ],
+    "deliverables": [
+      "Workflow and dependency assessment",
+      "Desktop interface and business logic for the agreed environment",
+      "Data migration and integration where included in scope",
+      "Installer, deployment guidance and handover documentation"
+    ],
+    "approach": [
+      "Understand users, workflows and platform constraints",
+      "Prototype the important journeys and agree a first release",
+      "Build, integrate and test on the agreed devices and environments",
+      "Plan deployment, documentation and ongoing maintenance"
+    ],
+    "tech": [
+      ".NET",
+      "Windows Forms",
+      "SQL Server",
+      "Legacy VB6 and Classic ASP assessment"
+    ],
+    "boundaries": [
+      "Scope, delivery milestones, intellectual property and support are agreed in writing.",
+      "Third-party accounts, licences and platform fees are discussed during scoping."
+    ],
+    "faqs": [
+      {
+        "q": "Can you modernise our existing Windows application?",
+        "a": "Start with the source code, dependencies and deployment environment. We can assess what should be retained, replaced or connected to newer services."
+      },
+      {
+        "q": "Do you support every desktop operating system?",
+        "a": "Our existing stack includes Windows and .NET. Share any macOS or Linux requirements so compatibility and the implementation approach can be assessed before a proposal."
+      },
+      {
+        "q": "How do we avoid disrupting daily operations?",
+        "a": "Plan migration around representative data, acceptance testing, staged deployment and a rollback path. The appropriate approach depends on the current system."
+      }
     ]
   }
 ]
