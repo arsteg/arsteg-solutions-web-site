@@ -6,6 +6,7 @@ import { telHref, site } from "@/config/site";
 import { track } from "@/lib/analytics";
 import Link from "next/link";
 import services from "@/data/services.json";
+import { hireRoles } from "@/data/hire";
 
 /**
  * Compact enquiry form shared by service pages and the Zoho page.
@@ -219,7 +220,7 @@ export default function LeadForm({
               htmlFor={`service-${location}`}
               className="mb-1.5 block text-sm font-medium text-gray-700"
             >
-              What can we help with?
+              Skill or role needed
             </label>
             <select
               id={`service-${location}`}
@@ -229,13 +230,25 @@ export default function LeadForm({
               className={input}
             >
               <option value="">Help me choose</option>
-              {[...services]
-                .sort((a, b) => a.priority - b.priority)
-                .map((s) => (
-                  <option key={s.id} value={s.id}>
-                    {s.title}
+              <optgroup label="Hire a developer or team">
+                {hireRoles.map((r) => (
+                  <option key={r.slug} value={`Hire ${r.name.toLowerCase()}`}>
+                    Hire {r.name.toLowerCase()}
                   </option>
                 ))}
+                <option value="Dedicated development team">
+                  Dedicated development team
+                </option>
+              </optgroup>
+              <optgroup label="Project or service">
+                {[...services]
+                  .sort((a, b) => a.priority - b.priority)
+                  .map((s) => (
+                    <option key={s.id} value={s.id}>
+                      {s.title}
+                    </option>
+                  ))}
+              </optgroup>
             </select>
           </div>
         )}

@@ -2,15 +2,16 @@ import { PageIntro, Enquiry } from "@/components/Editorial";
 import { pageMetadata } from "@/lib/seo";
 import { site, formattedAddress, whatsappUrl } from "@/config/site";
 export const metadata = pageMetadata(
-  "Discuss your software project",
-  "Tell ARSTEG about your application, existing system or developer requirements. Contact our Gurugram team by enquiry form, email, phone or WhatsApp.",
+  "Discuss your requirements",
+  "Tell ARSTEG about the developers, team or project you need. Contact our Gurugram team by enquiry form, email, phone or WhatsApp.",
   "/contact",
 );
 export default function Page() {
   return (
     <>
       <PageIntro label="CONTACT ARSTEG" title="Let’s find the right next step.">
-        Share the problem, your current setup and any timing constraints. You do
+        Tell us the skills or role you need, the team you want to extend, or the
+        project you want delivered — along with any timing constraints. You do
         not need a finished specification to start a conversation.
       </PageIntro>
       <Enquiry />

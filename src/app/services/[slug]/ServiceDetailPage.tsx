@@ -45,8 +45,7 @@ export default function ServiceDetailPage({
         <p>{s.tagline}</p>
         <p>{s.summary}</p>
         <a className="button" href="#enquiry">
-          Discuss{" "}
-          {s.id === "dedicated-teams" ? "your team needs" : "your project"} ↗
+          Discuss your project ↗
         </a>
       </PageIntro>
       <section className="section">
@@ -108,17 +107,15 @@ export default function ServiceDetailPage({
               We agree the stack around your existing systems, team and
               operating requirements.
             </p>
-            <h3>Choose a working model</h3>
+            <h3>Prefer to add capacity instead?</h3>
             <p>
-              Project delivery for a defined scope; dedicated developers for an
-              ongoing roadmap; hourly support for a focused backlog.
-              Availability, estimates and terms are confirmed in the proposal.
+              If you would rather extend your own team than hand over a project,
+              you can hire developers by technology or role, or stand up a
+              dedicated team. Availability, overlap and terms are confirmed
+              before anyone starts.
             </p>
-            <Link
-              className="text-link"
-              href="/services/dedicated-engineering-teams"
-            >
-              Dedicated & hourly development →
+            <Link className="text-link" href="/hire">
+              Hire developers & teams →
             </Link>
           </div>
         </div>

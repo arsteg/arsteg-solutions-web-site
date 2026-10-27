@@ -27,6 +27,12 @@ const nextConfig: NextConfig = {
         destination: "/services/integrations-automation",
         permanent: true,
       },
+      // Dedicated/hourly service consolidated into the hiring journey
+      {
+        source: "/services/dedicated-engineering-teams",
+        destination: "/dedicated-teams",
+        permanent: true,
+      },
       // Removed portfolio item
       { source: "/portfolio/mobile-banking", destination: "/portfolio", permanent: true },
     ];

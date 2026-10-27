@@ -1,8 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
 import { site, formattedAddress, mailHref, telHref } from "@/config/site";
-import services from "@/data/services.json";
+import { hireRoles } from "@/data/hire";
 import Newsletter from "./Newsletter";
+
+const footerRoles = [
+  "net-developers",
+  "python-developers",
+  "react-developers",
+  "full-stack-developers",
+  "ai-developers",
+]
+  .map((slug) => hireRoles.find((r) => r.slug === slug))
+  .filter((r): r is (typeof hireRoles)[number] => Boolean(r));
 export default function Footer() {
   return (
     <footer className="site-footer">
@@ -30,11 +40,22 @@ export default function Footer() {
             <p className="footer-address">{formattedAddress()}</p>
           </div>
           <div>
+            <h2>Hire talent</h2>
+            {footerRoles.map((r) => (
+              <Link key={r.slug} href={"/hire/" + r.slug}>
+                Hire {r.name.toLowerCase()}
+              </Link>
+            ))}
+            <Link href="/hire">Browse all roles →</Link>
+            <Link href="/dedicated-teams">Dedicated teams →</Link>
+          </div>
+          <div>
             <h2>Explore</h2>
             {[
-              ["/about", "About ARSTEG"],
+              ["/services", "Software services"],
+              ["/portfolio", "Our work"],
               ["/products", "Our products"],
-              ["/portfolio", "Solution examples"],
+              ["/about", "About ARSTEG"],
               ["/blog", "Insights"],
               ["/careers", "Careers"],
             ].map(([h, t]) => (
@@ -42,18 +63,6 @@ export default function Footer() {
                 {t}
               </Link>
             ))}
-          </div>
-          <div>
-            <h2>What we build</h2>
-            {[...services]
-              .sort((a, b) => a.priority - b.priority)
-              .slice(0, 4)
-              .map((s) => (
-                <Link key={s.id} href={"/services/" + s.slug}>
-                  {s.title}
-                </Link>
-              ))}
-            <Link href="/services">All services →</Link>
           </div>
           <div>
             <h2>Start a conversation</h2>
@@ -66,7 +75,7 @@ export default function Footer() {
             >
               LinkedIn ↗
             </a>
-            <Link href="/contact">Project enquiry →</Link>
+            <Link href="/contact">Discuss your needs →</Link>
           </div>
         </div>
         <Newsletter />

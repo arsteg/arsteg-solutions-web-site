@@ -8,6 +8,8 @@ const groups = [
 ];
 const paths = [
   "/",
+  "/hire",
+  "/dedicated-teams",
   "/services",
   "/about",
   "/products",
@@ -17,6 +19,19 @@ const paths = [
   "/contact",
   "/privacy",
 ];
+// Hire roles live in a .ts module; list their slugs explicitly here.
+for (const slug of [
+  "net-developers",
+  "python-developers",
+  "react-developers",
+  "frontend-developers",
+  "full-stack-developers",
+  "ai-developers",
+  "qa-automation-engineers",
+  "devops-engineers",
+  "mobile-app-developers",
+])
+  paths.push("/hire/" + slug);
 for (const [route, file] of groups)
   for (const row of JSON.parse(
     fs.readFileSync("src/data/" + file + ".json", "utf8"),
@@ -57,12 +72,14 @@ for (const [from, to] of [
     "/services/api-third-party-integrations",
     "/services/integrations-automation",
   ],
+  ["/services/dedicated-engineering-teams", "/dedicated-teams"],
   ["/portfolio/mobile-banking", "/portfolio"],
 ]) {
   const res = await fetch(base + from, { redirect: "manual" });
   assert.equal(res.status, 308);
   assert.equal(new URL(res.headers.get("location"), base).pathname, to);
 }
+const redirectCount = 6;
 assert.equal((await fetch(base + "/missing-page-test")).status, 404);
 assert.equal(
   (await fetch(base + "/opengraph-image")).headers.get("content-type"),
@@ -76,9 +93,9 @@ fs.writeFileSync(
   "docs/route-validation.json",
   JSON.stringify(
     {
-      date: "2026-10-16",
+      date: "2026-10-27",
       results,
-      redirects: 5,
+      redirects: redirectCount,
       sitemapUrls: paths.length,
       previewRobots: robots,
     },
@@ -89,5 +106,7 @@ fs.writeFileSync(
 console.log(
   "PASS: " +
     paths.length +
-    " pages, unique titles, canonical URLs, descriptions, single H1, preview noindex, JSON-LD syntax; 5 redirects; 404; PNG social image; sitemap; robots.",
+    " pages, unique titles, canonical URLs, descriptions, single H1, preview noindex, JSON-LD syntax; " +
+    redirectCount +
+    " redirects; 404; PNG social image; sitemap; robots.",
 );

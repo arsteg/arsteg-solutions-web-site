@@ -52,9 +52,10 @@ export default function Navbar() {
           }}
         >
           {[
+            ["/hire", "Hire talent"],
+            ["/dedicated-teams", "Dedicated teams"],
             ["/services", "Services"],
-            ["/products", "Our products"],
-            ["/portfolio", "Solution examples"],
+            ["/portfolio", "Our work"],
             ["/about", "About"],
           ].map(([href, label]) => (
             <Link
@@ -71,7 +72,7 @@ export default function Navbar() {
             className="button nav-cta"
             onClick={() => setOpen(false)}
           >
-            Let’s talk <ArrowUpRight size={17} />
+            Discuss your needs <ArrowUpRight size={17} />
           </Link>
         </nav>
       </div>

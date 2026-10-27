@@ -109,64 +109,6 @@
     ]
   },
   {
-    "id": "dedicated-teams",
-    "slug": "dedicated-engineering-teams",
-    "icon": "UsersRound",
-    "priority": 4,
-    "title": "Dedicated & hourly developers",
-    "tagline": "The capacity you need. A way of working that fits.",
-    "summary": "Extend your team with dedicated developers, or tackle a defined backlog with hourly development support. Discuss your stack, priorities and availability with us.",
-    "who": "Founders and engineering leaders who need to move faster than hiring allows, or to add specific skills (mobile, DevOps, AI) for a defined period.",
-    "problems": [
-      "Hiring the right senior engineer takes months you don't have",
-      "A roadmap that's slipping for want of capacity",
-      "A short-term need for a specific skill you don't want to hire full-time",
-      "Contractors who disappear or don't integrate with your team"
-    ],
-    "deliverables": [
-      "Developers matched to the technical needs and agreed scope",
-      "Work in your repositories, task board and review process",
-      "Progress updates and agreed reporting for hours and deliverables",
-      "An onboarding plan with access, communication and responsibilities defined"
-    ],
-    "approach": [
-      "Understand your stack, roadmap and the gap you're filling",
-      "Propose specific engineers with relevant experience",
-      "Onboard into your tools and ways of working",
-      "Work in your process with regular demos and reviews"
-    ],
-    "tech": [
-      "Full-stack: React, Node.js, .NET, Python",
-      "Mobile: React Native, Flutter",
-      "DevOps & cloud: AWS, Azure, CI/CD, containers",
-      "AI/ML and data engineering",
-      "Technical leads and architects"
-    ],
-    "boundaries": [
-      "Availability, working hours, time-zone overlap and notice periods are agreed in writing.",
-      "Hourly work is estimated and prioritised with you; rates and billing terms depend on scope.",
-      "Security, confidentiality, source-code rights and handover are covered in the agreement."
-    ],
-    "faqs": [
-      {
-        "q": "Dedicated developers or hourly support: which fits?",
-        "a": "Dedicated development suits a sustained roadmap and ongoing collaboration. Hourly support suits a focused backlog or intermittent technical needs. Share the work and we can discuss the trade-offs."
-      },
-      {
-        "q": "Can we start with one developer?",
-        "a": "Tell us the skills and time commitment you need. We will discuss a suitable arrangement and current availability before you commit."
-      },
-      {
-        "q": "How are hours and progress reported?",
-        "a": "Agree a task backlog, estimates, reporting cadence and approval process before starting. Commercial terms and any minimum commitments are set out in the proposal."
-      },
-      {
-        "q": "Can you work with our time zone?",
-        "a": "Share the collaboration hours your team needs. We agree workable overlap and communication expectations as part of scoping."
-      }
-    ]
-  },
-  {
     "id": "zoho-development",
     "slug": "zoho-development",
     "icon": "Settings",

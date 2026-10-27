@@ -43,12 +43,24 @@ export const site = {
   },
 
   /**
-   * Markets we actively serve and typical engagement size.
-   * Confirmed by the business: SMBs across India + US/UK/EU, ~$10k–$75k projects.
+   * Markets served / actively targeted, audience and typical engagement size.
+   * India + US/UK/EU are the established base (confirmed by the business). The
+   * business brief names Canada, Singapore and Australia as priority target
+   * markets for engineering talent; they are included here as areas served for
+   * schema.org `areaServed`. This does NOT assert local offices or legal
+   * entities in those countries — delivery is from India with agreed overlap.
    */
   markets: {
-    audience: 'Small and mid-sized businesses',
-    regions: ['India', 'United States', 'United Kingdom', 'Europe'],
+    audience: 'Founders, CTOs and engineering teams',
+    regions: [
+      'India',
+      'United States',
+      'Canada',
+      'United Kingdom',
+      'Europe',
+      'Singapore',
+      'Australia',
+    ],
     typicalProjectSize: '$10,000 – $75,000',
   },
 

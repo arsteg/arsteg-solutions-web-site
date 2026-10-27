@@ -3,15 +3,19 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import {
   Approach,
   Enquiry,
+  EngagementModels,
+  HireList,
   ProductList,
   ServiceList,
 } from "@/components/Editorial";
 import { pageMetadata } from "@/lib/seo";
+
 export const metadata = pageMetadata(
-  "Custom software, mobile apps & dedicated developers",
-  "ARSTEG builds custom software, mobile and desktop applications for growing businesses. Work with an India-based engineering partner on a project, dedicated or hourly basis.",
+  "Hire developers & dedicated teams in India",
+  "Hire skilled .NET, Python, React, full-stack, AI, QA and DevOps developers in India. Staff augmentation, dedicated developers and dedicated teams for companies in the US, UK, Europe, Canada, Singapore and Australia.",
   "/",
 );
+
 export default function Home() {
   return (
     <>
@@ -19,63 +23,65 @@ export default function Home() {
         <div className="container hero-grid">
           <div className="hero-copy">
             <p className="eyebrow">
-              <span className="red-dot" /> SOFTWARE ENGINEERING, WITH PURPOSE
+              <span className="red-dot" /> ENGINEERING TALENT, BASED IN INDIA
             </p>
             <h1>
-              Your business.
+              Hire the developers
               <br />
-              Your next move.
+              and teams
               <br />
-              <span>Built in software.</span>
+              <span>your roadmap needs.</span>
             </h1>
             <p className="lede">
-              Custom software, mobile and desktop apps, and developers who work
-              with your team. From the first brief to the next release.
+              Add skilled engineers, specialists and dedicated teams to your
+              company — working in your tools, your process and your time zone.
+              From a single hire to a whole team.
             </p>
             <div className="hero-actions">
-              <Link className="button" href="/contact">
-                Discuss your project <ArrowUpRight size={19} />
+              <Link className="button" href="/hire">
+                Hire developers <ArrowUpRight size={19} />
               </Link>
-              <Link className="text-link" href="/services">
-                Explore our services <ArrowRight size={17} />
+              <Link className="text-link" href="/dedicated-teams">
+                Explore engagement models <ArrowRight size={17} />
               </Link>
             </div>
             <p className="hero-note">
-              Based in Gurugram, India. Built for businesses across borders.
+              Based in Gurugram, India. Built to collaborate across
+              international time zones.
             </p>
           </div>
           <div
             className="engineering-art"
             role="img"
-            aria-label="An engineering blueprint connecting a business idea to web, mobile and desktop applications"
+            aria-label="An engineering blueprint showing individual developers, staff augmentation and a dedicated team joining a client's engineering organisation"
           >
             <div className="art-top">
-              <span>ARSTEG / ENGINEERING STUDIO</span>
-              <span>01 — BUILD</span>
+              <span>ARSTEG / ENGINEERING TALENT</span>
+              <span>01 — ENGAGE</span>
             </div>
             <div className="blueprint-grid">
               <div className="art-orbit orbit-one" />
               <div className="art-orbit orbit-two" />
               <div className="core-block">
-                <span>YOUR NEXT</span>
+                <span>YOUR TEAM</span>
                 <strong>
-                  big idea<span className="accent">.</span>
+                  extended<span className="accent">.</span>
                 </strong>
                 <div className="core-line" />
-                <small>DESIGNED → DEVELOPED → DELIVERED</small>
+                <small>HIRE → ONBOARD → DELIVER</small>
               </div>
               <div className="platform-tag tag-web">
-                &lt;/&gt; <span>Web</span>
+                1× <span>Specialist</span>
               </div>
               <div className="platform-tag tag-mobile">
-                ▯ <span>Mobile</span>
+                +N <span>Augment</span>
               </div>
               <div className="platform-tag tag-desktop">
-                ▱ <span>Desktop</span>
+                ▣ <span>Team</span>
               </div>
             </div>
             <div className="art-bottom">
-              <span>BUSINESS NEED → WORKING SOFTWARE</span>
+              <span>SKILLS NEEDED → ENGINEERS WHO FIT</span>
               <ArrowUpRight size={22} />
             </div>
           </div>
@@ -83,28 +89,59 @@ export default function Home() {
       </section>
       <div className="capability-strip">
         <div className="container">
-          <span>BUILT AROUND YOUR NEEDS</span>
-          <p>New products</p>
+          <span>HOW TEAMS ENGAGE US</span>
+          <p>An individual specialist</p>
           <span className="strip-dot">/</span>
-          <p>Better business systems</p>
+          <p>Staff augmentation</p>
           <span className="strip-dot">/</span>
-          <p>More engineering capacity</p>
+          <p>A dedicated team</p>
         </div>
       </div>
       <section className="section">
         <div className="container">
           <div className="section-heading">
             <div>
-              <p className="eyebrow">01 / HOW WE CAN HELP</p>
+              <p className="eyebrow">01 / HIRE BY TECHNOLOGY & ROLE</p>
               <h2>
-                The right expertise.
+                The skill you need.
                 <br />
-                For the work ahead.
+                Engineers who fit.
               </h2>
             </div>
             <p>
-              Build from the ground up, improve what’s already running, or bring
-              extra capability into your team.
+              Enter by the technology you work in or the role you need to fill.
+              Each engineer works in your repositories, review process and
+              ceremonies — not a silo.
+            </p>
+          </div>
+          <HireList />
+          <Link className="text-link section-link" href="/hire">
+            See all roles & technologies <ArrowRight size={17} />
+          </Link>
+        </div>
+      </section>
+      <section className="section soft-section">
+        <div className="container">
+          <EngagementModels />
+          <Link className="text-link section-link" href="/dedicated-teams">
+            Compare engagement models in detail <ArrowRight size={17} />
+          </Link>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">02 / SOFTWARE SERVICES</p>
+              <h2>
+                Prefer to hand us
+                <br />
+                a whole project?
+              </h2>
+            </div>
+            <p>
+              When you need an outcome delivered rather than capacity added, we
+              design, build and modernize software end to end.
             </p>
           </div>
           <ServiceList />
@@ -118,18 +155,18 @@ export default function Home() {
         <div className="container">
           <div className="section-heading">
             <div>
-              <p className="eyebrow">02 / OUR OWN PRODUCTS</p>
+              <p className="eyebrow">03 / PROOF WE CAN BUILD</p>
               <h2>
-                We build products.
+                We build and run
                 <br />
-                And think like owners.
+                our own products.
               </h2>
             </div>
             <div>
               <p>
-                Our product portfolio spans HR operations, GST compliance and
-                sales outreach. Explore the software behind our engineering
-                approach.
+                The strongest evidence of our engineering is the software we own
+                and operate — spanning HR operations, AI-powered GST compliance
+                and AI outbound sales. The same people build for our clients.
               </p>
               <Link className="text-link" href="/products">
                 Meet our products <ArrowUpRight size={17} />
@@ -137,52 +174,6 @@ export default function Home() {
             </div>
           </div>
           <ProductList />
-        </div>
-      </section>
-      <section className="section">
-        <div className="container engagement-grid">
-          <div>
-            <p className="eyebrow">03 / A WAY TO WORK THAT FITS</p>
-            <h2>
-              A project to deliver.
-              <br />
-              Or a team to extend.
-            </h2>
-            <p className="lede">
-              Choose the arrangement around the work. We discuss scope,
-              availability, communication and commercial terms before starting.
-            </p>
-            <Link
-              className="text-link"
-              href="/services/dedicated-engineering-teams"
-            >
-              Explore dedicated & hourly development <ArrowRight size={17} />
-            </Link>
-          </div>
-          <div className="engagement-options">
-            {[
-              [
-                "Project delivery",
-                "For a defined product, workflow or application. Shape a scope and milestones around your priorities.",
-              ],
-              [
-                "Dedicated developers",
-                "For ongoing engineering capacity. Work together in your repositories, tools and delivery process.",
-              ],
-              [
-                "Hourly development",
-                "For a focused backlog, enhancements or technical help. Agree priorities, estimates and reporting before work begins.",
-              ],
-            ].map(([t, d], i) => (
-              <article key={t}>
-                <span>0{i + 1}</span>
-                <div>
-                  <h3>{t}</h3>
-                  <p>{d}</p>
-                </div>
-              </article>
-            ))}
-          </div>
         </div>
       </section>
       <Approach />

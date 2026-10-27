@@ -12,25 +12,26 @@ import { site } from "@/config/site";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "ARSTEG Solutions — Custom software, integrations & AI automation",
+    default: "Hire Developers & Dedicated Teams in India — ARSTEG Solutions",
     template: "%s | ARSTEG Solutions",
   },
   description:
-    "ARSTEG is a software engineering partner for small and mid-sized businesses. We build custom applications, modernize legacy systems, and connect and automate the tools you already use.",
+    "ARSTEG is an India-based engineering partner. Hire dedicated developers, augment your team, or stand up a dedicated development team — plus custom software, integrations and AI automation.",
   keywords: [
+    "hire developers in India",
+    "IT staff augmentation",
+    "dedicated development team India",
+    "hire .NET developers",
+    "hire Python developers",
+    "hire React developers",
+    "hire full-stack developers",
+    "hire AI developers",
+    "hire QA automation engineers",
+    "hire DevOps engineers",
     "custom software development",
     "software modernization",
     "system integration",
-    "workflow automation",
     "AI automation",
-    "dedicated development team",
-    "Zoho implementation",
-    "EffortlessHRM",
-    "EffortlessInsight",
-    "EffortlessPromo",
-    "HRM software",
-    "GST notice management",
-    "AI outbound sales",
     "Gurugram",
     "India",
   ],
@@ -53,9 +54,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: site.url,
     siteName: site.name,
-    title: "ARSTEG Solutions — Custom software, integrations & AI automation",
+    title: "Hire Developers & Dedicated Teams in India — ARSTEG Solutions",
     description:
-      "Software engineering partner for growing businesses: custom applications, modernization, integrations and AI automation.",
+      "Hire dedicated developers and teams in India, or augment your team — .NET, Python, React, full-stack, AI, QA and DevOps — plus custom software and AI automation.",
     images: [
       {
         url: "/opengraph-image",
@@ -67,9 +68,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ARSTEG Solutions — Custom software, integrations & AI automation",
+    title: "Hire Developers & Dedicated Teams in India — ARSTEG Solutions",
     description:
-      "Software engineering partner for growing businesses: custom applications, modernization, integrations and AI automation.",
+      "Hire dedicated developers and teams in India, or augment your team — .NET, Python, React, full-stack, AI, QA and DevOps — plus custom software and AI automation.",
     images: ["/opengraph-image"],
   },
   category: "technology",
@@ -89,7 +90,7 @@ const orgJsonLd = {
   url: site.url,
   logo: `${site.url}/images/logo.png`,
   description:
-    "Software engineering partner for small and mid-sized businesses: custom applications, modernization, integrations and AI automation.",
+    "India-based software engineering partner providing dedicated developers, staff augmentation and dedicated teams, plus custom software, integrations and AI automation.",
   email: site.contact.email,
   telephone: site.contact.phone,
   address: {

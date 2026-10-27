@@ -1104,3 +1104,105 @@ h3 {
 .product-row h2 { font-size: 24px; margin: 0 0 14px; }
 @media(max-width:800px){.service-row h2{font-size:24px}}
 @media(max-width:480px){.service-row h2{font-size:22px}}
+
+/* ---- Hire hub & engagement models ------------------------------------- */
+.hire-groups {
+  display: grid;
+  gap: 54px;
+}
+.hire-group > .eyebrow {
+  color: var(--red);
+  margin-bottom: 4px;
+}
+.engagement-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 46px;
+}
+.engagement-cards article {
+  border: 1px solid var(--line);
+  background: #fdfdfb;
+  padding: 32px;
+}
+.engagement-cards .row-number {
+  display: block;
+  margin-bottom: 14px;
+}
+.engagement-cards h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+.engagement-summary {
+  color: var(--muted);
+  font-size: 15px;
+  margin-bottom: 22px;
+}
+.engagement-cards dl {
+  margin: 0 0 14px;
+}
+.engagement-cards dl > div {
+  margin-bottom: 14px;
+}
+.engagement-cards dt {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.engagement-cards dd {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.engagement-cards .ruled-list li {
+  font-size: 14px;
+  padding: 12px 0;
+  line-height: 1.5;
+}
+.related-links {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 26px;
+}
+.related-links a {
+  font-size: 14px;
+  font-weight: 600;
+  padding-block: 8px;
+  color: var(--red);
+}
+.related-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px 48px;
+  margin-top: 46px;
+}
+.why-grid article {
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+.why-grid h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+.why-grid p {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0;
+}
+@media (max-width: 800px) {
+  .engagement-cards,
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+  .engagement-cards article {
+    padding: 24px;
+  }
+}

@@ -2,6 +2,8 @@ import Link from "next/link";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import services from "@/data/services.json";
 import products from "@/data/products";
+import { hireRoles, hireGroups, type HireRole, type EngagementKey } from "@/data/hire";
+import { getEngagementModels } from "@/data/engagement";
 import LeadForm from "./LeadForm";
 import { site, mailHref, telHref } from "@/config/site";
 export function PageIntro({
@@ -37,20 +39,20 @@ export function Enquiry({
     <section id="enquiry" className="enquiry-section">
       <div className="container enquiry-grid">
         <div>
-          <p className="eyebrow">LET’S TALK ABOUT THE WORK</p>
+          <p className="eyebrow">DISCUSS YOUR REQUIREMENTS</p>
           <h2>
-            What would you
+            Tell us the skills
             <br />
-            like to build?
+            or the work.
           </h2>
           <p className="lede">
-            A new product, a system that needs attention, or an extra pair of
-            engineering hands. Tell us where you are and where you want to go.
+            A developer with a specific skill, a team to extend your capacity, or
+            a project to deliver. Tell us where you are and where you want to go.
           </p>
           <ol className="next-steps">
-            <li>Share your goals and constraints.</li>
-            <li>We review the fit and discuss the open questions.</li>
-            <li>Agree a scope, working model and next step.</li>
+            <li>Share the role, skills or project and your constraints.</li>
+            <li>We discuss the fit, availability and open questions.</li>
+            <li>Agree an engagement model, overlap and next step.</li>
           </ol>
           <div className="contact-direct">
             <a href={mailHref}>{site.contact.email} ↗</a>
@@ -165,6 +167,94 @@ export function Approach() {
     </section>
   );
 }
+export function HireList({ group }: { group?: HireRole["group"] }) {
+  const groups = group ? [group] : hireGroups;
+  return (
+    <div className="hire-groups">
+      {groups.map((g) => {
+        const roles = hireRoles.filter((r) => r.group === g);
+        if (roles.length === 0) return null;
+        return (
+          <div className="hire-group" key={g}>
+            <p className="eyebrow">{g}</p>
+            <div className="service-list">
+              {roles.map((r, i) => (
+                <Link
+                  className="service-row"
+                  key={r.slug}
+                  href={"/hire/" + r.slug}
+                >
+                  <span className="row-number">0{i + 1}</span>
+                  <div>
+                    <h3>Hire {r.name.toLowerCase()}</h3>
+                    <p>{r.tagline}</p>
+                  </div>
+                  <ArrowUpRight aria-hidden="true" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+export function EngagementModels({
+  keys,
+  heading = true,
+}: {
+  keys?: EngagementKey[];
+  heading?: boolean;
+}) {
+  const models = getEngagementModels(keys);
+  return (
+    <>
+      {heading && (
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">WAYS TO ENGAGE</p>
+            <h2>
+              Choose the model
+              <br />
+              that fits the work.
+            </h2>
+          </div>
+          <p>
+            From one specialist to a dedicated team or a managed delivery.
+            Availability, communication and commercial terms are agreed in
+            writing before anyone starts.
+          </p>
+        </div>
+      )}
+      <div className="engagement-cards">
+        {models.map((m, i) => (
+          <article key={m.key}>
+            <span className="row-number">0{i + 1}</span>
+            <h3>{m.name}</h3>
+            <p className="engagement-summary">{m.summary}</p>
+            <dl>
+              <div>
+                <dt>Best when</dt>
+                <dd>{m.bestWhen}</dd>
+              </div>
+              <div>
+                <dt>Who directs the work</dt>
+                <dd>{m.direction}</dd>
+              </div>
+            </dl>
+            <ul className="ruled-list">
+              {m.points.map((p) => (
+                <li key={p}>{p}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </>
+  );
+}
+
 export function NextStep() {
   return (
     <section className="section next-step">
