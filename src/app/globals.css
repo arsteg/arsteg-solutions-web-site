@@ -10,6 +10,16 @@
   --foreground: 185 16% 15%;
   --background: 60 23% 96%;
   --ring: 356 60% 44%;
+
+  /* ---- Centralized type scale (rem-based; 1rem = 16px) ----------------
+     Use these variables instead of ad-hoc px sizes so typography stays
+     consistent and comfortable to read across the whole site. */
+  --fs-caption: 0.8125rem;  /* 13px — fine print, legal, meta labels */
+  --fs-small: 0.9375rem;    /* 15px — nav, buttons, links, card/body UI text */
+  --fs-body: 1.0625rem;     /* 17px — primary reading text */
+  --fs-lede: 1.1875rem;     /* 19px — intros & section ledes */
+  --lh-body: 1.7;           /* comfortable reading line height */
+  --lh-snug: 1.55;          /* UI / shorter copy */
 }
 * {
   box-sizing: border-box;
@@ -22,12 +32,23 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), "Inter", system-ui, -apple-system,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
-a {
-  color: inherit;
-  text-decoration: none;
+/* Keep this base reset in the `base` layer so Tailwind utility classes
+   (e.g. text-white / text-blue-600 on a <Link>) still win — otherwise an
+   unlayered `a { color: inherit }` overrides every Tailwind text color on
+   links (which made the 404 "Go to Homepage" button text invisible). */
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 button,
 input,
@@ -79,8 +100,8 @@ h3 {
   padding: 100px 0;
 }
 .eyebrow {
-  font-size: 11px;
-  letter-spacing: 0.13em;
+  font-size: 13px;
+  letter-spacing: 0.08em;
   font-weight: 700;
   line-height: 1.5;
   margin-bottom: 24px;
@@ -89,9 +110,9 @@ h3 {
   gap: 10px;
 }
 .lede {
-  font-size: 18px;
+  font-size: var(--fs-lede);
   color: var(--muted);
-  line-height: 1.7;
+  line-height: var(--lh-body);
   max-width: 580px;
 }
 .button {
@@ -102,7 +123,7 @@ h3 {
   background: var(--red);
   color: white;
   padding: 17px 24px;
-  font-size: 14px;
+  font-size: var(--fs-small);
   font-weight: 600;
   min-height: 48px;
   border: 1px solid var(--red);
@@ -116,7 +137,7 @@ h3 {
   display: inline-flex;
   align-items: center;
   gap: 14px;
-  font-size: 14px;
+  font-size: var(--fs-small);
   font-weight: 600;
   padding-block: 14px;
 }
@@ -184,7 +205,7 @@ h3 {
   display: flex;
   align-items: center;
   gap: 30px;
-  font-size: 13px;
+  font-size: var(--fs-small);
 }
 .main-nav > a:not(.button) {
   padding-block: 20px;
@@ -231,7 +252,7 @@ h3 {
   margin: 31px 0;
 }
 .hero-note {
-  font-size: 11px;
+  font-size: var(--fs-caption);
   color: var(--muted);
   margin-bottom: 0;
 }
@@ -355,7 +376,7 @@ h3 {
   gap: 20px;
 }
 .capability-strip p {
-  font-size: 13px;
+  font-size: var(--fs-small);
   margin: 0;
 }
 .capability-strip span {
@@ -375,8 +396,9 @@ h3 {
 .section-heading > p,
 .section-heading > div > p:not(.eyebrow) {
   color: var(--muted);
-  font-size: 16px;
-  max-width: 440px;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  max-width: 460px;
 }
 .service-row {
   display: grid;
@@ -394,7 +416,8 @@ h3 {
 }
 .service-row p {
   max-width: 780px;
-  font-size: 15px;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
   color: var(--muted);
   margin: 0;
 }
@@ -444,7 +467,7 @@ h3 {
   color: #734a3a;
 }
 .product-row .eyebrow {
-  font-size: 9px;
+  font-size: 11px;
   margin-bottom: 13px;
 }
 .product-row h3 {
@@ -452,14 +475,15 @@ h3 {
   margin-bottom: 14px;
 }
 .product-row p:not(.eyebrow) {
-  font-size: 14px;
+  font-size: var(--fs-small);
+  line-height: var(--lh-snug);
   color: var(--muted);
 }
 .product-row a {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 13px;
+  font-size: var(--fs-small);
   font-weight: 600;
   padding-block: 10px;
 }
@@ -484,7 +508,8 @@ h3 {
   margin-bottom: 10px;
 }
 .engagement-options p {
-  font-size: 14px;
+  font-size: var(--fs-small);
+  line-height: var(--lh-snug);
   color: var(--muted);
   margin: 0;
 }
@@ -517,8 +542,9 @@ h3 {
   margin-bottom: 17px;
 }
 .process-grid p {
-  font-size: 14px;
-  color: #c5cfca;
+  font-size: var(--fs-small);
+  line-height: var(--lh-snug);
+  color: #d4ddd8;
 }
 .enquiry-section {
   padding: 100px 0;
@@ -527,8 +553,8 @@ h3 {
 .next-steps {
   padding-left: 20px;
   color: var(--muted);
-  font-size: 14px;
-  line-height: 2.2;
+  font-size: var(--fs-small);
+  line-height: 2.1;
   margin-block: 28px;
 }
 .contact-direct {
@@ -538,7 +564,7 @@ h3 {
   font-size: 18px;
 }
 .enquiry-section form {
-  font-size: 14px;
+  font-size: var(--fs-small);
 }
 .enquiry-section .rounded-2xl {
   border-radius: 4px;
@@ -560,7 +586,7 @@ h3 {
 }
 .breadcrumb {
   display: inline-block;
-  font-size: 12px;
+  font-size: var(--fs-caption);
   color: var(--muted);
   margin-bottom: 38px;
 }
@@ -570,9 +596,9 @@ h3 {
 }
 .intro-copy {
   max-width: 720px;
-  font-size: 19px;
+  font-size: var(--fs-lede);
   color: var(--muted);
-  line-height: 1.7;
+  line-height: var(--lh-body);
 }
 .page-intro .eyebrow {
   color: var(--red);
@@ -620,8 +646,8 @@ h3 {
 }
 .tags span {
   border: 1px solid var(--line);
-  padding: 10px 15px;
-  font-size: 13px;
+  padding: 9px 15px;
+  font-size: var(--fs-caption);
   background: white;
 }
 .faq-list details {
@@ -679,17 +705,17 @@ h3 {
   gap: 40px;
 }
 .footer-grid h2 {
-  font-size: 11px;
-  letter-spacing: 0.08em;
+  font-size: 13px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   margin-bottom: 25px;
-  color: #bdc9c3;
+  color: #cbd5cf;
   font-weight: 600;
 }
 .footer-grid > div > a:not(.wordmark) {
   display: block;
-  font-size: 13px;
-  margin: 14px 0;
+  font-size: var(--fs-small);
+  margin: 13px 0;
   line-height: 1.6;
 }
 .footer-grid a:hover {
@@ -700,9 +726,10 @@ h3 {
   margin-top: 25px;
 }
 .footer-grid .footer-address {
-  font-size: 12px;
-  max-width: 220px;
-  color: #bdc9c3;
+  font-size: var(--fs-caption);
+  line-height: 1.65;
+  max-width: 230px;
+  color: #c4d0ca;
 }
 .footer-bottom {
   border-top: 1px solid #425251;
@@ -711,8 +738,8 @@ h3 {
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  font-size: 10px;
-  color: #bdc9c3;
+  font-size: var(--fs-caption);
+  color: #c4d0ca;
 }
 .footer-bottom p {
   margin: 0;
@@ -864,7 +891,7 @@ h3 {
     width: 100%;
   }
   .capability-strip p {
-    font-size: 12px;
+    font-size: var(--fs-caption);
   }
   .strip-dot {
     display: none;
@@ -898,7 +925,7 @@ h3 {
     font-size: 24px;
   }
   .service-row p {
-    font-size: 14px;
+    font-size: var(--fs-small);
   }
   .product-list {
     grid-template-columns: 1fr;
@@ -937,7 +964,7 @@ h3 {
   }
   .article-body {
     padding: 40px 0;
-    font-size: 16px;
+    font-size: 17px;
   }
 }
 @media (max-width: 480px) {
@@ -953,7 +980,7 @@ h3 {
     width: 100%;
   }
   .home-hero .eyebrow {
-    font-size: 9px;
+    font-size: 12px;
   }
   .product-row {
     grid-template-columns: 1fr;
@@ -1023,6 +1050,81 @@ h3 {
     font-size: 17px;
   }
 }
+.consent-banner {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 90;
+  background: var(--ink);
+  color: #f6f5f0;
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+.consent-inner {
+  max-width: 1100px;
+  margin-inline: auto;
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.consent-copy {
+  margin: 0;
+  font-size: var(--fs-small);
+  line-height: var(--lh-snug);
+  color: #e3e8e3;
+}
+.consent-copy a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.consent-actions {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.consent-decline,
+.consent-accept {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  padding: 11px 20px;
+  border-radius: 3px;
+  min-height: 44px;
+  white-space: nowrap;
+}
+.consent-decline {
+  background: transparent;
+  color: #e3e8e3;
+  border: 1px solid #5b6b68;
+}
+.consent-decline:hover {
+  border-color: #8a988f;
+}
+.consent-accept {
+  background: var(--red);
+  color: #fff;
+  border: 1px solid var(--red);
+}
+.consent-accept:hover {
+  background: #92212b;
+}
+@media (max-width: 640px) {
+  .consent-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 16px;
+  }
+  .consent-actions {
+    justify-content: stretch;
+  }
+  .consent-decline,
+  .consent-accept {
+    flex: 1;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1040,7 +1142,7 @@ h3 {
 .product-features {
   padding-left: 18px;
   list-style: disc;
-  font-size: 14px;
+  font-size: var(--fs-small);
   color: var(--muted);
   line-height: 1.8;
   margin: 20px 0;
@@ -1061,8 +1163,9 @@ h3 {
   margin-bottom: 10px;
 }
 .newsletter p {
-  font-size: 12px;
-  color: #bdc9c3;
+  font-size: var(--fs-caption);
+  color: #c4d0ca;
+  line-height: 1.6;
   margin: 10px 0;
 }
 .newsletter-fields {
@@ -1086,7 +1189,8 @@ h3 {
   color: #202b2c;
   padding: 12px;
   border-radius: 3px;
-  font-size: 13px;
+  font-size: var(--fs-small);
+  font-weight: 600;
 }
 .newsletter a {
   text-decoration: underline;
@@ -1112,7 +1216,9 @@ h3 {
 }
 .hire-group > .eyebrow {
   color: var(--red);
-  margin-bottom: 4px;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
 }
 .engagement-cards {
   display: grid;
@@ -1135,7 +1241,8 @@ h3 {
 }
 .engagement-summary {
   color: var(--muted);
-  font-size: 15px;
+  font-size: var(--fs-small);
+  line-height: var(--lh-snug);
   margin-bottom: 22px;
 }
 .engagement-cards dl {
@@ -1153,12 +1260,12 @@ h3 {
 }
 .engagement-cards dd {
   margin: 0;
-  font-size: 14px;
+  font-size: var(--fs-small);
   color: var(--muted);
   line-height: 1.6;
 }
 .engagement-cards .ruled-list li {
-  font-size: 14px;
+  font-size: var(--fs-small);
   padding: 12px 0;
   line-height: 1.5;
 }
@@ -1169,7 +1276,7 @@ h3 {
   margin-top: 26px;
 }
 .related-links a {
-  font-size: 14px;
+  font-size: var(--fs-small);
   font-weight: 600;
   padding-block: 8px;
   color: var(--red);
@@ -1193,7 +1300,8 @@ h3 {
   margin-bottom: 12px;
 }
 .why-grid p {
-  font-size: 14px;
+  font-size: var(--fs-small);
+  line-height: var(--lh-snug);
   color: var(--muted);
   margin: 0;
 }

@@ -11,6 +11,29 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Baseline security headers applied to every response. CSP is intentionally
+  // omitted for now — a strict policy needs to be tuned and tested against the
+  // Google Maps embed, three.js/react-three-fiber and analytics first.
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=(), browsing-topics=()",
+          },
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=63072000; includeSubDomains; preload",
+          },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
       // Consolidated standalone pages into their canonical service pages

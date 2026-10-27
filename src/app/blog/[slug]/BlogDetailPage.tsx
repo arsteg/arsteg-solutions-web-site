@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PageIntro, NextStep } from "@/components/Editorial";
 import posts from "@/data/blog-posts.json";
+import { readingTime } from "@/lib/reading-time";
 export default function BlogDetailPage({
   post: p,
 }: {
@@ -8,7 +9,7 @@ export default function BlogDetailPage({
 }) {
   return (
     <>
-      <PageIntro label={p.category + " / " + p.readTime} title={p.title}>
+      <PageIntro label={p.category + " / " + readingTime(p.content)} title={p.title}>
         <p>{p.excerpt}</p>
         <p style={{ fontSize: 13 }}>
           {p.author} · {p.date}

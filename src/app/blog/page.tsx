@@ -2,6 +2,7 @@ import Link from "next/link";
 import { PageIntro, NextStep } from "@/components/Editorial";
 import posts from "@/data/blog-posts.json";
 import { pageMetadata } from "@/lib/seo";
+import { readingTime } from "@/lib/reading-time";
 export const metadata = pageMetadata(
   "Software engineering insights",
   "Practical perspectives on software modernisation, API design and AI-assisted workflows from ARSTEG.",
@@ -22,7 +23,7 @@ export default function Page() {
           {posts.map((p) => (
             <article className="listing-row" key={p.slug}>
               <p className="eyebrow">
-                {p.category} / {p.readTime}
+                {p.category} / {readingTime(p.content)}
               </p>
               <h2>
                 <Link href={"/blog/" + p.slug}>{p.title} ↗</Link>

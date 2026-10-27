@@ -1,10 +1,20 @@
 // src/app/layout.tsx
 import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
+
+// Centralized UI typeface. Exposed as the --font-sans CSS variable so the
+// semantic design system in globals.css controls where it applies.
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-sans",
+});
 import { indexable } from "@/lib/seo";
 import ConversionTracking from "@/components/ConversionTracking";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ConsentBanner from "@/components/ConsentBanner";
 import Analytics from "@/components/Analytics";
 import TrackVisit from "@/components/TrackVisit";
 import { site } from "@/config/site";
@@ -111,7 +121,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <body className="flex min-h-screen flex-col">
         <script
           type="application/ld+json"
@@ -128,6 +138,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <ConsentBanner />
       </body>
     </html>
   );
